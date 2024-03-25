@@ -28,11 +28,11 @@ LOFIII is a beautiful and intuitive music streaming app built with Flutter. It a
 
 ## Screenshots
 
-![Screenshot 1](assets/screenshot1.svg)
-![Screenshot 2](assets/screenshot2.svg)
-![Screenshot 3](assets/screenshot3.svg)
-![Screenshot 4](assets/screenshot4.svg)
-
+![Screenshot 1](assets/screenshot1.jpg)
+![Screenshot 2](assets/screenshot2.jpg)
+![Screenshot 3](assets/screenshot3.jpg)
+![Screenshot 4](assets/screenshot4.jpg)
+![Screenshot 5](assets/screenshot5.jpg)
 ## Installation
 
 To install LOFIII on your Android device, simply download the APK file from the [releases page](link-to-releases) and follow the installation instructions.
