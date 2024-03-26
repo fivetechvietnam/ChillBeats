@@ -13,6 +13,7 @@ import '../downloads_page.dart';
 import '../home_page.dart';
 import '../library_page.dart';
 import '../settings/settings.dart';
+import '../youtube_music/youtube_music_page.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({
@@ -30,7 +31,6 @@ class _InitialPageState extends State<InitialPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _showMoreMusicComingSoonMessage();
 
   }
 
@@ -38,6 +38,7 @@ class _InitialPageState extends State<InitialPage> {
   Widget build(BuildContext context) {
     final pages = [
       const HomePage(),
+      const YoutubeMusicPage(),
       const LibraryPage(),
       const DownloadsPage(),
       const SettingsPage()
@@ -95,17 +96,5 @@ class _InitialPageState extends State<InitialPage> {
   }
 
   ////!--------------- METHODS ----------------------///
-  ///!-------------- Show More Music Message
-  Future<void> _showMoreMusicComingSoonMessage() async {
-    if (await MyHiveBoxes.settingBox
-            .get(MyHiveKeys.showMoreMusicMessageHiveKey) ??
-        true) {
-      Future.delayed(const Duration(seconds: 12));
-      MyCustomSnackbars.showInfoSnackbar(context,
-          message: "More music on the way! Stay tuned 🎶",
-          icon: const Icon(EvaIcons.music));
-      await MyHiveBoxes.settingBox
-          .put(MyHiveKeys.showMoreMusicMessageHiveKey, false);
-    }
-  }
+
 }
