@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,13 +15,17 @@ import 'package:pod_player/pod_player.dart';
 import 'package:signals/signals_flutter.dart';
 
 import '../../../logic/cubit/chnage_system_volume/chnage_system_volume_cubit.dart';
+import '../../widgets/my_youtube_video_player_widget/my_youtube_video_player_widget.dart';
 
 class YouTubeMusicPlayerPage extends StatelessWidget {
-  const YouTubeMusicPlayerPage({
+  YouTubeMusicPlayerPage({
     super.key,
   });
 
-
+  final videoPosition = signal(0);
+  final videoTotalDuration = signal(0);
+  final videoState = signal(PodVideoState.loading);
+  final videoIsBuffering = signal(true);
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +48,15 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
           return BlocBuilder<YoutubeMusicPlayerCubit, YoutubeMusicPlayerState>(
             builder: (context, playerState) {
               if (playerState is YoutubeMusicPlayerSuccessState) {
+
+                playerState.controller.addListener(() {
+                  videoPosition.value = playerState.controller.currentVideoPosition.inSeconds;
+                  videoTotalDuration.value = playerState.controller.totalVideoLength.inSeconds;
+                  videoState.value = playerState.controller.videoState;
+                  videoIsBuffering.value = playerState.controller.isVideoBuffering;
+                });
+                
+                
                 return Scaffold(
                   backgroundColor: Colors.black,
                   extendBodyBehindAppBar: true,
@@ -57,7 +71,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                         onTap: () async {
                           context
                               .read<YoutubeMusicPlayerCubit>()
-                              .showPlayerButtons(state: playerState);
+                              .showPlayerButtonsToggle(state: playerState);
                         },
 
                         ///!-----------    Play Pause Toggle
@@ -82,16 +96,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                           ///?-------------------------------------------------------////
                           ////!--------------------------  Player --------------------///
                           ///?-------------------------------------------------------////
-                          child: PodVideoPlayer(
-                            matchFrameAspectRatioToVideo: true,
-                            matchVideoAspectRatioToFrame: true,
-                            controller: playerState.controller,
-                            alwaysShowProgressBar: false,
-                            backgroundColor: Colors.black,
-                            overlayBuilder: (options) {
-                              return const SizedBox.shrink();
-                            },
-                          ),
+                          child: MyYouTubeVideoPlayerWidget(playerState: playerState,),
                         ),
                       ),
 
@@ -101,20 +106,22 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                         child: Positioned(
                           left: 0.04.sw,
                           top: 0.08.sh,
-                          child: IconButton(
-                            onPressed: () async {
-                              OneContext().pop();
-                              if (orientation == Orientation.landscape) {
-                                await SystemChrome.setPreferredOrientations(
-                                    [DeviceOrientation.portraitUp]);
-                                SystemChrome.setEnabledSystemUIMode(
-                                    SystemUiMode.manual, overlays: SystemUiOverlay.values);
-                              }
-                            },
-                            icon: Icon(
-                              CupertinoIcons.back,
-                              color: Colors.white,
-                              size: potrait ? 30.sp : 16.sp,
+                          child: SlideInLeft(
+                            child: IconButton(
+                              onPressed: () async {
+                                OneContext().pop();
+                                if (orientation == Orientation.landscape) {
+                                  await SystemChrome.setPreferredOrientations(
+                                      [DeviceOrientation.portraitUp]);
+                                  SystemChrome.setEnabledSystemUIMode(
+                                      SystemUiMode.manual, overlays: SystemUiOverlay.values);
+                                }
+                              },
+                              icon: Icon(
+                                CupertinoIcons.back,
+                                color: Colors.white,
+                                size: potrait ? 30.sp : 16.sp,
+                              ),
                             ),
                           ),
                         ),
@@ -124,29 +131,31 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                       Visibility(
                         visible: playerState.showPlayerButtons,
                         child: Positioned(
-                          top: 0.1.sh,
+                          top: 0.08.sh,
                           right: 0.03.sw,
-                          child: IconButton(
-                            onPressed: () async {
-                              if (orientation == Orientation.portrait) {
-
-                                ///----- Set Device Orientation to Landscape Mode
-                                await SystemChrome.setPreferredOrientations(
-                                    [DeviceOrientation.landscapeRight]);
-
-                                ///----- Hide Status Bar Values
-                                SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-                              } else {
-                                await SystemChrome.setPreferredOrientations(
-                                    [DeviceOrientation.portraitUp]);
-
-                                SystemChrome.setEnabledSystemUIMode(
-                                    SystemUiMode.manual, overlays: SystemUiOverlay.values);
-                              }
-                            },
-                            icon: const Icon(
-                              Icons.screen_rotation,
-                              color: Colors.white,
+                          child: SlideInRight(
+                            child: IconButton(
+                              onPressed: () async {
+                                if (orientation == Orientation.portrait) {
+                            
+                                  ///----- Set Device Orientation to Landscape Mode
+                                  await SystemChrome.setPreferredOrientations(
+                                      [DeviceOrientation.landscapeRight]);
+                            
+                                  ///----- Hide Status Bar Values
+                                  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+                                } else {
+                                  await SystemChrome.setPreferredOrientations(
+                                      [DeviceOrientation.portraitUp]);
+                            
+                                  SystemChrome.setEnabledSystemUIMode(
+                                      SystemUiMode.manual, overlays: SystemUiOverlay.values);
+                                }
+                              },
+                              icon: const Icon(
+                                Icons.screen_rotation,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
@@ -160,9 +169,10 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                           width: 1.sw,
                           child: Center(
                             child: Text(
-                              " ${FormatDuration.format(Duration(seconds: watchSignal(context,  playerState.videoPosition)))}/${FormatDuration.format(Duration(seconds: watchSignal(context, playerState.videoTotalDuration)))}",
+                              " ${FormatDuration.format(Duration(seconds: watchSignal(context,  videoPosition)))}/${FormatDuration.format(Duration(seconds: watchSignal(context, videoTotalDuration)))}",
                               style: TextStyle(
                                   color: Colors.white,
+                                  shadows: const [Shadow(color: Colors.black87,offset: Offset.zero)],
                                   fontSize: potrait ? 25.sp : 15.sp),
                             ),
                           ),
@@ -205,150 +215,155 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
       child: Visibility(
         visible: playerState.showPlayerButtons &&
             orientation == Orientation.portrait,
-        child: Column(
-          children: [
-            ///!---------- Slider -----------//
-            SliderTheme(
-              data: _sliderThemeData(),
-              child: Slider(
-                min: 0,
-                max: playerState.controller.totalVideoLength.inSeconds
-                    .toDouble(),
-                value: watchSignal(context,  playerState.videoPosition).toDouble(),
-                onChanged: (value) {
-                  playerState.controller
-                      .videoSeekTo(Duration(seconds: value.toInt()));
-                },
-              ),
-            ),
-
-            ///!--------------- Video Position Text & Duration Text
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.sp),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ///!------------ Position
-                  Text(
-                    FormatDuration.format(Duration(
-                            seconds: watchSignal(context,  playerState.videoPosition)))
-                        .toString(),
-                    style: const TextStyle(color: Colors.white),
-                  ),
-
-                  ///!---------Duration
-                  Text(
-                    FormatDuration.format(Duration(
-                            seconds: watchSignal(context,  playerState.videoTotalDuration)))
-                        .toString(),
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-
-            ///!------------------------------------ Buttons ---------------------//
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ///!--------------Previous Music Button
-                BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
-                    FetchCurrentPlayingMusicDataToPlayerState>(
-                  builder: (context, fetchState) {
-                    return IconButton(
-                        onPressed: () {
-                          if (fetchState.musicIndex > 0) {
-                            backwardButtonClicked(
-                                fetchState, controller, context);
-                          }
-                        },
-                        icon: Icon(
-                          Icons.skip_previous,
-                          color: fetchState.musicIndex > 0
-                              ? Colors.white
-                              : Colors.white.withOpacity(0.3),
-                          size: 40.sp,
-                        ));
-                  },
-                ),
-
-                ///!------------- Backward Button ---------///
-                IconButton(
-                  onPressed: () {
+        child: SlideInUp(
+          duration: const Duration(
+            milliseconds: 100
+          ),
+          child: Column(
+            children: [
+              ///!---------- Slider -----------//
+              SliderTheme(
+                data: _sliderThemeData(),
+                child: Slider(
+                  min: 0,
+                  max: playerState.controller.totalVideoLength.inSeconds
+                      .toDouble(),
+                  value: watchSignal(context,  videoPosition).toDouble(),
+                  onChanged: (value) {
                     playerState.controller
-                        .videoSeekBackward(const Duration(seconds: 10));
+                        .videoSeekTo(Duration(seconds: value.toInt()));
                   },
-                  icon: Icon(
-                    Icons.replay_10_outlined,
-                    color: Colors.white,
-                    size: 40.sp,
-                  ),
                 ),
-
-                ///!------------------- Play Pause Button -----------///
-                Stack(
-                  alignment: Alignment.center,
+              ),
+          
+              ///!--------------- Video Position Text & Duration Text
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.sp),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ///!---------If Loading
-                    if (watchSignal(context,  playerState.videoIsBuffering))
-                      CircularProgressIndicator(
-                        strokeWidth: 10.sp,
-                        color: Colors.white,
-                      ),
-                    IconButton(
-                      onPressed: () {
-                        playerState.controller.togglePlayPause();
-                      },
-                      icon: Icon(
-                        watchSignal(context,  playerState.videoState) ==
-                                PodVideoState.playing
-                            ? EvaIcons.pauseCircle
-                            : EvaIcons.playCircle,
-                        color: Colors.white,
-                        size: 45.sp,
-                      ),
+                    ///!------------ Position
+                    Text(
+                      FormatDuration.format(Duration(
+                              seconds: watchSignal(context,  videoPosition)))
+                          .toString(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
+          
+                    ///!---------Duration
+                    Text(
+                      FormatDuration.format(Duration(
+                              seconds: watchSignal(context,  videoTotalDuration)))
+                          .toString(),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
-
-                ///!------------- Forward Button ---------///
-                IconButton(
-                  onPressed: () {
-                    playerState.controller
-                        .videoSeekForward(const Duration(seconds: 10));
-                  },
-                  icon: Icon(
-                    Icons.forward_10_outlined,
-                    color: Colors.white,
-                    size: 40.sp,
+              ),
+          
+              ///!------------------------------------ Buttons ---------------------//
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ///!--------------Previous Music Button
+                  BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
+                      FetchCurrentPlayingMusicDataToPlayerState>(
+                    builder: (context, fetchState) {
+                      return IconButton(
+                          onPressed: () {
+                            if (fetchState.musicIndex > 0) {
+                              backwardButtonClicked(
+                                  fetchState, controller, playerState);
+                            }
+                          },
+                          icon: Icon(
+                            Icons.skip_previous,
+                            color: fetchState.musicIndex > 0
+                                ? Colors.white
+                                : Colors.white.withOpacity(0.3),
+                            size: 40.sp,
+                          ));
+                    },
                   ),
-                ),
-
-                ///!--------------Next Music Button
-                BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
-                    FetchCurrentPlayingMusicDataToPlayerState>(
-                  builder: (context, fetchState) {
-                    return IconButton(
+          
+                  ///!------------- Backward Button ---------///
+                  IconButton(
+                    onPressed: () {
+                      playerState.controller
+                          .videoSeekBackward(const Duration(seconds: 10));
+                    },
+                    icon: Icon(
+                      Icons.replay_10_outlined,
+                      color: Colors.white,
+                      size: 40.sp,
+                    ),
+                  ),
+          
+                  ///!------------------- Play Pause Button -----------///
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ///!---------If Loading
+                      if (watchSignal(context,  videoIsBuffering))
+                        CircularProgressIndicator(
+                          strokeWidth: 10.sp,
+                          color: Colors.white,
+                        ),
+                      IconButton(
                         onPressed: () {
-                          if (fetchState.musicIndex <
-                              fetchState.youtubeMusicList.length) {
-                            nextMusicButtonClicked(
-                                fetchState, controller, context);
-                          }
+                          playerState.controller.togglePlayPause();
                         },
                         icon: Icon(
-                          Icons.skip_next,
-                          color: fetchState.musicIndex <
-                                  fetchState.youtubeMusicList.length
-                              ? Colors.white
-                              : Colors.white.withOpacity(0.3),
-                          size: 40.sp,
-                        ));
-                  },
-                )
-              ],
-            ),
-          ],
+                          watchSignal(context,  videoState) ==
+                                  PodVideoState.playing
+                              ? EvaIcons.pauseCircle
+                              : EvaIcons.playCircle,
+                          color: Colors.white,
+                          size: 45.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+          
+                  ///!------------- Forward Button ---------///
+                  IconButton(
+                    onPressed: () {
+                      playerState.controller
+                          .videoSeekForward(const Duration(seconds: 10));
+                    },
+                    icon: Icon(
+                      Icons.forward_10_outlined,
+                      color: Colors.white,
+                      size: 40.sp,
+                    ),
+                  ),
+          
+                  ///!--------------Next Music Button
+                  BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
+                      FetchCurrentPlayingMusicDataToPlayerState>(
+                    builder: (context, fetchState) {
+                      return IconButton(
+                          onPressed: () {
+                            if (fetchState.musicIndex <
+                                fetchState.youtubeMusicList.length) {
+                              nextMusicButtonClicked(
+                                  fetchState, controller, playerState);
+                            }
+                          },
+                          icon: Icon(
+                            Icons.skip_next,
+                            color: fetchState.musicIndex <
+                                    fetchState.youtubeMusicList.length
+                                ? Colors.white
+                                : Colors.white.withOpacity(0.3),
+                            size: 40.sp,
+                          ));
+                    },
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -388,7 +403,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     ///!---------If Loading
-                    if (watchSignal(context,  playerState.videoIsBuffering))
+                    if (watchSignal(context,  videoIsBuffering))
                       CircularProgressIndicator(
                         strokeWidth: 7.sp,
                         color: Colors.white,
@@ -398,7 +413,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                         playerState.controller.togglePlayPause();
                       },
                       icon: Icon(
-                        watchSignal(context,  playerState.videoState) ==
+                        watchSignal(context,  videoState) ==
                                 PodVideoState.playing
                             ? EvaIcons.pauseCircle
                             : EvaIcons.playCircle,
@@ -431,53 +446,58 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
             width: 1.sw,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ///!---------- Slider -----------//
-                  SliderTheme(
-                    data: _sliderThemeData(),
-                    child: Slider(
-                      min: 0,
-                      max: playerState.controller.totalVideoLength.inSeconds
-                          .toDouble(),
-                      value: watchSignal(context,  playerState.videoPosition).toDouble(),
-                      onChanged: (value) {
-                        playerState.controller
-                            .videoSeekTo(Duration(seconds: value.toInt()));
-                      },
+              child: SlideInUp(
+                duration: const Duration(
+                  milliseconds: 100
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ///!---------- Slider -----------//
+                    SliderTheme(
+                      data: _sliderThemeData(),
+                      child: Slider(
+                        min: 0,
+                        max: playerState.controller.totalVideoLength.inSeconds
+                            .toDouble(),
+                        value: watchSignal(context,  videoPosition).toDouble(),
+                        onChanged: (value) {
+                          playerState.controller
+                              .videoSeekTo(Duration(seconds: value.toInt()));
+                        },
+                      ),
                     ),
-                  ),
 
-                  ///!--------------- Video Position Text & Duration Text
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.sp),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ///!------------ Position
-                        Text(
-                          FormatDuration.format(Duration(
-                                  seconds:
-                                      watchSignal(context,  playerState.videoPosition)))
-                              .toString(),
-                          style: const TextStyle(color: Colors.white),
-                        ),
+                    ///!--------------- Video Position Text & Duration Text
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.sp),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ///!------------ Position
+                          Text(
+                            FormatDuration.format(Duration(
+                                    seconds:
+                                        watchSignal(context,  videoPosition)))
+                                .toString(),
+                            style: const TextStyle(color: Colors.white),
+                          ),
 
-                        ///!---------Duration
-                        Text(
-                          FormatDuration.format(Duration(
-                                  seconds: watchSignal(
-                                      context,  playerState.videoTotalDuration)))
-                              .toString(),
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ],
+                          ///!---------Duration
+                          Text(
+                            FormatDuration.format(Duration(
+                                    seconds: watchSignal(
+                                        context,  videoTotalDuration)))
+                                .toString(),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           )
@@ -517,15 +537,18 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
   void nextMusicButtonClicked(
       FetchCurrentPlayingMusicDataToPlayerState fetchState,
       PodPlayerController controller,
-      BuildContext context) {
+      YoutubeMusicPlayerSuccessState playerState
+      ) {
     int index = fetchState.musicIndex;
     if (index < fetchState.youtubeMusicList.length) {
       index++;
 
+
+      OneContext().context!.read<YoutubeMusicPlayerCubit>().hidePlayerButtons(state: playerState);
       controller.changeVideo(
           playVideoFrom: PlayVideoFrom.youtube(
               fetchState.youtubeMusicList[index].videoId.toString()));
-      context
+      OneContext().context!
           .read<CurrentlyPlayingMusicDataToPlayerCubit>()
           .sendYouTubeDataToPlayer(
               youtubeList: fetchState.youtubeMusicList, musicIndex: index);
@@ -535,15 +558,17 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
   void backwardButtonClicked(
       FetchCurrentPlayingMusicDataToPlayerState fetchState,
       PodPlayerController controller,
-      BuildContext context) {
+      YoutubeMusicPlayerSuccessState playerState
+      ) {
     int index = fetchState.musicIndex;
     if (index > 0) {
       index--;
 
+      OneContext().context!.read<YoutubeMusicPlayerCubit>().hidePlayerButtons(state: playerState);
       controller.changeVideo(
           playVideoFrom: PlayVideoFrom.youtube(
               fetchState.youtubeMusicList[index].videoId.toString()));
-      context
+      OneContext().context!
           .read<CurrentlyPlayingMusicDataToPlayerCubit>()
           .sendYouTubeDataToPlayer(
               youtubeList: fetchState.youtubeMusicList, musicIndex: index);
@@ -560,3 +585,5 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
         inactiveTrackColor: Colors.grey.withOpacity(0.5));
   }
 }
+
+
