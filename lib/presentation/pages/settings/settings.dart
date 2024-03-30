@@ -37,7 +37,7 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ///?-------------------   TOP SETTING HEADING  -----------------------------///
+                //-------------------   TOP SETTING HEADING  -----------------------------///
                 SizedBox(
                   height: 0.1.sh,
                   width: double.infinity,
@@ -47,7 +47,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
             
-                ///!-------------------Theme SECTION-----------------------------///
+                //----------------Theme SECTION-----------------------------///
                 Row(
                   children: [
                     Text(
@@ -62,7 +62,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   height: 0.01.sh,
                 ),
             
-                ///!-------------------Accent Color Switch Tile-----------------------------///
+                //----------------Accent Color Switch Tile-----------------------------///
                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, state) {
                     return ListTile(
@@ -76,7 +76,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                 ),
             
-                ///!-------------------Dark Mode Switch Tile-----------------------------///
+                //----------------Dark Mode Switch Tile-----------------------------///
                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, state) {
                     return SwitchListTile(
@@ -88,7 +88,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                 ),
             
-                ///!-------------------Black Mode Switch Tile-----------------------------///
+                //----------------Black Mode Switch Tile-----------------------------///
                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, state) {
                     return Visibility(
@@ -105,7 +105,7 @@ class _SettingsPageState extends State<SettingsPage> {
             
                 Gap(0.02.sh),
             
-                ///?-------------------GENERAL SECTION-----------------------------///
+                //-------------------GENERAL SECTION-----------------------------///
                 Text(
                   "  GENERAL",
                   style: TextStyle(fontSize: 16.sp, letterSpacing: 1.5),
@@ -113,7 +113,7 @@ class _SettingsPageState extends State<SettingsPage> {
             
                 Gap(0.01.sh),
             
-                ///!-------------------Profile-----------------------------///
+                //----------------Profile-----------------------------///
                 SettingsListTileWidget(
                   title: "Profile",
                   iconData: EvaIcons.person,
@@ -126,7 +126,7 @@ class _SettingsPageState extends State<SettingsPage> {
             
                 _divider(),
             
-                ///!-------------------Equalizer-----------------------------///
+                //----------------Equalizer-----------------------------///
                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, state) {
                     return SettingsListTileWidget(
@@ -139,7 +139,7 @@ class _SettingsPageState extends State<SettingsPage> {
             
                 _divider(),
             
-                ///!-------------------Feedback-----------------------------///
+                //----------------Feedback-----------------------------///
                 SettingsListTileWidget(
                   title: "Feedback",
                   iconData: Icons.feedback,
@@ -150,7 +150,7 @@ class _SettingsPageState extends State<SettingsPage> {
             
                 _divider(),
             
-                ///!-------------------Privacy Policy-----------------------------///
+                //----------------Privacy Policy-----------------------------///
                 SettingsListTileWidget(
                   title: "Privacy Policy",
                   iconData: Icons.policy,
@@ -163,12 +163,12 @@ class _SettingsPageState extends State<SettingsPage> {
             
                 _divider(),
             
-                ///!------------------- Licenses-----------------------------///
+                //---------------- Licenses-----------------------------///
                 const LicenceWidget(),
             
                 _divider(),
             
-                ///!-------------------About-----------------------------///
+                //----------------About-----------------------------///
                 SettingsListTileWidget(
                     title: "About",
                     iconData: CupertinoIcons.info,
@@ -192,9 +192,9 @@ class _SettingsPageState extends State<SettingsPage> {
   Divider _divider() {
     return const Divider();
   }
-  ////////////////////!//////////////////////////////////////////////////
-  ///?------------------------    M E T H O D S  --------------------///
-  //!/////////////////////////////////////////////////////////////////////
+ ///
+  //------------------------    M E T H O D S  --------------------///
+ //
 
   _accentColorTileOnTap() {
     OneContext.instance.showModalBottomSheet(
@@ -212,7 +212,7 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
-  ///!---------------    Custom List of Accent Color
+  //------------    Custom List of Accent Color
   _customGridTile({
     required colorCode,
   }) {
@@ -226,7 +226,7 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
-  ///! -------     Equalizer On Tap
+  /// -------     Equalizer On Tap
   equalizerOnTap() async {
     OneContext().showDialog(
       builder: (context) => AlertDialog(
@@ -248,7 +248,7 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
-  ///!------------ Feedback On Tap
+  //--------- Feedback On Tap
   Future<void> _feedBackButtonOnTap() async {
     final Email sendEmail = Email(
       body: 'your feed back?',

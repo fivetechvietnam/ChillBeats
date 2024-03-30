@@ -11,7 +11,7 @@ part 'theme_mode_state.dart';
 
 class ThemeModeCubit extends Cubit<ThemeModeState> {
   ThemeModeCubit()
-      //! Initializing the ThemeModeCubit with the initial state based on the value retrieved from Hive.
+      // Initializing the ThemeModeCubit with the initial state based on the value retrieved from Hive.
       : super(
           ThemeModeState(
               isDarkMode:
@@ -29,11 +29,11 @@ class ThemeModeCubit extends Cubit<ThemeModeState> {
 
   //? Method to change the theme mode.
   changeThemeMode() async {
-    //! Toggling the current theme mode.
+    // Toggling the current theme mode.
     bool isDarkMode = !state.isDarkMode;
-    //! Emitting the new theme mode state.
+    // Emitting the new theme mode state.
     emit(state.copyWith(isDarkMode: isDarkMode, isBlackMode: false));
-    //! Updating the theme mode in Hive.
+    // Updating the theme mode in Hive.
     MyHiveBoxes.settingBox.put(MyHiveKeys.darkModeHiveKey, isDarkMode);
     MyHiveBoxes.settingBox.put(MyHiveKeys.blackModeHiveKey, false);
   }

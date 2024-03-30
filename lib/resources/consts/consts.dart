@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-////!-----------------Drag Handle
+///--------------Drag Handle
 final myCustomDragHandle = Container(
   height: 0.005.sh,
   width: 0.25.sw,
@@ -9,7 +9,7 @@ final myCustomDragHandle = Container(
       color: Colors.white, borderRadius: BorderRadius.circular(50)),
 );
 
-///!------  Disclaimer Message
+//---  Disclaimer Message
 const String disclaimerMessage =
     "Disclaimer: We respect your privacy more than anything else. All of your data is stored locally on your device only.";
 

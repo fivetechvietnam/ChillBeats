@@ -54,40 +54,40 @@ class _ProfilePageState extends State<ProfilePage> {
           fit: StackFit.expand,
           children: [
 
-            ///!---------------------------------------------------//
-            ///?-----------------  Profile Image    --------- ///
-            ///!---------------------------------------------------//
+            //------------------------------------------------//
+            //-----------------  Profile Image    --------- ///
+            //------------------------------------------------//
             const _ProfileImageCircleAvatarButton(),
 
-            ///!---------------------------------------------------//
-            ///?-----------------  Background Image    --------- ///
-            ///!---------------------------------------------------//
+            //------------------------------------------------//
+            //-----------------  Background Image    --------- ///
+            //------------------------------------------------//
             const BlurBackgroundProfileImageWidget(),
 
-            ///!---------------------------------------------------//
-            ///?------------   Main Center Box   -------------------////
-            ///!---------------------------------------------------//
+            //------------------------------------------------//
+            //------------   Main Center Box   -------------------//
+            //------------------------------------------------//
             Center(
               child: CustomGradientGlassCardWidget(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
 
-                    ///!---------------------------------------------------//
-                    ///?------------   Profile Image   -------------------////
-                    ///!---------------------------------------------------//
+                    //------------------------------------------------//
+                    //------------   Profile Image   -------------------//
+                    //------------------------------------------------//
                     const _ProfileImageWidget(),
 
-                    ///!---------------------------------------------------//
-                    ///?------------   Profile Name Field   -------------------////
-                    ///!---------------------------------------------------//
+                    //------------------------------------------------//
+                    //------------   Profile Name Field   -------------------//
+                    //------------------------------------------------//
 
                     _ProfileNameTextFieldWidget(
                         usernameController: usernameController),
 
-                    ///!---------------------------------------------------//
-                    ///?------------   Save Button   -------------------////
-                    ///!---------------------------------------------------//
+                    //------------------------------------------------//
+                    //------------   Save Button   -------------------//
+                    //------------------------------------------------//
                     _SaveButtonWidget(usernameController: usernameController)
                   ],
                 ),
@@ -98,9 +98,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-///!---------------------------------------------------//
-///?-----------------  Profile Image    --------- ///
-///!---------------------------------------------------//
+//------------------------------------------------//
+//-----------------  Profile Image    --------- ///
+//------------------------------------------------//
 
 class _ProfileImageCircleAvatarButton extends StatelessWidget {
   const _ProfileImageCircleAvatarButton();
@@ -124,7 +124,7 @@ class _ProfileImageCircleAvatarButton extends StatelessWidget {
               width: 0.4.sw,
               child: Stack(children: [
 
-                ///! ----------   Profile Image
+                /// ----------   Profile Image
                 BlocBuilder<UserProfileBloc, UserProfileState>(
                   builder: (context, state) {
                     if (state.profileImageFilePath.isNotEmpty) {
@@ -148,7 +148,7 @@ class _ProfileImageCircleAvatarButton extends StatelessWidget {
                   },
                 ),
 
-                ///!------  Profile Pic Change Button
+                //---  Profile Pic Change Button
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -173,9 +173,9 @@ class _ProfileImageCircleAvatarButton extends StatelessWidget {
   }
 }
 
-///!---------------------------------------------------//
-///?------------   Profile Name Field   -------------------////
-///!---------------------------------------------------//
+//------------------------------------------------//
+//------------   Profile Name Field   -------------------//
+//------------------------------------------------//
 
 class _ProfileNameTextFieldWidget extends StatelessWidget {
   const _ProfileNameTextFieldWidget({
@@ -232,9 +232,9 @@ class _ProfileNameTextFieldWidget extends StatelessWidget {
   }
 }
 
-///!---------------------------------------------------//
-///?------------   Profile Image   -------------------////
-///!---------------------------------------------------//
+//------------------------------------------------//
+//------------   Profile Image   -------------------//
+//------------------------------------------------//
 class _ProfileImageWidget extends StatelessWidget {
   const _ProfileImageWidget();
 
@@ -271,7 +271,7 @@ class _ProfileImageWidget extends StatelessWidget {
           },
         ),
 
-        ///!------  Profile Pic Change Button
+        //---  Profile Pic Change Button
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Align(
@@ -295,9 +295,9 @@ class _ProfileImageWidget extends StatelessWidget {
   }
 }
 
-///!---------------------------------------------------//
-///?------------   Save Button   -------------------////
-///!---------------------------------------------------//
+//------------------------------------------------//
+//------------   Save Button   -------------------//
+//------------------------------------------------//
 class _SaveButtonWidget extends StatelessWidget {
   const _SaveButtonWidget({
     required this.usernameController,

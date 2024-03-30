@@ -30,22 +30,22 @@ class LibraryPage extends StatelessWidget {
       ),
       body: CustomScrollView(
         slivers: [
-          ///!-   --------------       My Favorite
+          ///-   --------------       My Favorite
           BlocBuilder<FavoriteButtonBloc, FavoriteButtonState>(
             builder: (context, favoriteState) {
               return BlocBuilder<LofiiiAllMusicBloc, LofiiiAllMusicState>(
                 builder: (context, state) {
-                  //! Heading with View More Button Widget
+                  // Heading with View More Button Widget
                   return HeadingWithViewMoreButton(
                     heading: "My Favorite ❤️",
                     viewMoreOnTap: () {
                       if (state is LofiiiAllMusicSuccessState) {
-                        //! Filter the favorite list
+                        // Filter the favorite list
                         final favoriteList = state.musicList
                             .where((element) => favoriteState.favoriteList
                                 .contains(element.title))
                             .toList();
-                        //! Navigate to View More Page with filtered list
+                        // Navigate to View More Page with filtered list
                         OneContext().push(
                           MaterialPageRoute(
                             builder: (context) => ViewMorePage(
@@ -62,28 +62,28 @@ class LibraryPage extends StatelessWidget {
             },
           ),
 
-          ///!       -------------Favorite List
+          ///       -------------Favorite List
           BlocBuilder<FavoriteButtonBloc, FavoriteButtonState>(
             builder: (context, favoriteState) {
               return BlocBuilder<LofiiiAllMusicBloc, LofiiiAllMusicState>(
                 builder: (context, state) {
-                  ///?------------        If  Success State
+                  //------------        If  Success State
                   if (state is LofiiiAllMusicSuccessState) {
-                    //!  Filter the favorite list
+                    //  Filter the favorite list
                     final favoriteList = state.musicList
                         .where((element) =>
                             favoriteState.favoriteList.contains(element.title))
                         .toList();
 
                     if (favoriteList.isNotEmpty) {
-                      //!  Display the filtered favorite list using MusicCardsListWidget
+                      //  Display the filtered favorite list using MusicCardsListWidget
                       return MusicCardsListWidget(
                         list: favoriteList,
                         pageStorageKey: "favoriteStorageKey",
                       );
                     }
 
-                    ///!-------   If Favorite list is Empty
+                    //----   If Favorite list is Empty
                     else {
                       return SliverToBoxAdapter(
                         child: SizedBox(

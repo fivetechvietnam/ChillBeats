@@ -7,7 +7,7 @@ import '../../../di/dependency_injection.dart';
 class MyYouTubeDataAPI {
   static YoutubeDataApi yt = locator.get<YoutubeDataApi>();
 
-  ///!---------------------------Future Lists--------------------------------///
+  //------------------------Future Lists--------------------------------///
   Future<List<Video>> bollywoodLofi = yt.fetchPlayListVideos(
       YoutubePlaylistsIDs.bollywoodLofiYoutubeMusicOrignal, 73);
   Future<List<Video>> gravero =
@@ -33,7 +33,7 @@ class MyYouTubeDataAPI {
   Future<List<Video>> tSeriesLofi =
       yt.fetchPlayListVideos(YoutubePlaylistsIDs.tSeriesLofi, 47);
 
-  ///!------------------- Combined List-----------------///
+  //---------------- Combined List-----------------///
   List<Future<List<Video>>> combinedPlaylistsFuture() {
     return [
       bollywoodLofi,

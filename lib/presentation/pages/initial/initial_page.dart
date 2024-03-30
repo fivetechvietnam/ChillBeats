@@ -41,13 +41,13 @@ class _InitialPageState extends State<InitialPage> {
       canPop: false,
       onPopInvoked: (didPop) {
         if (backButtonPressCount == 0) {
-          //! Change the page index to 0
+          // Change the page index to 0
           context.read<BottomNavigationIndexCubit>().changePageIndex(index: 0);
           backButtonPressCount++;
-          //! Prevent the app from exiting
+          // Prevent the app from exiting
         } else {
           context.read<BottomNavigationIndexCubit>().changePageIndex(index: 0);
-          //! Allow the app to exit;
+          // Allow the app to exit;
           didPop;
         }
       },
@@ -67,10 +67,10 @@ class _InitialPageState extends State<InitialPage> {
             return Scaffold(
               body: Stack(fit: StackFit.expand, children: [
 
-                ///!-----     Screens     ------///
+                //--     Screens     ------///
                 pages[index],
 
-                ///!--------Show Mini Player First whenever music card is clicked
+                //-----Show Mini Player First whenever music card is clicked
                 BlocBuilder<ShowMiniPlayerCubit, ShowMiniPlayerState>(
                   builder: (context, state) {
                     return Visibility(
@@ -80,7 +80,7 @@ class _InitialPageState extends State<InitialPage> {
                   },
                 ),
 
-                ///!--------Custom Bottom Navigation Bar------/////
+                //-----Custom Bottom Navigation Bar------///
                 CustomBottomNavigationWidget(state: bottomNavState),
               ]),
             );

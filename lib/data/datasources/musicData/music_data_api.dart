@@ -10,7 +10,7 @@ class MusicData extends MusicDataKeys{
   final Dio _dio = locator.get<Dio>();
 
 
-  ///?----        LOFIII Special Music     ------------///
+  //----        LOFIII Special Music     ------------///
   Future<List> getLOFIIISpecialMusic() async {
     try {
       final response = await _dio.get(lofiiiSpecialUrl);
@@ -21,7 +21,7 @@ class MusicData extends MusicDataKeys{
     }
   }
 
-  ///?----        LOFIII Popular Music     ------------///
+  //----        LOFIII Popular Music     ------------///
   Future<List> getLOFIIIPopularMusic() async {
     try {
       final response = await _dio.get(lofiiiPopularUrl);
@@ -32,7 +32,7 @@ class MusicData extends MusicDataKeys{
     }
   }
 
-  ///?----        LOFIII TopPicks Music     ------------///
+  //----        LOFIII TopPicks Music     ------------///
   Future<List> getLOFIIITopPicksMusic() async {
     try {
       final response = await _dio.get(lofiiiTopPicksUrl);
@@ -44,7 +44,7 @@ class MusicData extends MusicDataKeys{
   }
 
 
-  ///?----        LOFIII Artists Data     ------------///
+  //----        LOFIII Artists Data     ------------///
   Future<List> getArtistsData() async {
     try {
       final response = await _dio.get(artistsUrl);
@@ -57,7 +57,7 @@ class MusicData extends MusicDataKeys{
 
 
 
-  ///?----        LOFIII Vibes Music     ------------///
+  //----        LOFIII Vibes Music     ------------///
   Future<List> getLOFIIIVibesMusic() async {
     try {
       final response = await _dio.get(lofiiiVibesUrl);

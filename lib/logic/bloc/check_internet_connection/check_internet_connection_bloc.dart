@@ -41,40 +41,40 @@ class CheckInternetConnectionBloc
       emit(NoInternetConnectionState());
     });
 
-    ///!-------------Auto add Events on Internet Restored Event ---------------///
+    //----------Auto add Events on Internet Restored Event ---------------///
     on<InternetConnectionRestoredEvent>((event, emit) {
-      ///!-----------Refresh LOFIII Special Music --------------///
+      //--------Refresh LOFIII Special Music --------------///
       OneContext()
           .context!
           .read<LofiiiSpecialMusicBloc>()
           .add(LOFIIISpecialMusicFetchEvent());
 
-      ///!-----------Refresh LOFIII Popular Music --------------///
+      //--------Refresh LOFIII Popular Music --------------///
       OneContext()
           .context!
           .read<LofiiiPopularMusicBloc>()
           .add(LOFIIIPopularMusicFetchEvent());
 
-      ///!-----------Refresh LOFIII TopPicks Music --------------///
+      //--------Refresh LOFIII TopPicks Music --------------///
       OneContext()
           .context!
           .read<LofiiiTopPicksMusicBloc>()
           .add(LOFIIITopPicksMusicFetchEvent());
 
-      ///!-----------Refresh LOFIII All Music --------------///
+      //--------Refresh LOFIII All Music --------------///
       OneContext()
           .context!
           .read<LofiiiAllMusicBloc>()
           .add(LOFIIIAllMusicFetchEvent());
 
-      ///!-----------Refresh Artist Data --------------///
+      //--------Refresh Artist Data --------------///
       OneContext()
           .context!
           .read<ArtistsDataBloc>()
           .add(ArtistsDataFetchEvent());
     });
 
-    ///!-----------Refresh LOFIII Vibes Music --------------///
+    //--------Refresh LOFIII Vibes Music --------------///
     OneContext()
         .context!
         .read<LofiiiVibesMusicBloc>()

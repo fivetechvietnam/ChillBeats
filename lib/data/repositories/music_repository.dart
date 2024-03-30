@@ -8,7 +8,7 @@ import '../models/music_model.dart';
 class MusicRepository {
   final MusicData musicData = locator.get<MusicData>();
 
-  ///? ------------------             LOFIII Special Music    ---------------///
+  // ------------------             LOFIII Special Music    ---------------///
   Future<List<MusicModel>> fetchLOFIIISpecialMusic() async {
     final List<dynamic> musicList = await musicData.getLOFIIISpecialMusic();
     if (musicList.isNotEmpty) {
@@ -18,7 +18,7 @@ class MusicRepository {
     }
   }
 
-  ///? ------------------             LOFIII Popular Music    ---------------///
+  // ------------------             LOFIII Popular Music    ---------------///
   Future<List<MusicModel>> fetchLOFIIIPopularMusic() async {
     final List<dynamic> musicList = await musicData.getLOFIIIPopularMusic();
     if (musicList.isNotEmpty) {
@@ -29,7 +29,7 @@ class MusicRepository {
   }
 
 
-  ///? ------------------             LOFIII TopPicks Music    ---------------///
+  // ------------------             LOFIII TopPicks Music    ---------------///
   Future<List<MusicModel>> fetchLOFIIITopPicksMusic() async {
     final List<dynamic> musicList = await musicData.getLOFIIITopPicksMusic();
     if (musicList.isNotEmpty) {
@@ -40,7 +40,7 @@ class MusicRepository {
   }
 
 
-  ///? ------------------             LOFIII Artists Images    ---------------///
+  // ------------------             LOFIII Artists Images    ---------------///
   Future<List<ArtistModel>> fetchArtists() async {
     final List<dynamic> artistList = await musicData.getArtistsData();
     if (artistList.isNotEmpty) {
@@ -52,7 +52,7 @@ class MusicRepository {
 
 
 
-  ///? ------------------             LOFIII Vibes Music    ---------------///
+  // ------------------             LOFIII Vibes Music    ---------------///
   Future<List<MusicModel>> fetchLOFIIIVibesMusic() async {
     final List<dynamic> musicList = await musicData.getLOFIIIVibesMusic();
     if (musicList.isNotEmpty) {

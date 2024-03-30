@@ -40,7 +40,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      ///!------------ App Bar ------------///
+      //--------- App Bar ------------///
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         bottomOpacity: 0,
@@ -51,14 +51,14 @@ class _DownloadsPageState extends State<DownloadsPage> {
         ),
       ),
 
-      ///!----------  Floating Action Button ------------------///
+      //-------  Floating Action Button ------------------///
       floatingActionButton: const NowPlayingPositionFloatingButtonWidget(),
 
 
-      ///!-------------   Body ---------//
+      //----------   Body ---------//
       body:
 
-          // !/------------------  Music List -----////
+          // !/------------------  Music List -----//
           BlocBuilder<ThemeModeCubit, ThemeModeState>(
         builder: (context, themeState) {
           return BlocConsumer<FetchMusicFromLocalStorageBloc,
@@ -80,17 +80,17 @@ class _DownloadsPageState extends State<DownloadsPage> {
                           child: PageStorage(
                             bucket: pageBucket,
 
-                            ///!-------- Animation ------///
+                            //----- Animation ------///
                             child: SlideInDown(
                               duration: const Duration(milliseconds: 300),
                               child: SearchableList(
-                                ///!-------- Scroll Controller ------//
+                                //----- Scroll Controller ------//
                                 scrollController:
                                     locator.get<ScrollController>(),
-                                //! ----- For Storing List Position ------///
+                                // ----- For Storing List Position ------///
                                 key: const PageStorageKey("LocalMusic"),
 
-                                ///!------  Local Music List
+                                //---  Local Music List
                                 initialList: snapshot.data!,
 
                                 builder: (musicList, index, music) => ListTile(
@@ -101,7 +101,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                                           : false,
                                   selectedColor: Color(themeState.accentColor),
 
-                                  ///!-------  On Tap
+                                  //----  On Tap
                                   onTap: () {
                                     _listTileOnTap(
                                         index: index,
@@ -113,7 +113,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                                         snapshotMusicList: musicList);
                                   },
 
-                                  ///!-------  Music Icon
+                                  //----  Music Icon
                                   leading: SlideInLeft(
                                     child: const Icon(
                                       EvaIcons.music,
@@ -121,7 +121,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                                     ),
                                   ),
 
-                                  ///!------------------  Music Title
+                                  //---------------  Music Title
                                   title: Text(
                                     music.title,
                                     maxLines: 1,
@@ -131,7 +131,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                                         fontSize: 15.spMax),
                                   ),
 
-                                  ///!--------  Artists
+                                  //-----  Artists
                                   subtitle: Text(
                                     music.artist ?? "Unknown",
                                     maxLines: 1,
@@ -139,7 +139,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                                     style: TextStyle(fontSize: 11.spMax),
                                   ),
 
-                                  ///!--------  Music Visualization
+                                  //-----  Music Visualization
                                   trailing:
                                       themeState.localMusicSelectedTileIndex ==
                                               index
@@ -147,7 +147,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                                           : null,
                                 ),
 
-                                ///!-------  Search Filter Logic
+                                //----  Search Filter Logic
                                 filter: (value) => snapshot.data!
                                     .where(
                                       (music) => music.title
@@ -156,12 +156,12 @@ class _DownloadsPageState extends State<DownloadsPage> {
                                     )
                                     .toList(),
 
-                                ///!------  No Music Found on Searching
+                                //---  No Music Found on Searching
                                 emptyWidget: const Center(
                                   child: Text("No Music Found!"),
                                 ),
 
-                                ////!---------------------  Search Field Input Decoration
+                                ///------------------  Search Field Input Decoration
                                 inputDecoration: InputDecoration(
                                   contentPadding: EdgeInsets.symmetric(
                                       horizontal: 12.sp, vertical: 8.sp),
@@ -173,7 +173,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                                   enabled: true,
                                   hintText: " Search",
 
-                                  ///------ Focus Border
+                                  //--- Focus Border
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
@@ -214,9 +214,9 @@ class _DownloadsPageState extends State<DownloadsPage> {
     );
   }
 
-  ///-------------------------------------------------------///
-  ///!----------------------  Methods -------------------///
-  ///-----------------------------------------------------///
+  //----------------------------------------------------///
+  //-------------------  Methods -------------------///
+  //--------------------------------------------------///
   _listTileOnTap(
       {required musicList,
       required index,
@@ -225,7 +225,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
       required artistsName,
       required musicListLength,
       required snapshotMusicList}) {
-    ///!-----Play Music------
+    //--Play Music------
     context
         .read<MusicPlayerBloc>()
         .add(MusicPlayerInitializeEvent(url: currentMusic));
@@ -234,14 +234,14 @@ class _DownloadsPageState extends State<DownloadsPage> {
     context.read<ShowMiniPlayerCubit>().offlineMusicIsPlaying();
     context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
 
-    // ///!-----Show Offline Player Screen ----///
+    // //--Show Offline Player Screen ----///
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
       builder: (context) => const OfflinePlayerPage(),
     );
 
-    ///!---- Send Data to Offline Player
+    //- Send Data to Offline Player
     context.read<NowPlayingOfflineMusicDataToPlayerCubit>().sendDataToPlayer(
         musicIndex: index,
         futureMusicList: musicList,
@@ -250,14 +250,14 @@ class _DownloadsPageState extends State<DownloadsPage> {
         musicListLength: musicListLength,
         snapshotMusicList: snapshotMusicList);
 
-    ///! ------  Hide Keyboard if active
+    /// ------  Hide Keyboard if active
     FocusManager.instance.primaryFocus?.unfocus();
 
-    ///!-------  Change Selected Tile Index
+    //----  Change Selected Tile Index
     context.read<ThemeModeCubit>().changeSelectedTileIndex(index: index);
 
 
-    ///!-------  Save Current Playing Music Offset
+    //----  Save Current Playing Music Offset
     context
         .read<
         SearchableListScrollControllerCubit>()

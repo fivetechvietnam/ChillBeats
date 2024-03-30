@@ -38,23 +38,23 @@ class _PlayerPageState extends State<PlayerPage> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
 
-        ///!----      Drag Handle    ----///
+        //-      Drag Handle    ----///
         title: myCustomDragHandle,
         centerTitle: true,
         toolbarHeight: 0.06.sh,
         actions: const [
-          ////?-------------------  T O P  M O R E  B U T T O N -------------------/////
+          ///-------------------  T O P  M O R E  B U T T O N -------------------///
           // PlayerScreenMoreButtonWidget(),
         ],
       ),
       extendBodyBehindAppBar: true,
 
-      ///?-----------------------------  B O D Y ------------------------///
+      //-----------------------------  B O D Y ------------------------///
       body: Stack(
         // fit: StackFit.expand,
         children: [
-          ///!-------      IF LOADING SHOW THIS   ---------//
-          //////!----------------------------   Background Colors-----------------------///
+          //----      IF LOADING SHOW THIS   ---------//
+          ///-------------------------   Background Colors-----------------------///
           BlocBuilder<ThemeModeCubit, ThemeModeState>(
             builder: (context, state) {
               return Container(
@@ -70,7 +70,7 @@ class _PlayerPageState extends State<PlayerPage> {
             },
           ),
 
-          ///?--------------------        Background Blur Image Section   --------------------///
+          //--------------------        Background Blur Image Section   --------------------///
           BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
               FetchCurrentPlayingMusicDataToPlayerState>(
             builder: (context, state) {
@@ -92,11 +92,11 @@ class _PlayerPageState extends State<PlayerPage> {
             },
           ),
 
-          ///----------------------------   Background Blur Image -----------------------///
+          //-------------------------   Background Blur Image -----------------------///
 
-          ///!-----------------------------------------------------------------------///
-          ///?-----------------------      Player Buttons Section     -------------///
-          ///?------------------------      Glass  Card   -------------///
+          //--------------------------------------------------------------------///
+          //-----------------------      Player Buttons Section     -------------///
+          //------------------------      Glass  Card   -------------///
 
           BlocBuilder<FlipCardCubit, FlipCardCubitState>(
             builder: (context, flipCardState) {
@@ -104,9 +104,9 @@ class _PlayerPageState extends State<PlayerPage> {
                 child: FlipCard(
                   onTapFlipping: false,
                 
-                  ///-----------------------------------------------------///
-                  ///?---------------   Front Widget   ------------------////
-                  ///---------------------------------------------------------///
+                  //--------------------------------------------------///
+                  //---------------   Front Widget   ------------------//
+                  //------------------------------------------------------///
                   controller: flipCardState.flipCardController,
                   frontWidget: Align(
                     alignment: Alignment.bottomCenter,
@@ -128,13 +128,13 @@ class _PlayerPageState extends State<PlayerPage> {
                                     FetchCurrentPlayingMusicDataToPlayerState>(
                                   builder:
                                       (context, fetchCurrentPlayingMusicState) {
-                                    ///!---------  Music Title & Like Button
+                                    //------  Music Title & Like Button
                                     return Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        ///!      ---------------Music Title----///
+                                        ///      ---------------Music Title----///
                                         Flexible(
                                           child: Text(
                                             fetchCurrentPlayingMusicState
@@ -154,7 +154,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                           ),
                                         ),
                 
-                                        ///!----------------------       Favorite/Like Button Toggle  --------------///
+                                        //-------------------       Favorite/Like Button Toggle  --------------///
                 
                                         BlocBuilder<ThemeModeCubit,
                                             ThemeModeState>(
@@ -204,7 +204,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                   },
                                 ),
                 
-                                ///!---------     Artists Names   -------////
+                                //------     Artists Names   -------//
                                 BlocBuilder<
                                     CurrentlyPlayingMusicDataToPlayerCubit,
                                     FetchCurrentPlayingMusicDataToPlayerState>(
@@ -228,7 +228,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                   },
                                 ),
                 
-                                ///?--------------------       S L I D E R    ----------------------///
+                                //--------------------       S L I D E R    ----------------------///
                                 BlocBuilder<MusicPlayerBloc, MusicPlayerState>(
                                   builder: (context, state) {
                                     if (state is MusicPlayerSuccessState) {
@@ -313,10 +313,10 @@ class _PlayerPageState extends State<PlayerPage> {
                                   },
                                 ),
                 
-                                ///?-----------------         Music Position & Duration         ------///
+                                //-----------------         Music Position & Duration         ------///
                                 BlocBuilder<MusicPlayerBloc, MusicPlayerState>(
                                   builder: (context, state) {
-                                    ///! ----      MusicPlayerSuccessState
+                                    /// ----      MusicPlayerSuccessState
                                     if (state is MusicPlayerSuccessState) {
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
@@ -341,7 +341,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
-                                                    ///!----  Position    ----///
+                                                    //-  Position    ----///
                                                     Text(
                                                       FormatDuration.format(
                                                           positionSnapshot),
@@ -349,7 +349,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                                           color: Colors.white),
                                                     ),
                 
-                                                    ///-!----    Duration Stream   -----////
+                                                    ///-!----    Duration Stream   -----//
                                                     Text(
                                                       FormatDuration.format(
                                                           durationSnapshot),
@@ -364,14 +364,14 @@ class _PlayerPageState extends State<PlayerPage> {
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
-                                                    ///!----  Position    ----///
+                                                    //-  Position    ----///
                                                     Text(
                                                       "00:00",
                                                       style: TextStyle(
                                                           color: Colors.white),
                                                     ),
                 
-                                                    ///-!----    Duration Stream   -----////
+                                                    ///-!----    Duration Stream   -----//
                                                     Text(
                                                       "00:00",
                                                       style: TextStyle(
@@ -384,7 +384,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                       );
                                     }
                 
-                                    ///! ----      MusicPlayerLoadingState  and FailureState
+                                    /// ----      MusicPlayerLoadingState  and FailureState
                                     else {
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
@@ -410,7 +410,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                   },
                                 ),
                 
-                                ///!-------    Player Buttons      -------///
+                                //----    Player Buttons      -------///
                                 Padding(
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 5.spMax),
@@ -429,12 +429,12 @@ class _PlayerPageState extends State<PlayerPage> {
                                                     (context, musicPlayerState) {
                                                   if (musicPlayerState
                                                       is MusicPlayerSuccessState) {
-                                                    //! Fetching current playing music data from the player state using context.watch
+                                                    // Fetching current playing music data from the player state using context.watch
                                                     final fetchMusicState = context
                                                         .watch<
                                                             CurrentlyPlayingMusicDataToPlayerCubit>()
                                                         .state;
-                                                    //! Checking if the music playback is completed
+                                                    // Checking if the music playback is completed
                                                     musicPlayerState.audioPlayer
                                                         .processingStateStream
                                                         .listen((event) {
@@ -483,7 +483,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                             },
                                           ),
                 
-                                          ///!----         Previous   Music Button  ----///
+                                          //-         Previous   Music Button  ----///
                                           BlocBuilder<
                                               CurrentlyPlayingMusicDataToPlayerCubit,
                                               FetchCurrentPlayingMusicDataToPlayerState>(
@@ -501,7 +501,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                             },
                                           ),
                 
-                                          ///!---------------        Play & Pause Button       -----------///
+                                          //------------        Play & Pause Button       -----------///
                                           BlocBuilder<MusicPlayerBloc,
                                               MusicPlayerState>(
                                             builder: (context, state) {
@@ -512,7 +512,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                                         .playerStateStream,
                                                     builder: (context,
                                                         snapshotPlayerState) {
-                                                      ///?----                   if Loading, buffering
+                                                      //----                   if Loading, buffering
                                                       if (snapshotPlayerState
                                                           .hasData) {
                                                         if (snapshotPlayerState
@@ -525,7 +525,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                                                     .processingState ==
                                                                 ProcessingState
                                                                     .buffering) {
-                                                          //! --------------           Show Loading Icon        --------------///
+                                                          // --------------           Show Loading Icon        --------------///
                                                           return Stack(
                                                             alignment:
                                                                 Alignment.center,
@@ -548,7 +548,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                                           );
                                                         }
                 
-                                                        ///? -------            If Processing State is Completed
+                                                        // -------            If Processing State is Completed
                                                         else if (snapshotPlayerState
                                                                 .data!
                                                                 .processingState ==
@@ -560,7 +560,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                                                 FetchCurrentPlayingMusicDataToPlayerState>(
                                                               builder: (context,
                                                                   state) {
-                                                                ///!----   If Music is Completed play again by pressing this button
+                                                                //-   If Music is Completed play again by pressing this button
                                                                 return IconButton(
                                                                     onPressed:
                                                                         () {
@@ -631,7 +631,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                                         );
                                                       }
                 
-                                                      ///-------y
+                                                      //----y
                                                     });
                                               } else {
                                                 return const CircleAvatar(
@@ -643,7 +643,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                             },
                                           ),
                 
-                                          ///!----------------         Next Button Icon     ----------///
+                                          //-------------         Next Button Icon     ----------///
                                           BlocBuilder<
                                               CurrentlyPlayingMusicDataToPlayerCubit,
                                               FetchCurrentPlayingMusicDataToPlayerState>(
@@ -661,7 +661,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                             },
                                           ),
                 
-                                          ///!----------- Flip Card Toggle Button  --------///
+                                          //-------- Flip Card Toggle Button  --------///
                                           Align(
                                             alignment: Alignment.centerRight,
                                             child: IconButton(
@@ -689,9 +689,9 @@ class _PlayerPageState extends State<PlayerPage> {
                     ),
                   ),
                 
-                  ///!--------------------------------------------------///
-                  ///?--------------------   Back Flip Widget --------------///
-                  ///!--------------------------------------------------///
+                  //-----------------------------------------------///
+                  //--------------------   Back Flip Widget --------------///
+                  //-----------------------------------------------///
                   backWidget: const PlayerScreenPlayerButtonsBackSectionWidget(),
                   rotateSide: RotateSide.right,
                 ),
@@ -699,11 +699,11 @@ class _PlayerPageState extends State<PlayerPage> {
             },
           ),
 
-          ///----------------------------   Players Button Bottom Glass Card -----------------------///
+          //-------------------------   Players Button Bottom Glass Card -----------------------///
 
-          ///?-------------------      Cover Image Section    ---------------////
-          ///!-------------------------   Cached Network Image   --------///
-          ///-----------------------------------------------------------------///
+          //-------------------      Cover Image Section    ---------------//
+          //----------------------   Cached Network Image   --------///
+          //--------------------------------------------------------------///
           AnimatedPositioned(
             top: 0.09.sh,
             left: 0,
@@ -713,14 +713,14 @@ class _PlayerPageState extends State<PlayerPage> {
               child: Center(
                 child: GestureDetector(
                   onDoubleTap: () {
-                    ///!-------------On Double Tap on Cover Image Pause/Play the Music
+                    //----------On Double Tap on Cover Image Pause/Play the Music
                     context
                         .read<MusicPlayerBloc>()
                         .add(MusicPlayerTogglePlayPauseEvent());
                     log("Double Tap on Cover Image is Clicked!");
                   },
                   onVerticalDragUpdate: (details) {
-                    ///!----------  Change System Volume
+                    //-------  Change System Volume
                     context
                         .read<ChangeSystemVolumeCubit>()
                         .change(details: details, context: context);
@@ -730,10 +730,10 @@ class _PlayerPageState extends State<PlayerPage> {
                       FetchCurrentPlayingMusicDataToPlayerState>(
                     builder: (context, state) {
                       return CachedNetworkImage(
-                        ///!--------   Music Image Url List   -------///
+                        //-----   Music Image Url List   -------///
                         imageUrl: state.fullMusicList[state.musicIndex].image,
               
-                        ///!-------    On Image Successfully Loaded    ---------///
+                        //----    On Image Successfully Loaded    ---------///
                         imageBuilder: (context, imageProvider) => Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Card(
@@ -756,7 +756,7 @@ class _PlayerPageState extends State<PlayerPage> {
                           ),
                         ),
               
-                        ///---!  Error Widget of Cover Image
+                        //  Error Widget of Cover Image
                         errorWidget: (context, url, error) =>
                             BlocBuilder<ThemeModeCubit, ThemeModeState>(
                           builder: (context, state) {
@@ -783,13 +783,13 @@ class _PlayerPageState extends State<PlayerPage> {
             ),
           ),
 
-          ///----------------------------   Cover Image -----------------------///
+          //-------------------------   Cover Image -----------------------///
         ],
       ),
     );
   }
 
-  ///-------------------?             M E T H O D S    ----------------------------///
+  //----------------?             M E T H O D S    ----------------------------///
   void _nextMusicButtonOnTap(
     FetchCurrentPlayingMusicDataToPlayerState state,
   ) {

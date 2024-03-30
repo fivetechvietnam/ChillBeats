@@ -51,7 +51,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          ///!--------  LOFIII  Logo
+          //-----  LOFIII  Logo
           Opacity(
             opacity: 0.2,
             child: Assets.icons.darkMode.svg(
@@ -59,19 +59,19 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             ),
           ),
 
-          ///!------  SKIP Button
+          //---  SKIP Button
           const OnBoardingSkipButton(),
 
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                ///!----------Profile Image---------///
+                //-------Profile Image---------///
                 SizedBox(
                   height: 0.4.sw,
                   width: 0.4.sw,
                   child: Stack(children: [
-                    ///! ----------   Profile Image
+                    /// ----------   Profile Image
                     BlocBuilder<UserProfileBloc, UserProfileState>(
                       builder: (context, state) {
                         if (state.profileImageFilePath.isNotEmpty) {
@@ -92,7 +92,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       },
                     ),
 
-                    ///!------           Profile Pic Change Button
+                    //---           Profile Pic Change Button
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Align(
@@ -113,7 +113,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   ]),
                 ),
 
-                ///!   -----------------   Text Field
+                ///   -----------------   Text Field
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -139,7 +139,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
                 Gap(0.01.sh),
 
-                //!---------------------     Get Started Button
+                //---------------------     Get Started Button
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         fixedSize: Size(0.8.sw, 0.06.sh),
@@ -147,7 +147,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
 
-                    ///!-----------------   Get Stared On Pressed
+                    //--------------   Get Stared On Pressed
                     onPressed: () async {
                       await _getStartedButtonOnTap(context);
                     },
@@ -159,7 +159,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           fontWeight: FontWeight.bold),
                     )),
 
-                ///! -----------------      Disclaimer   -------------
+                /// -----------------      Disclaimer   -------------
                 const DisclaimerMessageWidget()
               ],
             ),
@@ -169,11 +169,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     );
   }
 
-  ///!///////////////////////////////////////////////////////
-  ///----------------------  M E T H O D S --------------////
-  ///!//////////////////////////////////////////////////////
+  //////////////////////////////
+  //-------------------  M E T H O D S --------------//
+  /////////////////////////////
 
-  ///----- Profile Change Button On Tap
+  //-- Profile Change Button On Tap
   Future<void> _profilePicPencilButtonOnTap(BuildContext context) async {
     await Permission.mediaLibrary.request();
     await Permission.photos.request();
@@ -182,14 +182,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         .add(UserProfileChangeUserProfilePictureEvent());
   }
 
-  ///-------- Get Started Button On Tap
+  //----- Get Started Button On Tap
   Future<void> _getStartedButtonOnTap(BuildContext context) async {
 
 
 
    await AppPermissionService.storagePermission();
 
-    ///-----!   Change User
+    //--!   Change User
     context
         .read<UserProfileBloc>()
         .add(UserProfileChangeUsernameEvent(username: usernameController.text));
@@ -200,7 +200,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           builder: (context) =>  InitialPage(),
         ));
 
-    ///---! Don't Show this screen after restarting app
+    // Don't Show this screen after restarting app
     MyHiveBoxes.settingBox.put(MyHiveKeys.showOnBoardingScreenHiveKey, false);
   }
 }

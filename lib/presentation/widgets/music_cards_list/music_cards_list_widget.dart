@@ -26,7 +26,7 @@ final String pageStorageKey;
         height: 0.30.sh,
         width: double.infinity,
         child: FadeInDown(
-          ///!     -------Storing/Preserve  Scroll Position
+          ///     -------Storing/Preserve  Scroll Position
           child: PageStorage(
             bucket: pageBucket,
             child: ListView.builder(
@@ -34,22 +34,22 @@ final String pageStorageKey;
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
 
-                ///------------Total Items-------///
+                //---------Total Items-------///
                 itemCount: list.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    ///-------------------------------------?Music Card On Tap
+                    //----------------------------------?Music Card On Tap
                     onTap: () {
-                      ///!----Initialize & Play Music ------///
+                      //-Initialize & Play Music ------///
                       context.read<MusicPlayerBloc>().add(
                           MusicPlayerInitializeEvent(url: list[index].url));
 
-                      ///!-----Show Mini Player-----///
+                      //--Show Mini Player-----///
                       context.read<ShowMiniPlayerCubit>().showMiniPlayer();
                       context.read<ShowMiniPlayerCubit>().onlineMusicIsPlaying();
                       context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
 
-                      ///!-----Send Current Music Data-----///
+                      //--Send Current Music Data-----///
                       context
                           .read<CurrentlyPlayingMusicDataToPlayerCubit>()
                           .sendDataToPlayer(
@@ -57,7 +57,7 @@ final String pageStorageKey;
                               imageUrl: list[index].image.toString(),
                               fullMusicList: list);
 
-                      ///!-----Show Player Screen ----///
+                      //--Show Player Screen ----///
                       showModalBottomSheet(
                         showDragHandle: true,
                         isScrollControlled: true,
@@ -69,12 +69,12 @@ final String pageStorageKey;
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          ///!----------Cached Network Image--------///
+                          //-------Cached Network Image--------///
                           CachedNetworkImage(
-                            ///!--------Music Image Url List-------///
+                            //-----Music Image Url List-------///
                             imageUrl: list[index].image.toString(),
                       
-                            ///!-------On Image Successfully Loaded---------///
+                            //----On Image Successfully Loaded---------///
                             imageBuilder: (context, imageProvider) => Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Card(
@@ -98,7 +98,7 @@ final String pageStorageKey;
                               ),
                             ),
                       
-                            ///!----------------On Loading-------------///
+                            //-------------On Loading-------------///
                             placeholder: (context, url) =>
                                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                               builder: (context, state) {
@@ -125,7 +125,7 @@ final String pageStorageKey;
                               },
                             ),
                       
-                            ///!----------------On Error-------------///
+                            //-------------On Error-------------///
                             errorWidget: (context, url, error) =>
                                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                               builder: (context, state) {
@@ -153,7 +153,7 @@ final String pageStorageKey;
                             ),
                           ),
                       
-                          ///--------?             Music  Title         ----------///
+                          //-----?             Music  Title         ----------///
                           SizedBox(
                             ///Set The Text Width as Image Width
                             width: 0.35.sw,
@@ -178,5 +178,5 @@ final String pageStorageKey;
   }
 }
 
-///?-------Storing/Preserve  Scroll Position
+//-------Storing/Preserve  Scroll Position
 final pageBucket = PageStorageBucket();

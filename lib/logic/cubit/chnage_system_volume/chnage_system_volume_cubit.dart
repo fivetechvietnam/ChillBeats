@@ -13,7 +13,7 @@ class ChangeSystemVolumeCubit extends Cubit<ChangeSystemVolumeState> {
   ChangeSystemVolumeCubit()
       : super(ChangeSystemVolumeState(volume: 0.4));
 
-  ///!----------- Change System Volume
+  //-------- Change System Volume
   void change(
       {required DragUpdateDetails details,
       required BuildContext context}) async {
@@ -28,7 +28,7 @@ class ChangeSystemVolumeCubit extends Cubit<ChangeSystemVolumeState> {
 
     emit(state.copyWith(volume: state.volume));
 
-    ///!----System Volume Change
+    //-System Volume Change
     volumeController.setVolume(state.volume);
   }
 }

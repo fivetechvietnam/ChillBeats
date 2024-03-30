@@ -44,7 +44,7 @@ class HomePageSliverAppBar extends StatelessWidget {
                             ));
                           },
 
-                          ///!------------       User Profile Image   Avatar  -------////
+                          //---------       User Profile Image   Avatar  -------//
                           child: BlocBuilder<UserProfileBloc, UserProfileState>(
                             builder: (context, state) {
                               if (state.profileImageFilePath
@@ -82,7 +82,7 @@ class HomePageSliverAppBar extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              ///!----------    Greeting ----------///
+                              //-------    Greeting ----------///
                               BlocBuilder<GreetingCubit, GreetingState>(
                                 builder: (context, state) {
                                   return SlideInDown(
@@ -96,7 +96,7 @@ class HomePageSliverAppBar extends StatelessWidget {
                                 },
                               ),
 
-                              ///!-------------     User Profile Name   ---------///
+                              //----------     User Profile Name   ---------///
                               BlocBuilder<UserProfileBloc, UserProfileState>(
                                 builder: (context, state) {
                                   return SlideInUp(
@@ -117,7 +117,7 @@ class HomePageSliverAppBar extends StatelessWidget {
                     ),
                   ),
 
-                  ///------Search Icon Button-----///
+                  //---Search Icon Button-----///
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.w),
                     child: IconButton(

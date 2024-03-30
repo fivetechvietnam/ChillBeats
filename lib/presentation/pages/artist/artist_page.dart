@@ -39,7 +39,7 @@ class _ArtistPageState extends State<ArtistPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
 
-      ///!----------    AppBar
+      //-------    AppBar
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
@@ -52,17 +52,17 @@ class _ArtistPageState extends State<ArtistPage> {
             }),
       ),
 
-      ///!-----------    Body
+      //--------    Body
       body: Stack(
         fit: StackFit.expand,
         children: [
-          ///--------------
-          ///!--------------             C U S T O M  S C R O L L  V I E W
-          ///--------------
+          //-----------
+          //-----------             C U S T O M  S C R O L L  V I E W
+          //-----------
           CustomScrollView(
             controller: _scrollController,
             slivers: [
-              ///?-----------------------------         Sliver Persistent  Header
+              //-----------------------------         Sliver Persistent  Header
               SliverPersistentHeader(
                 delegate: MySliverAppBarPersistentDelegate(
                     imageUrl: widget.image, artistName: widget.artistName),
@@ -74,13 +74,13 @@ class _ArtistPageState extends State<ArtistPage> {
               SliverToBoxAdapter(
                 child: BlocBuilder<LofiiiAllMusicBloc, LofiiiAllMusicState>(
                   builder: (context, state) {
-                    //?//////////////////////////////////////
-                    ///! ----------   If state is Success
-                    ////?///////////////////////////////////
+                    //?////////////////////
+                    /// ----------   If state is Success
+                    ////////////////////
                     if (state is LofiiiAllMusicSuccessState) {
-                      ///////////////////////////////////////////////////!
-                      ///! -------------  Filtered List    ----------////
-                      //////////////////////////////////////////////////!
+                      ///////////////////////////
+                      /// -------------  Filtered List    ----------//
+                      //////////////////////////
 
                       final List<MusicModel> filteredList = state.musicList
                           .where((element) =>
@@ -90,7 +90,7 @@ class _ArtistPageState extends State<ArtistPage> {
                                   widget.artistName.toString().toLowerCase()))
                           .toList();
 
-                      ////---------- ListView Builder -----------/////
+                      //---- ListView Builder -----------///
                       return ListView.builder(
                         controller: _scrollController,
                         padding: EdgeInsets.zero,
@@ -98,28 +98,28 @@ class _ArtistPageState extends State<ArtistPage> {
                         scrollDirection: Axis.vertical,
                         itemCount: filteredList.length,
 
-                        ///-------------------------------------------------------
-                        ////!---------------  Music Tile  Card--------------------- ///
-                        ////------------------------------------------------------
+                        //----------------------------------------------------
+                        ///------------  Music Tile  Card--------------------- ///
+                        //------------------------------------------------
                         itemBuilder: (context, index) => ListTile(
-                          ///-------------!         On Tap
+                          //----------!         On Tap
                           onTap: () {
                             _listTileOnTap(context, filteredList, index);
                           },
 
-                          ///!-----------------   Music Title
+                          //--------------   Music Title
                           title: Text(
                             filteredList[index].title,
                             style: const TextStyle(fontWeight: FontWeight.w500),
                           ),
 
-                          ///! ------------------ Artists
+                          /// ------------------ Artists
                           subtitle: Text(filteredList[index]
                               .artists
                               .join(", ")
                               .toString()),
 
-                          ///!------------------  Music Card Image
+                          //---------------  Music Card Image
                           leading: Container(
                             padding: const EdgeInsets.all(8),
                             width: 0.1.sw,
@@ -133,7 +133,7 @@ class _ArtistPageState extends State<ArtistPage> {
                             ),
                           ),
 
-                          ///!----------------------       Favorite Button Toggle  --------------///
+                          //-------------------       Favorite Button Toggle  --------------///
                           trailing: BlocBuilder<FavoriteButtonBloc,
                               FavoriteButtonState>(
                             builder: (context, state) {
@@ -166,9 +166,9 @@ class _ArtistPageState extends State<ArtistPage> {
                       );
                     }
 
-                    //?//////////////////////////////////////
-                    ///! ----------   If state is Loading
-                    ////?///////////////////////////////////
+                    //?////////////////////
+                    /// ----------   If state is Loading
+                    ////////////////////
                     else if (state is LofiiiAllMusicLoadingState) {
                       return SliverToBoxAdapter(
                         child: BlocBuilder<ThemeModeCubit, ThemeModeState>(
@@ -183,9 +183,9 @@ class _ArtistPageState extends State<ArtistPage> {
                       );
                     }
 
-                    //?//////////////////////////////////////
-                    ///! ----------   If state is not Loading nor Success
-                    ////?///////////////////////////////////
+                    //?////////////////////
+                    /// ----------   If state is not Loading nor Success
+                    ////////////////////
                     else {
                       return const SliverToBoxAdapter(
                         child: Center(
@@ -202,9 +202,9 @@ class _ArtistPageState extends State<ArtistPage> {
           ),
 
           //--------------
-          ///?--------------             Mini Player
-          ///--------------
-          ///!--------Show Mini Player First whenever music card is clicked
+          //--------------             Mini Player
+          //-----------
+          //-----Show Mini Player First whenever music card is clicked
           BlocBuilder<ShowMiniPlayerCubit, ShowMiniPlayerState>(
             builder: (context, state) {
               return Visibility(
@@ -227,25 +227,25 @@ class _ArtistPageState extends State<ArtistPage> {
     );
   }
 
-  ///?------------------               M E T H O D S            --------------------------///
+  //------------------               M E T H O D S            --------------------------///
   void _listTileOnTap(
       BuildContext context, List<MusicModel> filteredList, int index) {
-    ///!----Initialize & Play Music ------///
+    //-Initialize & Play Music ------///
     context
         .read<MusicPlayerBloc>()
         .add(MusicPlayerInitializeEvent(url: filteredList[index].url));
 
-    ///!-----Show Mini Player-----///
+    //--Show Mini Player-----///
     context.read<ShowMiniPlayerCubit>().showMiniPlayer();
     context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
 
-    ///!-----Send Current Music Data-----///
+    //--Send Current Music Data-----///
     context.read<CurrentlyPlayingMusicDataToPlayerCubit>().sendDataToPlayer(
         musicIndex: index,
         imageUrl: filteredList[index].image.toString(),
         fullMusicList: filteredList);
 
-    ///!-----Show Player Screen ----///
+    //--Show Player Screen ----///
     showModalBottomSheet(
       showDragHandle: true,
       isScrollControlled: true,

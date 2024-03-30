@@ -106,22 +106,22 @@ class AboutPage extends StatelessWidget {
             child: const ButtonBar(
               alignment: MainAxisAlignment.center,
               children: [
-                //! LinkedIn Button
+                // LinkedIn Button
                 SocialMediaIconButton(
                     url: "https://www.linkedin.com/in/ffurqanuddin/",
                     icon: FontAwesomeIcons.linkedin),
 
-                //! Instagram Button
+                // Instagram Button
                 SocialMediaIconButton(
                     url: "https://www.instagram.com/furqanuddin.dev/",
                     icon: FontAwesomeIcons.instagram),
 
-                //! Twitter Button
+                // Twitter Button
                 SocialMediaIconButton(
                     url: "https://www.twitter.com/ffurqanuddin",
                     icon: FontAwesomeIcons.twitter),
 
-                //! Threads Button
+                // Threads Button
                 SocialMediaIconButton(
                     url: "https://www.threads.net/@furqanuddin.dev",
                     icon: FontAwesomeIcons.threads),

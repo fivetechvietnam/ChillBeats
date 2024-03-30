@@ -30,7 +30,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
 
   @override
   void initState() {
-    ///?--------------- Fetch Youtube Music ------------------///
+    //--------------- Fetch Youtube Music ------------------///
     context.read<YoutubeMusicCubit>().fetchMusic();
     super.initState();
   }
@@ -38,7 +38,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      ///------------APP BAR --------------///
+      //---------APP BAR --------------///
       appBar: AppBar(
         title: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -70,7 +70,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
         ],
       ),
 
-      ///!-------------------------------------- Body ------------------------------///
+      //----------------------------------- Body ------------------------------///
       body: RefreshIndicator(
         onRefresh: _onRefresh,
         child: Padding(
@@ -79,9 +79,9 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
             physics: const BouncingScrollPhysics(),
             primary: true,
             children: [
-              ///?-----------------------------------------------------------------------------------------------------------///
-              ///!----------------------------------- Trending  Section-------------------------------------
-              ///?-----------------------------------------------------------------------------------------------------------///
+              //-----------------------------------------------------------------------------------------------------------///
+              //-------------------------------- Trending  Section-------------------------------------
+              //-----------------------------------------------------------------------------------------------------------///
               Text(
                 "Trending Music",
                 style: TextStyle(
@@ -90,7 +90,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
                     letterSpacing: 1.5),
               ),
 
-              ///!------------------------------------ Trending List
+              //--------------------------------- Trending List
               SizedBox(
                 height: 0.25.sh,
                 width: 1.sw,
@@ -106,7 +106,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
                               scrollDirection: Axis.horizontal,
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
-                                ///!-------- Video Item
+                                //----- Video Item
                                 final video = snapshot.data![index];
                                 // Display your video item UI here
                                 return Padding(
@@ -114,7 +114,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
                                   child: SizedBox(
                                     width: 0.65.sw,
                                     child: GestureDetector(
-                                      ///!--------------------------------------- ON TAP
+                                      //------------------------------------ ON TAP
                                       onTap: () {
                                         _trendingCardOnTap( video,
                                             snapshot, index, );
@@ -123,14 +123,14 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          ///!--------- Music Thumbnail
+                                          //------ Music Thumbnail
                                           CachedNetworkImage(
-                                            ///!--------Music Image Url List-------///
+                                            //-----Music Image Url List-------///
                                             imageUrl: video
                                                 .thumbnails!.last.url
                                                 .toString(),
 
-                                            ///!-------On Image Successfully Loaded---------///
+                                            //----On Image Successfully Loaded---------///
                                             imageBuilder:
                                                 (context, imageProvider) =>
                                                     Padding(
@@ -163,7 +163,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
                                               ),
                                             ),
 
-                                            ///!----------------On Loading-------------///
+                                            //-------------On Loading-------------///
                                             placeholder: (context, url) =>
                                                 BlocBuilder<ThemeModeCubit,
                                                     ThemeModeState>(
@@ -204,7 +204,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
                                               },
                                             ),
 
-                                            ///!----------------On Error-------------///
+                                            //-------------On Error-------------///
                                             errorWidget:
                                                 (context, url, error) =>
                                                     BlocBuilder<
@@ -247,7 +247,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
                                             ),
                                           ),
 
-                                          ///!--------- Music Title
+                                          //------ Music Title
                                           Text(
                                             video.title.toString(),
                                             maxLines: 1,
@@ -280,9 +280,9 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
 
               Gap(0.02.sh),
 
-              ///?-----------------------------------------------------------------------------------------------------------///
-              ///!----------------------------------- Favorite Playlists  Section-------------------------------------
-              ///?-----------------------------------------------------------------------------------------------------------///
+              //-----------------------------------------------------------------------------------------------------------///
+              //-------------------------------- Favorite Playlists  Section-------------------------------------
+              //-----------------------------------------------------------------------------------------------------------///
               Text(
                 "Lo-Fi Playlists",
                 style: TextStyle(
@@ -303,35 +303,35 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
     );
   }
 
-  ///?------------------------------------------------------------------------///
-  ///!-------------------------------- Methods ------------------------------///
+  //------------------------------------------------------------------------///
+  //----------------------------- Methods ------------------------------///
 
   void _trendingCardOnTap(Video video,
       AsyncSnapshot<List<Video>> snapshot, int index,) async {
 
 
-    ///!---- Initialize Player
+    //- Initialize Player
         OneContext().context!.read<YoutubeMusicPlayerCubit>()
         .initializePlayer(videoId: video.videoId);
 
-    ///!-----Show Player Screen ----///
+    //--Show Player Screen ----///
 
     OneContext().push(MaterialPageRoute(
       builder: (context) =>   YouTubeMusicPlayerPage(),
     ));
 
-    ///!-----Send Current Music Data-----///
+    //--Send Current Music Data-----///
         OneContext().context!.read<CurrentlyPlayingMusicDataToPlayerCubit>()
         .sendYouTubeDataToPlayer(
             youtubeList: snapshot.data!, musicIndex: index);
 
-    ///!-----Show Mini Player-----///
+    //--Show Mini Player-----///
         OneContext().context!.read<ShowMiniPlayerCubit>().showMiniPlayer();
         OneContext().context!.read<ShowMiniPlayerCubit>().youtubeMusicIsPlaying();
   }
 
   Future _onRefresh() async {
-    ///?--------------- Fetch Youtube Music ------------------///
+    //--------------- Fetch Youtube Music ------------------///
     OneContext().context!.read<YoutubeMusicCubit>().fetchMusic();
   }
 }

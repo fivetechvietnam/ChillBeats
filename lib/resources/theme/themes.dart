@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class Themes {
-  ///----------Light Mode-------------///
+  //-------Light Mode-------------///
   static final ThemeData lightTheme = ThemeData.light(useMaterial3: true)
       .copyWith(
           scaffoldBackgroundColor: Colors.white,
@@ -16,7 +16,7 @@ class Themes {
           ),
   );
 
-  ///----------Dark Mode -----------------///
+  //-------Dark Mode -----------------///
   static final ThemeData darkTheme = ThemeData.dark(useMaterial3: true)
       .copyWith(
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(

@@ -51,7 +51,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
 
         automaticallyImplyLeading: false,
 
-        ///!-----      Drag Handle    ----///
+        //--      Drag Handle    ----///
         title: SlideInUp(child: myCustomDragHandle),
         centerTitle: true,
         toolbarHeight: 0.15.sh,
@@ -69,29 +69,29 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                   builder: (context, nowPlayingMusicState) {
                     return Stack(
                       children: [
-                        //!------------------------------------------------------------------------------------------///
-                        ///?--------------------        Background Gradient Colors Section   --------------------///
-                        ///------------------------------------------------------------------------------------------///
-                        ///---  Back
+                        //------------------------------------------------------------------------------------------///
+                        //--------------------        Background Gradient Colors Section   --------------------///
+                        //---------------------------------------------------------------------------------------///
+                        //  Back
                         const OfflinePlayerBackgroundGradientBoxesWidget(),
 
-                        ///--------------------------------------------------------------------------///
-                        ///!------------------------  Volume & Play Pause Gesture  ----------------///
-                        ///--------------------------------------------------------------------------///
+                        //-----------------------------------------------------------------------///
+                        //---------------------  Volume & Play Pause Gesture  ----------------///
+                        //-----------------------------------------------------------------------///
                         Positioned(
                           top: 0.1.sh,
                           height: 0.6.sh,
                           width: 1.sw,
                           child: GestureDetector(
                             onDoubleTap: () {
-                              ///!-------------On Double Tap on Cover Image Pause/Play the Music
+                              //----------On Double Tap on Cover Image Pause/Play the Music
                               context
                                   .read<MusicPlayerBloc>()
                                   .add(MusicPlayerTogglePlayPauseEvent());
                               log("Double Tap on Cover Image is Clicked!");
                             },
                             onVerticalDragUpdate: (details) {
-                              ///!----------  Change System Volume
+                              //-------  Change System Volume
                               context
                                   .read<ChangeSystemVolumeCubit>()
                                   .change(details: details, context: context);
@@ -103,9 +103,9 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                           ),
                         ),
 
-                        ///!---------   -----------------///
+                        //------   -----------------///
 
-                        ///!------- Music Icon -----///
+                        //---- Music Icon -----///
                         ZoomIn(
                           child: Center(
                             child: Icon(
@@ -116,7 +116,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                           ),
                         ),
 
-                        ///!-------------  Glass Gradient Box ---------///
+                        //----------  Glass Gradient Box ---------///
                         Positioned(
                           bottom: 0.05.sh,
                           width: 1.sw,
@@ -134,7 +134,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  ///!      ---------------Music Title  & Artist----///
+                                  ///      ---------------Music Title  & Artist----///
                                   SlideInRight(
                                     child: Column(
                                       crossAxisAlignment:
@@ -160,14 +160,14 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                     ),
                                   ),
 
-                                  ///!------------------   Slider & Buttons
+                                  //---------------   Slider & Buttons
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      ////!---------------  Slider ----------////
+                                      ///------------  Slider ----------//
                                       ElasticInRight(
                                         child: StreamBuilder(
                                             stream: state
@@ -228,11 +228,11 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                             }),
                                       ),
 
-                                      ////!---------------    Position   -----///
+                                      ///------------    Position   -----///
                                       BlocBuilder<MusicPlayerBloc,
                                           MusicPlayerState>(
                                         builder: (context, state) {
-                                          ///! ----      MusicPlayerSuccessState
+                                          /// ----      MusicPlayerSuccessState
                                           if (state
                                               is MusicPlayerSuccessState) {
                                             return Padding(
@@ -259,7 +259,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                             MainAxisAlignment
                                                                 .spaceBetween,
                                                         children: [
-                                                          ///!----  Position    ----///
+                                                          //-  Position    ----///
                                                           Text(
                                                             FormatDuration.format(
                                                                 positionSnapshot),
@@ -269,7 +269,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                                         .white),
                                                           ),
 
-                                                          ///-!----    Duration Stream   -----////
+                                                          ///-!----    Duration Stream   -----//
                                                           Text(
                                                             FormatDuration.format(
                                                                 durationSnapshot),
@@ -286,7 +286,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                             MainAxisAlignment
                                                                 .spaceBetween,
                                                         children: [
-                                                          ///!----  Position    ----///
+                                                          //-  Position    ----///
                                                           Text(
                                                             "00:00",
                                                             style: TextStyle(
@@ -294,7 +294,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                                     .white),
                                                           ),
 
-                                                          ///-!----    Duration Stream   -----////
+                                                          ///-!----    Duration Stream   -----//
                                                           Text(
                                                             "00:00",
                                                             style: TextStyle(
@@ -308,7 +308,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                             );
                                           }
 
-                                          ///! ----      MusicPlayerLoadingState  and FailureState
+                                          /// ----      MusicPlayerLoadingState  and FailureState
                                           else {
                                             return Padding(
                                               padding: EdgeInsets.symmetric(
@@ -333,16 +333,16 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                         },
                                       ),
 
-                                      ///-------------------------------------------------------------///
-                                      ///!---------------------------    Player Buttons      -------///
-                                      ///?------------------------------------------------------------------///
+                                      //----------------------------------------------------------///
+                                      //------------------------    Player Buttons      -------///
+                                      //------------------------------------------------------------------///
                                       JelloIn(
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            ///---------------------------------------------------///
-                                            ///!----      Previous   Music Button  ----///
+                                            //------------------------------------------------///
+                                            //-      Previous   Music Button  ----///
 
                                             BlocBuilder<
                                                 SearchableListScrollControllerCubit,
@@ -355,7 +355,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                           context);
 
                                                       if(state.scrollOffset != 0) {
-                                                        ///!------- Current Playing music scroll position
+                                                        //---- Current Playing music scroll position
                                                         context
                                                             .read<
                                                             SearchableListScrollControllerCubit>()
@@ -373,8 +373,8 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                               },
                                             ),
 
-                                            ///---------------------------------------------------///
-                                            ///!----  Replay Button
+                                            //------------------------------------------------///
+                                            //-  Replay Button
                                             IconButton(
                                                 onPressed: () {
                                                   context
@@ -388,7 +388,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                   size: 40.sp,
                                                 )),
 
-                                            ///!---------------        Play & Pause Button       -----------///
+                                            //------------        Play & Pause Button       -----------///
                                             BlocBuilder<MusicPlayerBloc,
                                                 MusicPlayerState>(
                                               builder: (context, state) {
@@ -399,7 +399,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                           .playerStateStream,
                                                       builder: (context,
                                                           snapshotPlayerState) {
-                                                        ///?----                   if Loading, buffering
+                                                        //----                   if Loading, buffering
                                                         if (snapshotPlayerState
                                                             .hasData) {
                                                           if (snapshotPlayerState
@@ -412,7 +412,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                                       .processingState ==
                                                                   ProcessingState
                                                                       .buffering) {
-                                                            //! --------------           Show Loading Icon        --------------///
+                                                            // --------------           Show Loading Icon        --------------///
                                                             return IconButton(
                                                               onPressed: () {},
                                                               icon: Icon(
@@ -425,7 +425,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                             );
                                                           }
 
-                                                          ///? -------            If Processing State is Completed
+                                                          // -------            If Processing State is Completed
                                                           else if (snapshotPlayerState
                                                                   .data!
                                                                   .processingState ==
@@ -436,8 +436,8 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                                 FetchCurrentPlayingMusicDataToPlayerState>(
                                                               builder: (context,
                                                                   state) {
-                                                                ///---------------------------------------------------///
-                                                                ///!----   If Music is Completed play again by pressing this button
+                                                                //------------------------------------------------///
+                                                                //-   If Music is Completed play again by pressing this button
                                                                 return IconButton(
                                                                     onPressed:
                                                                         () {
@@ -493,7 +493,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                           );
                                                         }
 
-                                                        ///-------y
+                                                        //----y
                                                       });
                                                 } else {
                                                   return const CircleAvatar(
@@ -505,8 +505,8 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                               },
                                             ),
 
-                                            ///---------------------------------------------------///
-                                            ///!----   Forward Button
+                                            //------------------------------------------------///
+                                            //-   Forward Button
 
                                             IconButton(
                                                 onPressed: () {
@@ -521,8 +521,8 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                   size: 40.sp,
                                                 )),
 
-                                            ///---------------------------------------------------///
-                                            ///!--------------      Next   Music Button  ----///
+                                            //------------------------------------------------///
+                                            //-----------      Next   Music Button  ----///
                                             BlocBuilder<
                                                 SearchableListScrollControllerCubit,
                                                 SearchableListScrollControllerState>(
@@ -533,7 +533,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
                                                           nowPlayingMusicState,
                                                           context);
 
-                                                      ///!------- Current Playing music scroll position
+                                                      //---- Current Playing music scroll position
                                                       context
                                                           .read<
                                                               SearchableListScrollControllerCubit>()
@@ -574,20 +574,20 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
     );
   }
 
-  ///--------------------------------------------------------------------------------///
-  ///-------------------?             M E T H O D S    ----------------------------///
-  ///!--------------------------------------------------------------------------------///
+  //-----------------------------------------------------------------------------///
+  //----------------?             M E T H O D S    ----------------------------///
+  //-----------------------------------------------------------------------------///
   void _nextMusicButtonOnTap(
       NowPlayingOfflineMusicDataToPlayerState state, BuildContext context) {
     int index = state.musicIndex;
     if (index < state.musicListLength) {
       index++;
 
-      ///!-----Change Music------
+      //--Change Music------
       context.read<MusicPlayerBloc>().add(MusicPlayerInitializeEvent(
           url: state.snapshotMusicList![index].uri.toString()));
 
-      ///---- Also Change Music Title and Artist on Next Button Clicked
+      //- Also Change Music Title and Artist on Next Button Clicked
       context.read<NowPlayingOfflineMusicDataToPlayerCubit>().sendDataToPlayer(
             musicIndex: index,
             futureMusicList: state.futureMusicList,
@@ -595,7 +595,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
             musicArtist: state.snapshotMusicList![index].artist,
           );
 
-      ///!-------  Change Selected Tile Index
+      //----  Change Selected Tile Index
       context.read<ThemeModeCubit>().changeSelectedTileIndex(index: index);
     }
   }
@@ -606,11 +606,11 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
     if (index > 0) {
       index--;
 
-      ///!-----Change Music------
+      //--Change Music------
       context.read<MusicPlayerBloc>().add(MusicPlayerInitializeEvent(
           url: state.snapshotMusicList![index].uri.toString()));
 
-      ///---- Also Change Music Title and Artist on Back Button Clicked
+      //- Also Change Music Title and Artist on Back Button Clicked
       context.read<NowPlayingOfflineMusicDataToPlayerCubit>().sendDataToPlayer(
             musicIndex: index,
             futureMusicList: state.futureMusicList,
@@ -618,7 +618,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
             musicArtist: state.snapshotMusicList![index].artist,
           );
 
-      ///!-------  Change Selected Tile Index
+      //----  Change Selected Tile Index
       context.read<ThemeModeCubit>().changeSelectedTileIndex(index: index);
     }
   }

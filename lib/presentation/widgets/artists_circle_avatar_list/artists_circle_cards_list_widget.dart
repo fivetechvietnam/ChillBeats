@@ -24,11 +24,11 @@ class ArtistsCardsListWidget extends StatelessWidget {
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
 
-            ///!------------Total Items-------///
+            //---------Total Items-------///
             itemCount: artistList.length,
             itemBuilder: (context, index) {
               return GestureDetector(
-                ///!  -------------    On Artists Circle Card Tap
+                ///  -------------    On Artists Circle Card Tap
                 onTap: () {
                   _artistCardOnTap(context, index);
                 },
@@ -36,12 +36,12 @@ class ArtistsCardsListWidget extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ///!----------Cached Network Image--------///
+                    //-------Cached Network Image--------///
                     CachedNetworkImage(
-                      ///!--------Music Image Url List-------///
+                      //-----Music Image Url List-------///
                       imageUrl: artistList[index].img.toString(),
 
-                      ///!-------On Image Successfully Loaded---------///
+                      //----On Image Successfully Loaded---------///
                       imageBuilder: (context, imageProvider) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: BounceInLeft(
@@ -57,7 +57,7 @@ class ArtistsCardsListWidget extends StatelessWidget {
                         ),
                       ),
 
-                      ///!----------------On Loading-------------///
+                      //-------------On Loading-------------///
                       placeholder: (context, url) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CircleAvatar(
@@ -69,7 +69,7 @@ class ArtistsCardsListWidget extends StatelessWidget {
                         ),
                       ),
 
-                      ///!----------------On Error-------------///
+                      //-------------On Error-------------///
                       errorWidget: (context, url, error) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CircleAvatar(
@@ -89,7 +89,7 @@ class ArtistsCardsListWidget extends StatelessWidget {
                       ),
                     ),
 
-                    ///!--------Music  Title----------///
+                    //-----Music  Title----------///
                     Text(
                       artistList[index].name,
                       maxLines: 1,
@@ -105,7 +105,7 @@ class ArtistsCardsListWidget extends StatelessWidget {
     );
   }
 
-  ///?-----------        Methods    -------------///
+  //-----------        Methods    -------------///
   void _artistCardOnTap(BuildContext context, int index) {
     OneContext().push(
         MaterialPageRoute(

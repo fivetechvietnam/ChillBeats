@@ -25,7 +25,7 @@ class OnBoardingSkipButton extends StatelessWidget {
 
          await AppPermissionService.storagePermission();
 
-            ///---! Don't Show this screen after restarting app
+            // Don't Show this screen after restarting app
             MyHiveBoxes.settingBox
                 .put(MyHiveKeys.showOnBoardingScreenHiveKey, false);
 

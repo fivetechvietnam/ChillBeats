@@ -18,14 +18,14 @@ class YoutubeMusicCubit extends Cubit<YoutubeMusicState> {
     emit(YoutubeMusicLoadingState());
 
     try {
-      ///------------Emit Success State--------------///
+      //---------Emit Success State--------------///
       emit(YoutubeMusicSuccessState(
         musicList: ytRepo.trendingMusic(),
         favoriteFuturePlayLists: ytRepo.combinedPlaylistsFuture(),
       ));
     }
 
-    ///------------------- if Error -----------------------------///
+    //---------------- if Error -----------------------------///
     catch (e) {
       emit(YoutubeMusicErrorState(errorMessage: e.toString()));
     }

@@ -18,10 +18,10 @@ class PlayerScreenMoreButtonWidget extends StatelessWidget {
           MenuHelper.showMenuAtPosition(
               context: context,
 
-              ///!---------       Position     ------------/////
+              //------       Position     ------------///
               position: details.globalPosition,
 
-              ///!------------------    Items     -------------////
+              //---------------    Items     -------------//
               items: [
                 // PopupMenuItem(
                 //   child: BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
@@ -50,7 +50,7 @@ class PlayerScreenMoreButtonWidget extends StatelessWidget {
                 //           }
                 //
                 //             if(downloadState is DownloadMusicSuccessState){
-                //               //! Close Material Banner when download completes
+                //               // Close Material Banner when download completes
                 //               ScaffoldMessenger.of(context)
                 //                   .hideCurrentMaterialBanner();
                 //             }

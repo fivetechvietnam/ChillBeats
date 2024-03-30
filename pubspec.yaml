@@ -87,6 +87,7 @@ dependencies:
   flutter_svg_provider: ^1.0.7
   meta: ^1.11.0
   bloc: ^8.1.4
+  nested: ^1.0.0
 
 
 

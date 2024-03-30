@@ -37,7 +37,7 @@ class _ViewMorePageState extends State<ViewMorePage> {
       builder: (context, themeState) {
         return Scaffold(
 
-          ///!-------------  App Bar-------------------///
+          //----------  App Bar-------------------///
           appBar: AppBar(
             automaticallyImplyLeading: false,
             leading: IconButton(
@@ -66,11 +66,11 @@ class _ViewMorePageState extends State<ViewMorePage> {
             ],
           ),
 
-          ///!------------- Body -------------------------///
+          //---------- Body -------------------------///
           body: Stack(
             fit: StackFit.expand,
             children: [
-              ///? ----------------  Music List --------------------///
+              // ----------------  Music List --------------------///
               BlocBuilder<GridviewMaxCountCubit, GridviewMaxCountState>(
                 builder: (context, maxCountState) {
                   return FadeInDownBig(
@@ -102,7 +102,7 @@ class _ViewMorePageState extends State<ViewMorePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ///---------------------!Image---------///
+                            //------------------!Image---------///
                             Flexible(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -126,7 +126,7 @@ class _ViewMorePageState extends State<ViewMorePage> {
 
                             Gap(0.01.sh),
 
-                            ///!------------------------ Music Title & Artist --------------///
+                            //--------------------- Music Title & Artist --------------///
                             Card(
                               margin: EdgeInsets.zero,
                               shape: RoundedRectangleBorder(
@@ -184,8 +184,8 @@ class _ViewMorePageState extends State<ViewMorePage> {
                 },
               ),
 
-              ///? Mini Player ---------////
-              ///!--------Show Mini Player First whenever music card is clicked
+              // Mini Player ---------//
+              //-----Show Mini Player First whenever music card is clicked
               BlocBuilder<ShowMiniPlayerCubit, ShowMiniPlayerState>(
                 builder: (context, state) {
                   return Visibility(
@@ -210,21 +210,21 @@ class _ViewMorePageState extends State<ViewMorePage> {
     );
   }
 
-  ///? ----------------- M E T H O D S----------------///
+  // ----------------- M E T H O D S----------------///
   void playMusicMethod(int index, BuildContext context, musicList) {
-    ///!---------      Initialize & Play Music ------///
+    //------      Initialize & Play Music ------///
     context
         .read<MusicPlayerBloc>()
         .add(MusicPlayerInitializeEvent(url: musicList[index].url));
 
-    ///!-----       Send Current Music Data-----///
+    //--       Send Current Music Data-----///
     context.read<CurrentlyPlayingMusicDataToPlayerCubit>().sendDataToPlayer(
           musicIndex: index,
           imageUrl: musicList[index].image.toString(),
           fullMusicList: musicList,
         );
 
-    ///!-----        Show Mini Player-----///
+    //--        Show Mini Player-----///
     context.read<ShowMiniPlayerCubit>().showMiniPlayer();
     context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
   }

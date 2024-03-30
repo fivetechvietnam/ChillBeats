@@ -27,7 +27,7 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
   }
 
 
-  ///!----------  Profile Pic Change
+  //-------  Profile Pic Change
   FutureOr<void> _userProfileChangeUserProfilePictureEvent(
       UserProfileChangeUserProfilePictureEvent event,
       Emitter<UserProfileState> emit) async {
@@ -41,7 +41,7 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
   }
 
 
-  ///!----------    Username Change
+  //-------    Username Change
   FutureOr<void> _userProfileChangeUsernameEvent(UserProfileChangeUsernameEvent event, Emitter<UserProfileState> emit)async {
     if(event.username.isNotEmpty){
       emit(state.copyWith(username: event.username));

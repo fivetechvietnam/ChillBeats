@@ -46,7 +46,7 @@ class _YouTubeFavoritePlaylistPageState
     return Scaffold(
       body: Stack(
         children: [
-          ///!------------------ Background Image -------------///
+          //--------------- Background Image -------------///
           ImageFiltered(
             imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
             child: CachedNetworkImage(
@@ -63,11 +63,11 @@ class _YouTubeFavoritePlaylistPageState
             ),
           ),
 
-          ///?----------------------- Main Content ------------///
+          //----------------------- Main Content ------------///
           ListView(
             controller: controller,
             children: [
-              ///!---------------------- Header Image -----------------////
+              //------------------- Header Image -----------------//
               Container(
                 height: 0.3.sh,
                 width: 1.sw,
@@ -84,7 +84,7 @@ class _YouTubeFavoritePlaylistPageState
                 ),
                 child: Stack(
                   children: [
-                    ///!------ Back Button
+                    //--- Back Button
                     IconButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -95,7 +95,7 @@ class _YouTubeFavoritePlaylistPageState
                           size: 35.sp,
                         )),
 
-                    ///!------ Playlist Title
+                    //--- Playlist Title
                     Positioned(
                         bottom: 0.02.sh,
                         left: 0.02.sw,
@@ -111,7 +111,7 @@ class _YouTubeFavoritePlaylistPageState
                 ),
               ),
 
-              ///!--------------------------  Music List ----------------------///
+              //-----------------------  Music List ----------------------///
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 4.sp, horizontal: 4.sp),
                 child: FutureBuilder(
@@ -130,7 +130,7 @@ class _YouTubeFavoritePlaylistPageState
                             controller: controller,
                             itemCount: snapshot.data!.length,
                             itemBuilder: (context, index) {
-                              ///!---- Data
+                              //- Data
                               final thumbnail = snapshot
                                   .data![index].thumbnails!.last.url
                                   .toString();
@@ -144,7 +144,7 @@ class _YouTubeFavoritePlaylistPageState
                                 child: BlocBuilder<ThemeModeCubit,
                                     ThemeModeState>(
                                   builder: (context, themeState) {
-                                    ///!--- Tile
+                                    // Tile
                                     return ListTile(
                                       onTap: () {
                                         _listTileOnTap(videoId, snapshot,
@@ -162,7 +162,7 @@ class _YouTubeFavoritePlaylistPageState
                                           Color(themeState.accentColor)
                                               .withOpacity(0.1),
 
-                                      ///! ---- Thumbnail
+                                      /// ---- Thumbnail
                                       leading: CircleAvatar(
                                         maxRadius: 25.spMax,
                                         minRadius: 20.spMin,
@@ -171,7 +171,7 @@ class _YouTubeFavoritePlaylistPageState
                                                 thumbnail),
                                       ),
 
-                                      ///! ---- title
+                                      /// ---- title
                                       title: Text(
                                         title,
                                         style: TextStyle(
@@ -206,29 +206,29 @@ class _YouTubeFavoritePlaylistPageState
     );
   }
 
-  ///?------------------------------------------------------------------------------------------------////
-  ///!----------------------------------------------  Methods ---------------------------------------/////
+  //------------------------------------------------------------------------------------------------//
+  //-------------------------------------------  Methods ---------------------------------------///
   void _listTileOnTap(String videoId, AsyncSnapshot<List<Video>> snapshot,
       int index, ) {
 
 
-    ///!---- Initialize Player
+    //- Initialize Player
     OneContext()
         .context!
         .read<YoutubeMusicPlayerCubit>()
         .initializePlayer(videoId: videoId);
 
-    ///!-----Show Player Screen ----///
+    //--Show Player Screen ----///
     OneContext()
         .push(MaterialPageRoute(
       builder: (context) =>  YouTubeMusicPlayerPage(),
     ))
         .then((value) {
-      ///!-----Show Mini Player-----///
+      //--Show Mini Player-----///
       OneContext().context!.read<ShowMiniPlayerCubit>().showMiniPlayer();
       OneContext().context!.read<ShowMiniPlayerCubit>().youtubeMusicIsPlaying();
 
-      ///!-----Send Current Music Data-----///
+      //--Send Current Music Data-----///
       OneContext()
           .context!
           .read<CurrentlyPlayingMusicDataToPlayerCubit>()

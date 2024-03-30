@@ -31,16 +31,16 @@ class OfflinePlayerBackgroundGradientBoxesWidget extends StatelessWidget {
             ),
 
 
-            ///!--------- Center Circle Rotating Box
+            //------ Center Circle Rotating Box
             BlocBuilder<MusicPlayerBloc, MusicPlayerState>(
               builder: (context, state) {
 
-                ///!----- If Music Player is Success State
+                //-- If Music Player is Success State
                 if(state is MusicPlayerSuccessState) {
                   return StreamBuilder(
                     stream: state.playingStream,
                     builder: (context, snapshot) {
-                      ///!------ If music state is playing
+                      //--- If music state is playing
                       if(snapshot.data == true) {
                         return Stack(
                           children: [
@@ -78,7 +78,7 @@ class OfflinePlayerBackgroundGradientBoxesWidget extends StatelessWidget {
                                     shape: BoxShape.circle,
                                     
 
-                                    ///!---- Border
+                                    //- Border
                                     border: Border.all(
                                         color: Color(themeState.accentColor), width: 2),
                                   ),
@@ -88,7 +88,7 @@ class OfflinePlayerBackgroundGradientBoxesWidget extends StatelessWidget {
                           ],
                         );
                       }
-                      ///!------ If music state is pause
+                      //--- If music state is pause
                       else{
                         return const SizedBox.shrink();
                       }

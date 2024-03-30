@@ -42,7 +42,7 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      ///---------? App Bar-------------------////
+      //------? App Bar-------------------//
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
@@ -52,7 +52,7 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
               },
               icon: const Icon(CupertinoIcons.back)),
 
-          ///!----------------- Text Field----------------------///
+          //-------------- Text Field----------------------///
           BlocBuilder<LofiiiAllMusicBloc, LofiiiAllMusicState>(
             builder: (context, state) => Expanded(
               child: TextField(
@@ -61,7 +61,7 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
                       if (state is LofiiiAllMusicSuccessState) {
                         context.read<SearchSystemCubit>().addSearchList(allMusicList: state.musicList);
                       }
-                      ///! Add
+                      /// Add
                       context.read<SearchSystemCubit>().searchNow(val: value);
                       _scrollController.jumpTo(0);
                     },
@@ -99,20 +99,20 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     child: ListTile(
-                      ///------------!   List Tile On Pressed
+                      //---------!   List Tile On Pressed
                       onTap: () {
                         _playMusicMethod(state: state,  index: index);
                       },
 
-                      ///-----------! Music Title
+                      //--------! Music Title
                       title: Text(state.filteredlist[index].title),
 
-                      ///----------!Artist Name
+                      //-------!Artist Name
                       subtitle: Text(state.filteredlist[index].artists
                           .join(" & ")
                           .toString()),
 
-                      ///-----! Image Provider
+                      //--! Image Provider
                       leading: Ink.image(
                         image: CachedNetworkImageProvider(
                           state.filteredlist[index].image,
@@ -132,8 +132,8 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
             ),
           ),
 
-          ///? Mini Player ---------////
-          ///--------Show Mini Player First whenever music card is clicked
+          // Mini Player ---------//
+          //-----Show Mini Player First whenever music card is clicked
           BlocBuilder<ShowMiniPlayerCubit, ShowMiniPlayerState>(
             builder: (context, state) {
               return Visibility(
@@ -156,20 +156,20 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
     );
   }
 
-  ///? ----------------- M E T H O D S----------------///
+  // ----------------- M E T H O D S----------------///
   void _playMusicMethod({required index,required SearchSystemState state}) {
-    ///!----Initialize & Play Music ------///
+    //-Initialize & Play Music ------///
     context
         .read<MusicPlayerBloc>()
         .add(MusicPlayerInitializeEvent(url: state.filteredlist[index].url));
 
-    ///!-----Send Current Music Data-----///
+    //--Send Current Music Data-----///
     context.read<CurrentlyPlayingMusicDataToPlayerCubit>().sendDataToPlayer(
     fullMusicList: state.filteredlist,
       musicIndex: index
     );
 
-    ///!-----Show Mini Player-----///
+    //--Show Mini Player-----///
     context.read<ShowMiniPlayerCubit>().showMiniPlayer();
     context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
   }

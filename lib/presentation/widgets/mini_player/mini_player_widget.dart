@@ -69,12 +69,12 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                 child: BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, themeState) {
                     return GestureDetector(
-                      ///---------------! Mini Player On Tap
+                      //------------! Mini Player On Tap
                       onTap: () {
                         _miniPlayerOnTap(showMiniPlayerState, context);
                       },
 
-                      ///----------!
+                      //-------!
                       child: Container(
                         margin:
                             EdgeInsets.only(bottom: widget.bottomMargin ?? 0.06.sh),
@@ -103,7 +103,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                               right: widget.paddingRight ?? 0,
                               top: widget.paddingTop ?? 0),
 
-                          ///------------------?  M A I N  R O W
+                          //---------------?  M A I N  R O W
                           child: Builder(builder: (context) {
                             if (showMiniPlayerState.isYouTubeMusic == false) {
                               return Row(
@@ -111,7 +111,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  ///!--------------------  MUSIC IMAGE
+                                  //-----------------  MUSIC IMAGE
                                   if (showMiniPlayerState.isOnlineMusic)
                                     CachedNetworkImage(
                                       imageUrl: musicDataState
@@ -120,7 +120,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                           .image,
                                       imageBuilder: (context, imageProvider) =>
 
-                                          ///---- Animation
+                                          //- Animation
                                           Spin(
                                         infinite: true,
                                         duration: const Duration(seconds: 15),
@@ -140,7 +140,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                       ),
                                     ),
 
-                                  ///!--------------------  Offline Music Image
+                                  //-----------------  Offline Music Image
                                   if (showMiniPlayerState.isOnlineMusic ==
                                       false)
                                     Spin(
@@ -162,7 +162,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                     width: 0.02.sw,
                                   ),
 
-                                  ///!---------------  Music Title & Artists
+                                  //------------  Music Title & Artists
                                   Expanded(
                                     flex: 2,
                                     child: Column(
@@ -172,7 +172,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        ///---------! Online Music Title
+                                        //------! Online Music Title
                                         if (showMiniPlayerState.isOnlineMusic)
                                           Text(
                                             musicDataState
@@ -195,7 +195,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  ///---------! Offline Music Title
+                                                  //------! Offline Music Title
                                                   Text(
                                                     state.musicTitle,
                                                     maxLines: 1,
@@ -206,7 +206,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                                             FontWeight.bold),
                                                   ),
 
-                                                  ///-----! Offline Music Artists
+                                                  //--! Offline Music Artists
                                                   Text(
                                                     state.musicArtist
                                                         .toString(),
@@ -221,7 +221,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                             },
                                           ),
 
-                                        ///-----! Online Music Artists
+                                        //--! Online Music Artists
                                         if (showMiniPlayerState.isOnlineMusic)
                                           Text(
                                             musicDataState
@@ -238,8 +238,8 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                     ),
                                   ),
 
-                                  //!/////////////////////////////////////
-                                  ///---------------?   Buttons //////////
+                                  /////////////////////
+                                  //------------?   Buttons //////
                                   Flexible(
                                     child: BlocBuilder<ThemeModeCubit,
                                         ThemeModeState>(
@@ -261,7 +261,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                                           playerStateSnapshot) {
                                                         if (playerStateSnapshot
                                                             .hasData) {
-                                                          ///!---  if Music Playing is Completed shows then show stop button
+                                                          //  if Music Playing is Completed shows then show stop button
                                                           if (playerStateSnapshot
                                                                   .data!
                                                                   .processingState ==
@@ -272,9 +272,9 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                                             );
                                                           }
 
-                                                          ///!-----  If Music is not Completed
+                                                          //--  If Music is not Completed
                                                           else {
-                                                            ///!------------- If Music is Loading
+                                                            //---------- If Music is Loading
                                                             if (playerStateSnapshot
                                                                         .data!
                                                                         .processingState ==
@@ -298,7 +298,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                                               );
                                                             }
 
-                                                            ///! ---------- If music isn't loading
+                                                            /// ---------- If music isn't loading
                                                             else {
                                                               return StreamBuilder(
                                                                   stream: state
@@ -340,7 +340,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                                           }
                                                         }
 
-                                                        ///!----- If PlayerState snapshot hasn't any Data
+                                                        //-- If PlayerState snapshot hasn't any Data
                                                         else {
                                                           return CircularProgressIndicator(
                                                             color: Colors.white,
@@ -354,7 +354,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                               );
                                             }
 
-                                            ///! ------ if MusicPlayer state isn't success state
+                                            /// ------ if MusicPlayer state isn't success state
                                             else {
                                               return CircleAvatar(
                                                   backgroundColor:
@@ -378,16 +378,16 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                               );
                             }
 
-                            ///?-----------------------------------------------------------------------//
-                            ///!---------------------- If Youtube Music ----------------------------///
-                            ///----------------------------------------------------------------------///
+                            //-----------------------------------------------------------------------//
+                            //------------------- If Youtube Music ----------------------------///
+                            //-------------------------------------------------------------------///
                             else {
                               return Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 6),
                                 child: Row(
                                   children: [
-                                    ///!-------- Video Player
+                                    //----- Video Player
                                     // BlocBuilder<YoutubeMusicPlayerCubit,
                                     //     YoutubeMusicPlayerState>(
                                     //   builder: (context, ytState) {
@@ -401,7 +401,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                     //       );
                                     //     }
 
-                                        ///!-------- Thumbnail
+                                        //----- Thumbnail
                                         // else {
                                         //   return
                                             CachedNetworkImage(
@@ -415,7 +415,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                             imageBuilder:
                                                 (context, imageProvider) =>
 
-                                            ///!---- Animation
+                                            //- Animation
                                             SpinPerfect(
                                               infinite: true,
                                               duration:
@@ -456,7 +456,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                     // ),
                                     const Gap(5),
 
-                                    ///!------ Title & Artist
+                                    //--- Title & Artist
                                     Expanded(
                                       flex: 2,
                                       child: Column(
@@ -466,7 +466,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          ///---------!  Music Title
+                                          //------!  Music Title
                                           Text(
                                             musicDataState
                                                 .youtubeMusicList[
@@ -481,7 +481,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                             ),
                                           ),
 
-                                          ///-----!  Music Artists
+                                          //--!  Music Artists
                                           Text(
                                             musicDataState
                                                     .youtubeMusicList[
@@ -518,12 +518,12 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
     );
   }
 
-  ///?-------------------------------------------------------------------///
-  ///!--------------------------------   M E T H O D S -----------------///
-  ///-------------------------------------------------------------------///
+  //-------------------------------------------------------------------///
+  //-----------------------------   M E T H O D S -----------------///
+  //----------------------------------------------------------------///
   _miniPlayerOnTap(showMiniPlayerState, context) async {
     if (showMiniPlayerState.isYouTubeMusic) {
-      ///!-----Show Player Screen ----///
+      //--Show Player Screen ----///
       Navigator.push(
           context,
           MaterialPageRoute(

@@ -19,38 +19,38 @@ class FavoriteButtonBloc
     // Listen for FavoriteButtonToggleEvent and call _favoriteToggle method
     on<FavoriteButtonToggleEvent>(_favoriteToggle);
   }
-  //! Method to handle toggling favorite state
+  // Method to handle toggling favorite state
   FutureOr<void> _favoriteToggle(FavoriteButtonToggleEvent event,
       Emitter<FavoriteButtonState> emit) {
-    //! Get the current favorite list from Hive
+    // Get the current favorite list from Hive
     List<String> favoriteList = MyHive.favoriteMusicList;
 
-    //! Check if the title is already in the favorite list
+    // Check if the title is already in the favorite list
     bool isFavorite = favoriteList.contains(event.title);
 
-    //! Toggle the favorite status
+    // Toggle the favorite status
     if (isFavorite) {
-      //! If already favorite, remove it from the list
+      // If already favorite, remove it from the list
       favoriteList.remove(event.title);
-      //! Update the favorite list in Hive
+      // Update the favorite list in Hive
       MyHiveBoxes.libraryBox.put(MyHiveKeys.favoriteHiveKey, favoriteList);
-      //! Emit the new state with the updated favorite list
+      // Emit the new state with the updated favorite list
       emit(state.copyWith(favoriteList: favoriteList));
 
     } else {
-      //! If not favorite, add it to the list
+      // If not favorite, add it to the list
       favoriteList.add(event.title);
-      //! Update the favorite list in Hive
+      // Update the favorite list in Hive
       MyHiveBoxes.libraryBox.put(MyHiveKeys.favoriteHiveKey, favoriteList);
-      //! Emit the new state with the updated favorite list
+      // Emit the new state with the updated favorite list
       emit(state.copyWith(favoriteList: favoriteList));
 
     }
 
-    //! Emit the new state with the updated favorite list
+    // Emit the new state with the updated favorite list
     emit(state.copyWith(favoriteList: favoriteList));
 
-    //! Print the updated favorite list (for debugging purposes)
+    // Print the updated favorite list (for debugging purposes)
     log(favoriteList.toString());
   }
 

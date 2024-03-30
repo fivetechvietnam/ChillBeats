@@ -52,7 +52,7 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                 return BlocBuilder<NowPlayingOfflineMusicDataToPlayerCubit,
                     NowPlayingOfflineMusicDataToPlayerState>(
                   builder: (context, nowPlayingState) {
-                    ///!----- Check Music is Downloaded (Available In Local Storage ) Are Not ----------///
+                    //-- Check Music is Downloaded (Available In Local Storage ) Are Not ----------///
                     // // Check if music is already downloaded
                     // bool isDownloaded = nowPlayingState.snapshotMusicList
                     //     ?.any((e) => e.title.trim().toLowerCase().contains(currentlyPlayingMusicState
@@ -69,13 +69,13 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                     //   );
                     // }
 
-                    ///!---------- If already not Downloaded shows this
+                    //------- If already not Downloaded shows this
                     // else {
                       return
                       Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ///!-------  Download Button ------////
+                            //----  Download Button ------//
                             ZoomIn(
                               child: BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
                                   FetchCurrentPlayingMusicDataToPlayerState>(
@@ -119,14 +119,14 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
               },
             ),
 
-            ///!-----------   Downloading Status ---------------///
+            //--------   Downloading Status ---------------///
             Center(
               child: BlocBuilder<ThemeModeCubit, ThemeModeState>(
                 builder: (context, themeState) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ///!----------- Downloading Status ------/////
+                      //-------- Downloading Status ------///
 
                       BlocBuilder<DownloadMusicBloc, DownloadMusicState>(
                           builder: (context, state) {
@@ -182,7 +182,7 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                           );
                         }
 
-                        ///---- Download Music Failure State
+                        //- Download Music Failure State
                         else if (state is DownloadMusicFailureState) {
                           return Padding(
                             padding: EdgeInsets.all(12.spMax),

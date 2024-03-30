@@ -32,7 +32,7 @@ class _SplashPageState extends State<SplashPage> {
 
     _fetchMusic();
 
-    ///?---------Navigate To OnBoarding/Initial Page After Three Seconds-----////
+    //---------Navigate To OnBoarding/Initial Page After Three Seconds-----//
     goToNextPage();
   }
 
@@ -44,14 +44,14 @@ class _SplashPageState extends State<SplashPage> {
           return Stack(
             fit: StackFit.expand,
             children: [
-              ///! Logo
+              /// Logo
               Center(
                 child: state.isDarkMode
                     ? Assets.icons.darkMode.svg(fit: BoxFit.contain)
                     : Assets.icons.lightMode.svg(fit: BoxFit.contain),
               ),
 
-              ///---- App Version Info
+              //- App Version Info
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -69,14 +69,14 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 
-  ///!------------------------- M E T H O D S ------------------////
+  //---------------------- M E T H O D S ------------------//
   Future goToNextPage() async {
-    ///----!  Fetch Bool value from Hive database , to show OnBoarding Screen or not
+    //-!  Fetch Bool value from Hive database , to show OnBoarding Screen or not
     final bool onBoarding = await MyHiveBoxes.settingBox
             .get(MyHiveKeys.showOnBoardingScreenHiveKey) ??
         true;
 
-    ///!-----    Navigate To Next Screen
+    //--    Navigate To Next Screen
     Future.delayed(const Duration(seconds: 2), () {
       if (onBoarding) {
         OneContext().pushReplacement(
@@ -89,24 +89,24 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _fetchMusic() {
-    ///?-----------Fetch LOFIII Special Music ------___--------///
+    //-----------Fetch LOFIII Special Music ------___--------///
     context.read<LofiiiSpecialMusicBloc>().add(LOFIIISpecialMusicFetchEvent());
 
-    ///?-----------Fetch LOFIII Popular Music ------___--------///
+    //-----------Fetch LOFIII Popular Music ------___--------///
     context.read<LofiiiPopularMusicBloc>().add(LOFIIIPopularMusicFetchEvent());
 
-    ///?-----------Fetch LOFIII TopPicks Music ------___--------///
+    //-----------Fetch LOFIII TopPicks Music ------___--------///
     context
         .read<LofiiiTopPicksMusicBloc>()
         .add(LOFIIITopPicksMusicFetchEvent());
 
-    ///?-----------Fetch LOFIII All Music ------___--------///
+    //-----------Fetch LOFIII All Music ------___--------///
     context.read<LofiiiAllMusicBloc>().add(LOFIIIAllMusicFetchEvent());
 
-    ///?-------------Update Home Page Greeting Message -------/////
+    //-------------Update Home Page Greeting Message -------///
     context.read<GreetingCubit>().updateGreeting();
 
-    ///?--------------- Fetch Youtube Music ------------------///
+    //--------------- Fetch Youtube Music ------------------///
     context.read<YoutubeMusicCubit>().fetchMusic();
   }
 }

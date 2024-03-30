@@ -47,10 +47,10 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
             children: [
               Gap(0.05.sh),
 
-              ///!-----------------------Search Text Field --------------------------///
+              //--------------------Search Text Field --------------------------///
               Row(
                 children: [
-                  ///!----------Back Button------//
+                  //-------Back Button------//
                   IconButton(
                       onPressed: () {
                         OneContext().pop();
@@ -59,7 +59,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                         CupertinoIcons.back,
                       )),
 
-                  ///---------Field---------///
+                  //------Field---------///
                   Flexible(
                     child: Container(
                       decoration: BoxDecoration(
@@ -84,7 +84,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                         maxLines: 1,
                         enableSuggestions: true,
                         onTapOutside: (event) {
-                          ///----Hide keyboard if active
+                          //-Hide keyboard if active
                           FocusManager.instance.primaryFocus?.unfocus();
                         },
                         decoration: const InputDecoration(
@@ -100,7 +100,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
 
               Gap(0.01.sh),
 
-              ///!---------------------- Search List ----------------------------////
+              //------------------- Search List ----------------------------//
               BlocBuilder<YoutubeMusicCubit, YoutubeMusicState>(
                 builder: (context, state) {
                   if (state is YoutubeMusicSearchState) {
@@ -152,7 +152,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                         final uploadDate = snapshot
                                             .data![index].uploadDate;
 
-                                        ///---------------------- Item Box -----------------------///
+                                        //------------------- Item Box -----------------------///
                                         return GestureDetector(
                                           onTap: () {
                                             _playMusic(
@@ -176,7 +176,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                     CrossAxisAlignment
                                                         .center,
                                                 children: [
-                                                  ///!------------Thumbnail ----------------///
+                                                  //---------Thumbnail ----------------///
                                                   Container(
                                                     height: 0.24.sh,
                                                     width: 0.94.sw,
@@ -206,7 +206,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                         .symmetric(
                                                             vertical: 5.sp),
 
-                                                    //!------------------------- Video Duration
+                                                    //------------------------- Video Duration
                                                     child: Stack(
                                                       children: [
                                                         Padding(
@@ -239,7 +239,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                     ),
                                                   ),
 
-                                                  ///!---------------- Video Title & Channel Name & Views ---------------------------///
+                                                  //------------- Video Title & Channel Name & Views ---------------------------///
                                                   Container(
                                                     width: 0.94.sw,
                                                     padding: EdgeInsets
@@ -261,7 +261,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        ///!------- Video Title
+                                                        //---- Video Title
                                                         Text(
                                                           videoTitle,
                                                           style: const TextStyle(
@@ -269,7 +269,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                                   "Poppins"),
                                                         ),
 
-                                                        ///!------ Channel Name
+                                                        //--- Channel Name
                                                         Container(
                                                           margin: EdgeInsets
                                                               .only(
@@ -310,7 +310,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                     ),
                                                   ),
 
-                                                  ///!----- Video Views & upload date
+                                                  //-- Video Views & upload date
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets
@@ -320,7 +320,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                           MainAxisAlignment
                                                               .spaceBetween,
                                                       children: [
-                                                        ///!---Date
+                                                        //Date
                                                         Text(
                                                           uploadDate ?? "",
                                                           overflow:
@@ -333,7 +333,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                                   10.sp),
                                                         ),
 
-                                                        ///!--- Views
+                                                        // Views
                                                         Text(
                                                           videoViews ?? "",
                                                           overflow:
@@ -390,8 +390,8 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
             ],
           ),
 
-          ///!------------  Mini Player --------------///
-          ///--------Show Mini Player First whenever music card is clicked
+          //---------  Mini Player --------------///
+          //-----Show Mini Player First whenever music card is clicked
           BlocBuilder<ShowMiniPlayerCubit, ShowMiniPlayerState>(
             builder: (context, state) {
               return Visibility(
@@ -421,25 +421,25 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
       }) async {
 
 
-    ///!------- Initialize Player
+    //---- Initialize Player
     OneContext()
         .context!
         .read<YoutubeMusicPlayerCubit>()
         .initializePlayer(videoId: videoId);
 
-    ///!-----Show Player Screen ----///
+    //--Show Player Screen ----///
     OneContext()
         .push(MaterialPageRoute(
       builder: (context) =>   YouTubeMusicPlayerPage(),
     ));
 
-    ///!-----Send Current Music Data-----///
+    //--Send Current Music Data-----///
     OneContext()
         .context!
         .read<CurrentlyPlayingMusicDataToPlayerCubit>()
         .sendYouTubeDataToPlayer(youtubeList: videosList, musicIndex: index);
 
-    ///!-----Show Mini Player-----///
+    //--Show Mini Player-----///
     context.read<ShowMiniPlayerCubit>().showMiniPlayer();
     context.read<ShowMiniPlayerCubit>().youtubeMusicIsPlaying();
   }

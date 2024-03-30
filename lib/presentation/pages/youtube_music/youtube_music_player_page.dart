@@ -67,31 +67,31 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                   backgroundColor: Colors.black,
                   extendBodyBehindAppBar: true,
 
-                  ///!---------------------------- body
+                  //------------------------- body
                   body: Stack(
                     fit: StackFit.expand,
                     children: [
-                      ///?--------------------------------------  Player
+                      //--------------------------------------  Player
                       GestureDetector(
-                        ///!-------- Show Player Buttons
+                        //----- Show Player Buttons
                         onTap: () async {
                           context
                               .read<YoutubeMusicPlayerCubit>()
                               .showPlayerButtonsToggle(state: playerState);
                         },
 
-                        ///!-----------    Play Pause Toggle
+                        //--------    Play Pause Toggle
                         onDoubleTap: () {
                           playerState.controller.togglePlayPause();
                         },
 
                         onVerticalDragUpdate: (details) {
-                          ///!----------  Change System Volume
+                          //-------  Change System Volume
                           _changeVolume(details);
                         },
 
                         onHorizontalDragUpdate: (details) async {
-                          ///!-------------  Change Video Position
+                          //----------  Change Video Position
                           _changeVideoPosition(context, details, playerState);
                         },
                         child: Container(
@@ -99,15 +99,15 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                           width: 1.sw,
                           color: Colors.black,
 
-                          ///?-------------------------------------------------------////
-                          ////!--------------------------  Player --------------------///
-                          ///?-------------------------------------------------------////
+                          //-------------------------------------------------------//
+                          ///-----------------------  Player --------------------///
+                          //-------------------------------------------------------//
                           child: const MyYouTubeVideoPlayerWidget(
                           ),
                         ),
                       ),
 
-                      ///!---------------------  Back Button
+                      //------------------  Back Button
                       Visibility(
                         visible: playerState.showPlayerButtons,
                         child: Positioned(
@@ -136,7 +136,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                         ),
                       ),
 
-                      ///!------------------------------- Device Orientation
+                      //---------------------------- Device Orientation
                       Visibility(
                         visible: playerState.showPlayerButtons,
                         child: Positioned(
@@ -156,7 +156,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                         ),
                       ),
 
-                      ///!------------------------------- Floating
+                      //---------------------------- Floating
                       Visibility(
                         visible: playerState.showPlayerButtons,
                         child: Positioned(
@@ -176,7 +176,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                         ),
                       ),
 
-                      ///?-------------- Show Current Video Position on Horizontal Dragging Only
+                      //-------------- Show Current Video Position on Horizontal Dragging Only
                       Visibility(
                         visible: playerState.showVideoPositionOnHDragging,
                         child: Positioned(
@@ -198,12 +198,12 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                         ),
                       ),
 
-                      ///!----------------------------- Player Buttons ----------------------------//
+                      //-------------------------- Player Buttons ----------------------------//
 
                       _potraitPlayerButtons(playerState, playerState.controller,
                           orientation, context),
 
-                      ///!---------------------------- Landscape Player Buttons ---------------
+                      //------------------------- Landscape Player Buttons ---------------
                       _landscapePlayerButtons(playerState, landscape, context),
                     ],
                   ),
@@ -220,12 +220,12 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
     });
   }
 
-  ///?-----------------------------------------------------------------------------//
-  ///!--------------------------- M E T H O D S ----------------------------------///
-  ///--------------------------------------------------------------------------///
+  //-----------------------------------------------------------------------------//
+  //------------------------ M E T H O D S ----------------------------------///
+  //-----------------------------------------------------------------------///
 
-  ///?--------------------------for P O T R A I T -------------------------------///
-  ///!---------------------- Player Buttons Method -------------------------------///
+  //--------------------------for P O T R A I T -------------------------------///
+  //------------------- Player Buttons Method -------------------------------///
   Positioned _potraitPlayerButtons(YoutubeMusicPlayerSuccessState playerState,
       PodPlayerController controller, orientation, context) {
     return Positioned(
@@ -238,7 +238,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
           duration: const Duration(milliseconds: 100),
           child: Column(
             children: [
-              ///!---------- Slider -----------//
+              //------- Slider -----------//
               SliderTheme(
                 data: _sliderThemeData(),
                 child: Slider(
@@ -253,13 +253,13 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                 ),
               ),
 
-              ///!--------------- Video Position Text & Duration Text
+              //------------ Video Position Text & Duration Text
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.sp),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ///!------------ Position
+                    //--------- Position
                     Text(
                       FormatDuration.format(Duration(
                               seconds: watchSignal(context, videoPosition)))
@@ -267,7 +267,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                       style: const TextStyle(color: Colors.white),
                     ),
 
-                    ///!---------Duration
+                    //------Duration
                     Text(
                       FormatDuration.format(Duration(
                               seconds:
@@ -279,11 +279,11 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                 ),
               ),
 
-              ///!------------------------------------ Buttons ---------------------//
+              //--------------------------------- Buttons ---------------------//
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ///!--------------Previous Music Button
+                  //-----------Previous Music Button
                   BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
                       FetchCurrentPlayingMusicDataToPlayerState>(
                     builder: (context, fetchState) {
@@ -304,7 +304,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                     },
                   ),
 
-                  ///!------------- Backward Button ---------///
+                  //---------- Backward Button ---------///
                   IconButton(
                     onPressed: () {
                       playerState.controller
@@ -317,11 +317,11 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                     ),
                   ),
 
-                  ///!------------------- Play Pause Button -----------///
+                  //---------------- Play Pause Button -----------///
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      ///!---------If Loading
+                      //------If Loading
                       if (watchSignal(context, videoIsBuffering))
                         CircularProgressIndicator(
                           strokeWidth: 10.sp,
@@ -343,7 +343,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                     ],
                   ),
 
-                  ///!------------- Forward Button ---------///
+                  //---------- Forward Button ---------///
                   IconButton(
                     onPressed: () {
                       playerState.controller
@@ -356,7 +356,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                     ),
                   ),
 
-                  ///!--------------Next Music Button
+                  //-----------Next Music Button
                   BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
                       FetchCurrentPlayingMusicDataToPlayerState>(
                     builder: (context, fetchState) {
@@ -387,8 +387,8 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
     );
   }
 
-  ///?--------------------------for L A N D S C A P E -------------------------------///
-  ///!---------------------- Player Buttons Method -------------------------------///
+  //--------------------------for L A N D S C A P E -------------------------------///
+  //------------------- Player Buttons Method -------------------------------///
   Visibility _landscapePlayerButtons(YoutubeMusicPlayerSuccessState playerState,
       bool landscape, BuildContext context) {
     return Visibility(
@@ -398,11 +398,11 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
           Center(
             child:
 
-                ///!------------------------------------ Buttons ---------------------//
+                //--------------------------------- Buttons ---------------------//
                 Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ///!------------- Backward Button ---------///
+                //---------- Backward Button ---------///
                 IconButton(
                   onPressed: () {
                     playerState.controller
@@ -416,11 +416,11 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                 ),
                 Gap(0.02.sw),
 
-                ///!------------------- Play Pause Button -----------///
+                //---------------- Play Pause Button -----------///
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    ///!---------If Loading
+                    //------If Loading
                     if (watchSignal(context, videoIsBuffering))
                       CircularProgressIndicator(
                         strokeWidth: 7.sp,
@@ -444,7 +444,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
 
                 Gap(0.02.sw),
 
-                ///!------------- Forward Button ---------///
+                //---------- Forward Button ---------///
                 IconButton(
                   onPressed: () {
                     playerState.controller
@@ -471,7 +471,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ///!---------- Slider -----------//
+                    //------- Slider -----------//
                     SliderTheme(
                       data: _sliderThemeData(),
                       child: Slider(
@@ -486,13 +486,13 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                       ),
                     ),
 
-                    ///!--------------- Video Position Text & Duration Text
+                    //------------ Video Position Text & Duration Text
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10.sp),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ///!------------ Position
+                          //--------- Position
                           Text(
                             FormatDuration.format(Duration(
                                     seconds:
@@ -501,7 +501,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                             style: const TextStyle(color: Colors.white),
                           ),
 
-                          ///!---------Duration
+                          //------Duration
                           Text(
                             FormatDuration.format(Duration(
                                     seconds: watchSignal(
@@ -522,8 +522,8 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
     );
   }
 
-  ///?--------------------------Floating Button On Tap-------------------------------///
-  ///-------------------------------------- ---------------------------------------///
+  //--------------------------Floating Button On Tap-------------------------------///
+  //----------------------------------- ---------------------------------------///
   Future<void> _floatingButtonOnTap(
       YoutubeMusicPlayerSuccessState playerState) async {
     final canUsePiP = await floating.isPipAvailable;
@@ -537,15 +537,15 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
     }
   }
 
-  ///?--------------------------Orientation Button On Tap-------------------------------///
-  ///-------------------------------------- ---------------------------------------///
+  //--------------------------Orientation Button On Tap-------------------------------///
+  //----------------------------------- ---------------------------------------///
   Future<void> _orientationButtonOnTap(Orientation orientation) async {
     if (orientation == Orientation.portrait) {
-      ///----- Set Device Orientation to Landscape Mode
+      //-- Set Device Orientation to Landscape Mode
       await SystemChrome.setPreferredOrientations(
           [DeviceOrientation.landscapeRight]);
 
-      ///----- Hide Status Bar Values
+      //-- Hide Status Bar Values
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     } else {
       await SystemChrome.setPreferredOrientations(
@@ -556,8 +556,8 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
     }
   }
 
-  ///?--------------------------Change Volume -------------------------------///
-  ///-------------------------------------- ---------------------------------------///
+  //--------------------------Change Volume -------------------------------///
+  //----------------------------------- ---------------------------------------///
   void _changeVolume(DragUpdateDetails details) {
     OneContext()
         .context!
@@ -565,8 +565,8 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
         .change(details: details, context: OneContext().context!);
   }
 
-  ///?-------------------------- Change Video Position On Horizontal Dragging-------------------------------///
-  ///-------------------------------------- ---------------------------------------///
+  //-------------------------- Change Video Position On Horizontal Dragging-------------------------------///
+  //----------------------------------- ---------------------------------------///
   void _changeVideoPosition(BuildContext context, DragUpdateDetails details,
       YoutubeMusicPlayerSuccessState playerState) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -587,8 +587,8 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
         .showCurrentPositionOnHorizontalDragging(state: playerState);
   }
 
-  ///?--------------------------Next Music Button On Tap-------------------------------///
-  ///-------------------------------------- ---------------------------------------///
+  //--------------------------Next Music Button On Tap-------------------------------///
+  //----------------------------------- ---------------------------------------///
   void nextMusicButtonClicked(
       FetchCurrentPlayingMusicDataToPlayerState fetchState,
       PodPlayerController controller,
@@ -621,8 +621,8 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
     }
   }
 
-  ///?--------------------------Previous Button On Tap-------------------------------///
-  ///-------------------------------------- ---------------------------------------///
+  //--------------------------Previous Button On Tap-------------------------------///
+  //----------------------------------- ---------------------------------------///
   void backwardButtonClicked(
       FetchCurrentPlayingMusicDataToPlayerState fetchState,
       PodPlayerController controller,
@@ -649,7 +649,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
     }
   }
 
-  ///!-------------------  Slider Theme
+  //----------------  Slider Theme
   SliderThemeData _sliderThemeData() {
     return SliderThemeData(
         activeTickMarkColor: Colors.white,

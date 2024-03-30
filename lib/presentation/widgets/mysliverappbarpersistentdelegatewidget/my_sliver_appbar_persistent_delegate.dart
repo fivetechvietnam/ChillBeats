@@ -23,7 +23,7 @@ class MySliverAppBarPersistentDelegate extends SliverPersistentHeaderDelegate {
           decoration: BoxDecoration(
             color: Color(state.accentColor),
 
-            ///!---------------------      Artist Image
+            //------------------      Artist Image
             image: DecorationImage(
                 image: CachedNetworkImageProvider(imageUrl),
                 fit: BoxFit.cover),
@@ -31,7 +31,7 @@ class MySliverAppBarPersistentDelegate extends SliverPersistentHeaderDelegate {
           child: Stack(
             children: [
 
-              ///-----------!            Artist Name
+              //--------!            Artist Name
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(

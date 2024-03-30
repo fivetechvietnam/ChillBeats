@@ -10,7 +10,7 @@ import '../../../logic/cubit/youtube_music/youtube_music_cubit.dart';
 import 'package:chillbeats/generated/assets.gen.dart';
 import '../../pages/youtube_music/youtube_favorite_playlist_page.dart';
 
-///!-------------- Youtube Favorite Playlist --------------//
+//----------- Youtube Favorite Playlist --------------//
 class YoutubeFavoritePlaylistWidget extends StatelessWidget {
   const YoutubeFavoritePlaylistWidget({
     super.key,
@@ -51,7 +51,7 @@ class YoutubeFavoritePlaylistWidget extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //!------------------- Music thumbnail section
+                    //------------------- Music thumbnail section
                     Stack(
                       children: [
                         CachedNetworkImage(
@@ -194,7 +194,7 @@ class YoutubeFavoritePlaylistWidget extends StatelessWidget {
   }
 }
 
-////!-------------------------------------- Favorite List Thumbnail and Title ------------------------///
+///----------------------------------- Favorite List Thumbnail and Title ------------------------///
 List<_FavoritePlayList> _favoritePlaylists = [
   _FavoritePlayList("Bollywood Lofi",
       "https://images.pexels.com/photos/2204724/pexels-photo-2204724.jpeg?auto=compress&cs=tinysrgb&w=800"),
