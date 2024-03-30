@@ -7,5 +7,9 @@ abstract class  LocaleKeys {
   static const app_company = 'app.company';
   static const app_email = 'app.email';
   static const app = 'app';
+  static const good_morning = 'good_morning';
+  static const good_afternoon = 'good_afternoon';
+  static const good_evening = 'good_evening';
+  static const good_neight = 'good_neight';
 
 }
