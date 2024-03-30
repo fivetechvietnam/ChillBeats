@@ -1,3 +1,5 @@
+import 'package:chillbeats/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,7 +39,7 @@ class LibraryPage extends StatelessWidget {
                 builder: (context, state) {
                   // Heading with View More Button Widget
                   return HeadingWithViewMoreButton(
-                    heading: "My Favorite ❤️",
+                    heading: LocaleKeys.my_favorite.tr(),
                     viewMoreOnTap: () {
                       if (state is LofiiiAllMusicSuccessState) {
                         // Filter the favorite list
@@ -49,7 +51,7 @@ class LibraryPage extends StatelessWidget {
                         OneContext().push(
                           MaterialPageRoute(
                             builder: (context) => ViewMorePage(
-                              topHeading: "My Favorite ❤️",
+                              topHeading: LocaleKeys.my_favorite.tr(),
                               musicList: favoriteList,
                             ),
                           ),
@@ -89,8 +91,10 @@ class LibraryPage extends StatelessWidget {
                         child: SizedBox(
                           height: 0.30.sh,
                           width: double.infinity,
-                          child: const Center(
-                            child: Text("No Favorite Items available"),
+                          child: Center(
+                            child: Text(
+                              LocaleKeys.no_favorite_items_available.tr(),
+                            ),
                           ),
                         ),
                       );
@@ -102,7 +106,8 @@ class LibraryPage extends StatelessWidget {
                       child: SizedBox(
                         height: 0.30.sh,
                         child: Center(
-                          child: Lottie.asset(Assets.jsons.lottieLoadingAnimation,
+                          child: Lottie.asset(
+                              Assets.jsons.lottieLoadingAnimation,
                               width: 0.2.sw),
                         ),
                       ),

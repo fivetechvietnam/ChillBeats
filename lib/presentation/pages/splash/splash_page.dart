@@ -46,9 +46,7 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               /// Logo
               Center(
-                child: state.isDarkMode
-                    ? Assets.icons.darkMode.svg(fit: BoxFit.contain)
-                    : Assets.icons.lightMode.svg(fit: BoxFit.contain),
+                child: Assets.icons.logo.svg(fit: BoxFit.contain)
               ),
 
               //- App Version Info
@@ -83,7 +81,7 @@ class _SplashPageState extends State<SplashPage> {
             MaterialPageRoute(builder: (context) => const OnBoardingPage()));
       } else {
         OneContext().pushReplacement(
-            MaterialPageRoute(builder: (context) => InitialPage()));
+            MaterialPageRoute(builder: (context) => const InitialPage()));
       }
     });
   }

@@ -17,5 +17,12 @@ abstract class  LocaleKeys {
   static const lofi_top_picks = 'lofi_top_picks';
   static const lofi_vibes = 'lofi_vibes';
   static const lofitube = 'lofitube';
+  static const trending_music = 'trending_music';
+  static const lofi_playlists = 'lofi_playlists';
+  static const my_favorite = 'my_favorite';
+  static const no_favorite_items_available = 'no_favorite_items_available';
+  static const no_music_found = 'no_music_found';
+  static const no_music_available = 'no_music_available';
+  static const local_music = 'local_music';
 
 }

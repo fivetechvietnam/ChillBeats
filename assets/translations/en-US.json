@@ -15,5 +15,12 @@
   "lofi_popular": "LoFi Popular",
   "lofi_top_picks": "LoFi TopPicks",
   "lofi_vibes": "LoFi Vibes",
-  "lofitube": "LoFiTube"
+  "lofitube": "LoFiTube",
+  "trending_music": "Trending Music",
+  "lofi_playlists": "Lo-Fi Playlists",
+  "my_favorite": "My Favorite",
+  "no_favorite_items_available": "No Favorite Items available",
+  "no_music_found": "No Music Found!",
+  "no_music_available": "No Music Available",
+  "local_music": "Local  Music"
 }

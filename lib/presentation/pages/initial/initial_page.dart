@@ -58,7 +58,7 @@ class _InitialPageState extends State<InitialPage> {
             MyCustomSnackbars.showErrorSnackbar(context,
                 message: "Please make sure your internet connection is on !");
           }
-          // TODO: implement listener
+          
         },
         child:
         BlocBuilder<BottomNavigationIndexCubit, BottomNavigationIndexState>(

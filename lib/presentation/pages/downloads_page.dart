@@ -1,4 +1,6 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:chillbeats/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +48,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
         bottomOpacity: 0,
         elevation: 0,
         title: Text(
-          "L o c a l  M u s i c",
+          LocaleKeys.local_music.tr(),
           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.sp),
         ),
       ),
@@ -64,7 +66,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
           return BlocConsumer<FetchMusicFromLocalStorageBloc,
               FetchMusicFromLocalStorageState>(
             listener: (context, state) {
-              // TODO: implement listener
+              
             },
             builder: (context, state) {
               if (state is FetchMusicFromLocalStorageSuccessState) {
@@ -187,8 +189,8 @@ class _DownloadsPageState extends State<DownloadsPage> {
                           ),
                         );
                       } else {
-                        return const Center(
-                          child: Text("No Music Found!"),
+                        return Center(
+                          child: Text(LocaleKeys.no_music_found.tr()),
                         );
                       }
                     });
@@ -203,8 +205,8 @@ class _DownloadsPageState extends State<DownloadsPage> {
                   child: Text(state.failureMessage),
                 );
               } else {
-                return const Center(
-                  child: Text("No Music Available"),
+                return Center(
+                  child: Text(LocaleKeys.no_music_available.tr()),
                 );
               }
             },

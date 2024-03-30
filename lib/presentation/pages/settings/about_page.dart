@@ -37,9 +37,7 @@ class AboutPage extends StatelessWidget {
             builder: (context, state) {
               return SlideInDown(
                 child: Center(
-                  child: (state.isDarkMode
-                      ? Assets.icons.darkMode.svg(height: 0.3.sh)
-                      : Assets.icons.lightMode.svg(height: 0.3.sh)),
+                  child: Assets.icons.logo.svg(height: 0.3.sh),
                 ),
               );
             },

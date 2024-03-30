@@ -54,7 +54,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           //-----  LOFIII  Logo
           Opacity(
             opacity: 0.2,
-            child: Assets.icons.darkMode.svg(
+            child: Assets.icons.logo.svg(
               height: 1.sh,
             ),
           ),
