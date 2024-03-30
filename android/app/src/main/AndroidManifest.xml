@@ -17,7 +17,7 @@
 
 
     <application
-        android:label="ChillBeats"
+        android:label="Chill Lofi Beats"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

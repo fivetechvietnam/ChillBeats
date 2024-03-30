@@ -1,0 +1,59 @@
+[
+    {
+      "id": 1,
+      "title": "Lovely",
+      "artists": ["Fasetya", "Shalom Margaret", "Billie Eilish"],
+      "url": "https://drive.google.com/uc?id=1qUejGxZ8SR8kiLbGU4XYV6_3Z5h_B5HA",
+      "image": "https://drive.google.com/uc?id=1qZv5pE69kuzIfCLpzGWesn5VaIqAZ2vp"
+    },
+    {
+      "id": 2,
+      "title": "Dandelions",
+      "artists": ["Fasetya", "Ruth B."],
+      "url": "https://drive.google.com/uc?id=1qZCY-tur2-tV3880kbQIjkWS4kQqFiZU",
+      "image": "https://drive.google.com/uc?id=1q_lwAbhXuRcw74FGvCMLqwLX-Zi4iOTn"
+    },
+    {
+      "id": 3,
+      "title": "Someone You Loved",
+      "artists": ["Fasetya", "Shalom Margaret"],
+      "url": "https://drive.google.com/uc?id=1qd0RKvPgIBfHNfrs2j53zqnQdaDYt079",
+      "image": "https://drive.google.com/uc?id=1qdfaWlk4i7qbrlGX9Ual7uGLSxWsS5CC"
+    },
+    {
+      "id": 4,
+      "title": "Ocean Eyes",
+      "artists": ["Billie Eilish"],
+      "url": "https://drive.google.com/uc?id=1rSPKmk_RKEl4fu3LmTQyuL_Jl4LsvxI7",
+      "image": "https://drive.google.com/uc?id=1rOOZTokZS-BMEVBuSvf0o2QYyTpjeTM5"
+    },
+  
+    {
+      "id": 5,
+      "title": "Ya Leil Ya Leili",
+      "artists": ["Sherine"],
+      "url": "https://drive.google.com/uc?id=1rCfxX4Bm5vlWmQ_ILvyq9ypCdwKBq0Oh",
+      "image": "https://drive.google.com/uc?id=1r9zotjZw2-a3x2yL1IG5aKLGRlU5MytH"
+    },
+    {
+      "id": 6,
+      "title": "Dusk Till Dawn",
+      "artists": ["Zayn", "Sia"],
+      "url": "https://drive.google.com/uc?id=1r3glyV_rjXpnxFw2nDZn-G8O94JtHoXD",
+      "image": "https://drive.google.com/uc?id=1qvZecoZWUYpcKBEveZxU7QIO9IJKtWil"
+    },
+    {
+      "id": 7,
+      "title": "Get You The Moon",
+      "artists": ["Fasetya", "Vict Molina"],
+      "url": "https://drive.google.com/uc?id=1qmCrvNelR9TMFcDab5J6s28ndf6lbfZc",
+      "image": "https://drive.google.com/uc?id=1quWSOpumt9Y32OdCSyqkpEyryX2rVh5l"
+    },
+    {
+      "id": 8,
+      "title": "Oceans",
+      "artists": ["Fasetya", "Shalom Margaret"],
+      "url": "https://drive.google.com/uc?id=1qvJmRyBvSijnWDJ-WI8Zzd6UhdxcJZko",
+      "image": "https://drive.google.com/uc?id=1qssp28bm-w_6Qxjdd-BQpCFKbt3zc-O9"
+    }
+  ]

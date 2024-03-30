@@ -1,0 +1,171 @@
+[
+    {
+        "id": 1,
+        "title": "Pasoori",
+        "artists": [
+            "Lofi Man",
+            "Ali Sethi",
+            "Shae Gill"
+        ],
+        "url": "https://drive.google.com/uc?id=1QAVskYUrY6Pkv_qiPBz9MGtHkXaPpReX",
+        "image": "https://drive.google.com/uc?id=1P_SbyFs-BDXS0uyAr4e-MKx5-MfXF7uY"
+    },
+    {
+        "id": 2,
+        "title": "Koi Si",
+        "artists": [
+            "Afsana Khan",
+            "Nirmaan"
+        ],
+        "url": "https://drive.google.com/uc?id=1QK_8s07m7MdLxgSztIwTN7AoReb9HezL",
+        "image": "https://drive.google.com/uc?id=1P_v4OxUs5NKdxPQBCr_UOGOZfWFTWlJL"
+    },
+    {
+        "id": 3,
+        "title": "O Maahi",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1QODzhPzWhMXb8F_fDQjGB1yWkWXNBrRU",
+        "image": "https://drive.google.com/uc?id=1PcpMy_TO6BldYZ8omrZ8zvAFIzLgnPAm"
+    },
+    {
+        "id": 4,
+        "title": "Chaleya",
+        "artists": [
+            "Arijit Singh",
+            "Shilpa Rao"
+        ],
+        "url": "https://drive.google.com/uc?id=1QMbq5d6vDU2ZhXwgpGciVLB5e_axIZpr",
+        "image": "https://drive.google.com/uc?id=1PfIXX_XtvLWNn6z8Dqdh-xHsaGOKwODJ"
+    },
+    {
+        "id": 5,
+        "title": "Kahani Suno",
+        "artists": [
+            "Kaifi Khalil",
+            "eternal"
+        ],
+        "url": "https://drive.google.com/uc?id=1QNQ0CDw2BCE9uqRozvlxjZTeb1IGmi-J",
+        "image": "https://drive.google.com/uc?id=1Pn5ph4WZC21jnjiQ5Gg4FRn5ux3lcH7f"
+    },
+    {
+        "id": 6,
+        "title": "Salamat Rahe",
+        "artists": [
+            "Arijit Singh",
+            "Tulsi Kumar",
+            "Magikwood"
+        ],
+        "url": "https://drive.google.com/uc?id=1QuHHeem9-tnLGxf_hLVmSSGeph2i3OT-",
+        "image": "https://drive.google.com/uc?id=1RNB5MvkkfYNpoOH4bMRbgxziFIA0MX62"
+    },
+    {
+        "id": 7,
+        "title": "Tere Hawale",
+        "artists": [
+            "Arijit Singh",
+            "Shilpa Rao"
+        ],
+        "url": "https://drive.google.com/uc?id=1QSiL3EpDYc74Uwbz7mSGt2pD8xMRi9gO",
+        "image": "https://drive.google.com/uc?id=1PpDP4x-oj08Ag_4VGGXbYivXB1riL8Fp"
+    },
+    {
+        "id": 8,
+        "title": "Enna Sona",
+        "artists": [
+            "Lofi Man",
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1QQ59DJod0raHGggCxkV_8YeULWa0gnGI",
+        "image": "https://drive.google.com/uc?id=1PuM-9jBf_V0DkwoTiR863ZJwVCtHi7Hd"
+    },
+    {
+        "id": 9,
+        "title": "Awara Shaam Hai",
+        "artists": [
+            "Piyush Mehroliyaa"
+        ],
+        "url": "https://drive.google.com/uc?id=1Ru1oB7ejm7zsbOy_WOwigZcAjgC-eRak",
+        "image": "https://drive.google.com/uc?id=1PyEkk-dKlhG8qx-XCAztfdXArpUFHiHB"
+    },
+    {
+        "id": 10,
+        "title": "Waalian",
+        "artists": [
+            "Gifty",
+            "Harnoor",
+            "Gravero"
+        ],
+        "url": "https://drive.google.com/uc?id=1Q_50486gAsD2B3LxCoVbLNqD5Gt1Y25A",
+        "image": "https://drive.google.com/uc?id=1PywersibaOr693lj52ieE28_5qEMFBYw"
+    },
+    {
+        "id": 11,
+        "title": "Husn",
+        "artists": [
+            "Anuv Jain",
+            "Aftermorning"
+        ],
+        "url": "https://drive.google.com/uc?id=1RuElL0PMM4P5RhW8EMY1yt_kcNwsIKdx",
+        "image": "https://drive.google.com/uc?id=1RucFItGEq0VkiLi-Zu_F0K4-mOIwF20g"
+    },
+    {
+        "id": 12,
+        "title": "Vaaste",
+        "artists": [
+            "Dhivani Bhanushali",
+            "Melomaniac"
+        ],
+        "url": "https://drive.google.com/uc?id=1Qbj4sLCZoF0D_N0wMsoFYNKPvlyX1LlP",
+        "image": "https://drive.google.com/uc?id=1RGwe41946HRSTNnMY1v94WFMaccHO5NC"
+    },
+    {
+        "id": 13,
+        "title": "Tum Ho",
+        "artists": [
+            "eternal"
+        ],
+        "url": "https://drive.google.com/uc?id=1QNrPcp-tVSAISFGXpmI55hW35luf6X3f",
+        "image": "https://drive.google.com/uc?id=1RCnjMWas9dkfRPWliB5aCEco0JMDwDrc"
+    },
+    {
+        "id": 14,
+        "title": "Soch Na Sake",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1QaLGD8EFM49O0dCXI2zwipITiRhAhq47",
+        "image": "https://drive.google.com/uc?id=1RZWE4s_cj-RQ2o8FLnL6dqR0wJ_rWRrI"
+    },
+    {
+        "id": 15,
+        "title": "Kesariya",
+        "artists": [
+            "Arijit Singh",
+            "Happy Pills"
+        ],
+        "url": "https://drive.google.com/uc?id=1QGVOLwH2bzBpJiffCuY88yOUlCn50cPB",
+        "image": "https://drive.google.com/uc?id=1RPSbLTKABJIRcey9ta6Fdxts_afcXJoS"
+    },
+    {
+        "id": 16,
+        "title": "Humnava Mere",
+        "artists": [
+            "Jubin Nautiyal"
+        ],
+        "url": "https://drive.google.com/uc?id=1QmJi0fxsiiCl0fNBB2Fp-Y8C3JwSrbgB",
+        "image": "https://drive.google.com/uc?id=1RQmWGfQfXbytf2anGhUEc2Ub1Gg4zdB2"
+    },
+    {
+        "id": 17,
+        "title": "Maan Meri Jaan",
+        "artists": [
+            "King",
+            "Happy Pills"
+        ],
+        "url": "https://drive.google.com/uc?id=1QvtEg7kN46Gl7xcngK19qFPrnnvtEB7l",
+        "image": "https://drive.google.com/uc?id=1RUeeloPxabiqCdSd0Hx0n4VzoD3c7uOP"
+    }
+]
+ 

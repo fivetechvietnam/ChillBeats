@@ -1,0 +1,160 @@
+[
+   
+    {
+        "id": 0,
+        "title": "Chahun Main Ya Naa",
+        "artists": [
+            "Arijit Singh",
+            "Furqan Uddin"
+        ],
+        "url": "https://drive.google.com/uc?id=1O54Vo7L9eSabBcaQv0DprdYwVCvPfOlA",
+        "image": "https://drive.google.com/uc?id=1NAtcAtkqupYbWyoTDuCISVzP7IJAsku1"
+    },
+
+    {
+        "id": 1,
+        "title": "Fitoor",
+        "artists": [
+            "Arijit Singh",
+            "Furqan Uddin"
+        ],
+        "url": "https://drive.google.com/uc?id=1O4S2z9QUrcQbOM02g2E56uteR2vxy8bW",
+        "image": "https://drive.google.com/uc?id=1MyjBRxKP7kn1BvUADleI8M-Ct7NO-6LF"
+    },
+    {
+        "id": 2,
+        "title": "Dil Meri Na Sune",
+        "artists": [
+            "Atif Aslam"
+        ],
+        "url": "https://drive.google.com/uc?id=1NRH5eqYIToy-MOiDPvnvM0W7siD4RSg8",
+        "image": "https://drive.google.com/uc?id=1MjAiSoPkBUQ7ainCu2DHAnLREy_bF9Dv"
+    },
+
+    {
+        "id": 3,
+        "title": "Jaan Nisaar",
+        "artists": [
+            "L3AD"
+        ],
+        "url": "https://drive.google.com/uc?id=1NOaJUX9o5iBTlyvYYi8MaMi6n--pGXg0",
+        "image": "https://drive.google.com/uc?id=1MiNxIKTWFUy54VVNYMK9_CkIzn8zMtLm"
+    },
+
+    {
+        "id": 4,
+        "title": "Mere Mehboob Qayamat Hogi",
+        "artists": [
+            "Furqan Uddin"
+        ],
+        "url": "https://drive.google.com/uc?id=1OEDxY0vSakZnBepS12GLc8GGbor3n2Ue",
+        "image": "https://drive.google.com/uc?id=1NK5VGbjy_V0szxojY0qgPiBnm31yZQii"
+    },
+    {
+        "id": 5,
+        "title": "Main Rang Sharbaton Ka",
+        "artists": [
+            "Atif Aslam",
+            "Furqan Uddin"
+        ],
+        "url": "https://drive.google.com/uc?id=1OANymIgmRipX6uIjSGYdZoJ9bLycXqA0",
+        "image": "https://drive.google.com/uc?id=1NDWsGM67dm42GN8-k0ZuEXR1lIdMEzff"
+    },
+    {
+        "id": 6,
+        "title": "Saiyaara",
+        "artists": [
+            "Mohit Chauhun",
+            "Taraannum Malik"
+        ],
+        "url": "https://drive.google.com/uc?id=1NXvLq2TDVgonjSEIkybGa9PjiGyp85Ng",
+        "image": "https://drive.google.com/uc?id=1Mm8gGiPm8QgbVJGZKUE-v_adhJkNSVrQ"
+    },
+    {
+        "id": 7,
+        "title": "Tera Hone Laga Hoon",
+        "artists": [
+            "Atif Aslam",
+            "Alisha Chinai"
+        ],
+        "url": "https://drive.google.com/uc?id=1NmYVhhWKlcNqmsTSs4McprdeLuX65k4L",
+        "image": "https://drive.google.com/uc?id=1MnKJOGzftxgov_04FADwxIZ6rTs6INry"
+    },
+    {
+        "id": 8,
+        "title": "Agar Tum Mil Jao",
+        "artists": [
+            "GEN-Z Grooves"
+        ],
+        "url": "https://drive.google.com/uc?id=1NOQxcnB1ArrcYs5c75H5Zknkeu6Dg2Tj",
+        "image": "https://drive.google.com/uc?id=1M_eHJlObthNGTN6PP76tZva4CsssuE9e"
+    },
+    {
+        "id": 9,
+        "title": "Darkhaast",
+        "artists": [
+            "Arijit Singh",
+            "DJ YOGI"
+        ],
+        "url": "https://drive.google.com/uc?id=1Nw-UaXO8o1CziQlfuGRczoiJFzOgMgqx",
+        "image": "https://drive.google.com/uc?id=1Mt9QuaFu16-nWDv8TGGyQw3We5PV6EXK"
+    },
+    {
+        "id": 10,
+        "title": "Haule Haule",
+        "artists": [
+            "Salim Sulaiman",
+            "Sukhwinder Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1NaVVCCPOCNuZrLPn82XHhi1N_DBGb_lq",
+        "image": "https://drive.google.com/uc?id=1MmEabo96ebX1UD-nERvx4-MhWzONu3vh"
+    },
+    {
+        "id": 11,
+        "title": "Raataan Lambiyan",
+        "artists": [
+            "VIBIE"
+        ],
+        "url": "https://drive.google.com/uc?id=1O1WQQz0OmzrIC81fZBUitfZTM9K82lcu",
+        "image": "https://drive.google.com/uc?id=1MxSiwHmT9baRExhH2S_QXEVdd39R46tZ"
+    },
+    {
+        "id": 12,
+        "title": "Saibo",
+        "artists": [
+            "VIBIE"
+        ],
+        "url": "https://drive.google.com/uc?id=1Ns9gZEIZRfkaW4qcfQF8_abZPtEUudOn",
+        "image": "https://drive.google.com/uc?id=1MsKRriiiliZzg3YUEGIEZRJFHN4pIC0G"
+    },
+    {
+        "id": 13,
+        "title": "Saiyaan",
+        "artists": [
+            "Kailash Kher",
+            "Silent Ocean"
+        ],
+        "url": "https://drive.google.com/uc?id=1MTGDPB1HXA5K4skdkseORflYcC8zsjRO",
+        "image": "https://drive.google.com/uc?id=1MWzsRj3u_SANGReDj0uFHqnnaXNfw8jN"
+    }
+    ,
+    {
+        "id": 14,
+        "title": "Tu Jaane Na",
+        "artists": [
+            "Atif Aslam",
+            "DJ RINK"
+        ],
+        "url": "https://drive.google.com/uc?id=1NR40YKdxeaOKNPWNEiEQam1aLjoWJCfQ",
+        "image": "https://drive.google.com/uc?id=1MihSWZh7GBDHHYRBCCdOPaMpamvoglLY"
+    },
+    {
+        "id": 15,
+        "title": "Tujhe Bhula Diya",
+        "artists": [
+            "Mohit Chauhun"
+        ],
+        "url": "https://drive.google.com/uc?id=1OEpyDnSDSfP_N3kDwh5iUbaYskJiTzBB",
+        "image": "https://drive.google.com/uc?id=1NLFo9tpI_Yd45aHPWDdOcfmrHFJKyCJk"
+    }
+]
