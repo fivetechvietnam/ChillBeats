@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_context/one_context.dart';
 import '../../../data/services/app_services.dart';
-import '../../../logic/bloc/lofiii_all_music/lofiii_all_music_bloc.dart';
-import '../../../logic/bloc/lofiii_all_music/lofiii_all_music_event.dart';
-import '../../../logic/bloc/lofiii_popular_music/lofiii_popular_music_bloc.dart';
-import '../../../logic/bloc/lofiii_special_music/lofiii_special_music_bloc.dart';
-import '../../../logic/bloc/lofiii_top_picks_music/lofi_top_picks_music_bloc.dart';
-import '../../../logic/bloc/lofiii_top_picks_music/lofi_top_picks_music_event.dart';
+import '../../../logic/bloc/all_music/all_music_bloc.dart';
+import '../../../logic/bloc/all_music/all_music_event.dart';
+import '../../../logic/bloc/popular_music/popular_music_bloc.dart';
+import '../../../logic/bloc/special_music/special_music_bloc.dart';
+import '../../../logic/bloc/top_picks_music/top_picks_music_bloc.dart';
+import '../../../logic/bloc/top_picks_music/top_picks_music_event.dart';
 import '../../../logic/cubit/greeting/greeting_cubit.dart';
 import '../../../logic/cubit/theme_mode/theme_mode_cubit.dart';
 import '../../../logic/cubit/youtube_music/youtube_music_cubit.dart';
@@ -87,19 +87,19 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _fetchMusic() {
-    //-----------Fetch LOFIII Special Music ------___--------///
-    context.read<LofiiiSpecialMusicBloc>().add(LOFIIISpecialMusicFetchEvent());
+    //-----------Fetch  Special Music ------___--------///
+    context.read<SpecialMusicBloc>().add(SpecialMusicFetchEvent());
 
-    //-----------Fetch LOFIII Popular Music ------___--------///
-    context.read<LofiiiPopularMusicBloc>().add(LOFIIIPopularMusicFetchEvent());
+    //-----------Fetch  Popular Music ------___--------///
+    context.read<PopularMusicBloc>().add(PopularMusicFetchEvent());
 
-    //-----------Fetch LOFIII TopPicks Music ------___--------///
+    //-----------Fetch  TopPicks Music ------___--------///
     context
-        .read<LofiiiTopPicksMusicBloc>()
-        .add(LOFIIITopPicksMusicFetchEvent());
+        .read<TopPicksMusicBloc>()
+        .add(TopPicksMusicFetchEvent());
 
-    //-----------Fetch LOFIII All Music ------___--------///
-    context.read<LofiiiAllMusicBloc>().add(LOFIIIAllMusicFetchEvent());
+    //-----------Fetch  All Music ------___--------///
+    context.read<AllMusicBloc>().add(AllMusicFetchEvent());
 
     //-------------Update Home Page Greeting Message -------///
     context.read<GreetingCubit>().updateGreeting();

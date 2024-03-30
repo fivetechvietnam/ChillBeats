@@ -7,7 +7,7 @@ import 'package:chillbeats/data/services/notification_service.dart';
 import 'package:chillbeats/di/dependency_injection.dart';
 import 'package:chillbeats/logic/bloc/download/download_music_bloc.dart';
 import 'package:chillbeats/logic/bloc/fetch_music_from_local_storage/fetch_music_from_local_storage_bloc.dart';
-import 'package:chillbeats/logic/bloc/lofiii_vibes_music/lofiii_vibes_music_bloc.dart';
+import 'package:chillbeats/logic/bloc/vibes_music/vibes_music_bloc.dart';
 import 'package:chillbeats/logic/cubit/flip_card/flip_card_cubit.dart';
 import 'package:chillbeats/logic/cubit/now_playing_offline_music_data_to_player/now_playing_offline_music_data_to_player_cubit.dart';
 import 'package:chillbeats/logic/cubit/repeat_music/repeat_music_cubit.dart';
@@ -20,10 +20,10 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import 'logic/bloc/artists_data/artists_data_bloc.dart';
 import 'logic/bloc/check_internet_connection/check_internet_connection_bloc.dart';
 import 'logic/bloc/favorite_button/favorite_button_bloc.dart';
-import 'logic/bloc/lofiii_all_music/lofiii_all_music_bloc.dart';
-import 'logic/bloc/lofiii_popular_music/lofiii_popular_music_bloc.dart';
-import 'logic/bloc/lofiii_special_music/lofiii_special_music_bloc.dart';
-import 'logic/bloc/lofiii_top_picks_music/lofi_top_picks_music_bloc.dart';
+import 'logic/bloc/all_music/all_music_bloc.dart';
+import 'logic/bloc/popular_music/popular_music_bloc.dart';
+import 'logic/bloc/special_music/special_music_bloc.dart';
+import 'logic/bloc/top_picks_music/top_picks_music_bloc.dart';
 import 'logic/bloc/player/music_player_bloc.dart';
 import 'logic/bloc/user_profie/user_profile_bloc.dart';
 import 'logic/cubit/bottom_navigation_change_page_index/bottom_navigation_index_cubit.dart';
@@ -162,19 +162,19 @@ class _MyAppState extends State<MyApp> {
         create: (context) => MusicPlayerBloc(),
       ),
       BlocProvider(
-        create: (context) => LofiiiSpecialMusicBloc(),
+        create: (context) => SpecialMusicBloc(),
       ),
       BlocProvider(
-        create: (context) => LofiiiPopularMusicBloc(),
+        create: (context) => PopularMusicBloc(),
       ),
       BlocProvider(
-        create: (context) => LofiiiTopPicksMusicBloc(),
+        create: (context) => TopPicksMusicBloc(),
       ),
       BlocProvider(
-        create: (context) => LofiiiAllMusicBloc(),
+        create: (context) => AllMusicBloc(),
       ),
       BlocProvider(
-        create: (context) => LofiiiVibesMusicBloc(),
+        create: (context) => VibesMusicBloc(),
       ),
       BlocProvider(
         create: (context) => ArtistsDataBloc(),

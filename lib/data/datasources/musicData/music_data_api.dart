@@ -10,44 +10,44 @@ class MusicData extends MusicDataKeys{
   final Dio _dio = locator.get<Dio>();
 
 
-  //----        LOFIII Special Music     ------------///
-  Future<List> getLOFIIISpecialMusic() async {
+  //----         Special Music     ------------///
+  Future<List> getSpecialMusic() async {
     try {
-      final response = await _dio.get(lofiiiSpecialUrl);
+      final response = await _dio.get(apiSpecialUrl);
       return response.data;
     } catch (e) {
-      log("Error fetching LOFIII Special Music: $e");
+      log("Error fetching  Special Music: $e");
       return [];
     }
   }
 
-  //----        LOFIII Popular Music     ------------///
-  Future<List> getLOFIIIPopularMusic() async {
+  //----         Popular Music     ------------///
+  Future<List> getPopularMusic() async {
     try {
-      final response = await _dio.get(lofiiiPopularUrl);
+      final response = await _dio.get(apiPopularUrl);
       return response.data;
     } catch (e) {
-      log("Error fetching LOFIII Popular Music: $e");
+      log("Error fetching  Popular Music: $e");
       return [];
     }
   }
 
-  //----        LOFIII TopPicks Music     ------------///
-  Future<List> getLOFIIITopPicksMusic() async {
+  //----         TopPicks Music     ------------///
+  Future<List> getTopPicksMusic() async {
     try {
-      final response = await _dio.get(lofiiiTopPicksUrl);
+      final response = await _dio.get(apiTopPicksUrl);
       return response.data;
     } catch (e) {
-      log("Error fetching LOFIII TopPicks Music: $e");
+      log("Error fetching  TopPicks Music: $e");
       return [];
     }
   }
 
 
-  //----        LOFIII Artists Data     ------------///
+  //----         Artists Data     ------------///
   Future<List> getArtistsData() async {
     try {
-      final response = await _dio.get(artistsUrl);
+      final response = await _dio.get(apiartistsUrl);
       return response.data;
     } catch (e) {
       log("Error fetching Artists Data: $e");
@@ -57,13 +57,13 @@ class MusicData extends MusicDataKeys{
 
 
 
-  //----        LOFIII Vibes Music     ------------///
-  Future<List> getLOFIIIVibesMusic() async {
+  //----         Vibes Music     ------------///
+  Future<List> getVibesMusic() async {
     try {
-      final response = await _dio.get(lofiiiVibesUrl);
+      final response = await _dio.get(apiVibesUrl);
       return response.data;
     } catch (e) {
-      log("Error fetching LOFIII Vibes Music: $e");
+      log("Error fetching  Vibes Music: $e");
       return [];
     }
   }

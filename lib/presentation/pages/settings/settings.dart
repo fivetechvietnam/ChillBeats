@@ -261,7 +261,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Future<void> _feedBackButtonOnTap() async {
     final Email sendEmail = Email(
       body: 'your feed back?',
-      subject: 'LOFIII Feedback',
+      subject: ' Feedback',
       recipients: ['furqanuddin@gmail.com'],
       isHTML: false,
     );

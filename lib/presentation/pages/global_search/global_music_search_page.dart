@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_context/one_context.dart';
-import '../../../logic/bloc/lofiii_all_music/lofiii_all_music_bloc.dart';
-import '../../../logic/bloc/lofiii_all_music/lofiii_all_music_state.dart';
+import '../../../logic/bloc/all_music/all_music_bloc.dart';
+import '../../../logic/bloc/all_music/all_music_state.dart';
 import '../../../logic/bloc/player/music_player_bloc.dart';
 import '../../../logic/cubit/search_system/search_system_cubit.dart';
 import '../../../logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
@@ -53,12 +53,12 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
               icon: const Icon(CupertinoIcons.back)),
 
           //-------------- Text Field----------------------///
-          BlocBuilder<LofiiiAllMusicBloc, LofiiiAllMusicState>(
+          BlocBuilder<AllMusicBloc, AllMusicState>(
             builder: (context, state) => Expanded(
               child: TextField(
                     autofocus: true,
                     onChanged: (value) {
-                      if (state is LofiiiAllMusicSuccessState) {
+                      if (state is AllMusicSuccessState) {
                         context.read<SearchSystemCubit>().addSearchList(allMusicList: state.musicList);
                       }
                       /// Add

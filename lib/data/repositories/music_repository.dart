@@ -8,39 +8,39 @@ import '../models/music_model.dart';
 class MusicRepository {
   final MusicData musicData = locator.get<MusicData>();
 
-  // ------------------             LOFIII Special Music    ---------------///
-  Future<List<MusicModel>> fetchLOFIIISpecialMusic() async {
-    final List<dynamic> musicList = await musicData.getLOFIIISpecialMusic();
+  // ------------------              Special Music    ---------------///
+  Future<List<MusicModel>> fetchSpecialMusic() async {
+    final List<dynamic> musicList = await musicData.getSpecialMusic();
     if (musicList.isNotEmpty) {
       return musicList.map((e) => MusicModel.fromJson(e)).toList();
     } else {
-      throw Exception("Failed to fetch LOFIII Special Music.");
+      throw Exception("Failed to fetch  Special Music.");
     }
   }
 
-  // ------------------             LOFIII Popular Music    ---------------///
-  Future<List<MusicModel>> fetchLOFIIIPopularMusic() async {
-    final List<dynamic> musicList = await musicData.getLOFIIIPopularMusic();
+  // ------------------              Popular Music    ---------------///
+  Future<List<MusicModel>> fetchPopularMusic() async {
+    final List<dynamic> musicList = await musicData.getPopularMusic();
     if (musicList.isNotEmpty) {
       return musicList.map((e) => MusicModel.fromJson(e)).toList();
     } else {
-      throw Exception("Failed to fetch LOFIII Popular Music.");
-    }
-  }
-
-
-  // ------------------             LOFIII TopPicks Music    ---------------///
-  Future<List<MusicModel>> fetchLOFIIITopPicksMusic() async {
-    final List<dynamic> musicList = await musicData.getLOFIIITopPicksMusic();
-    if (musicList.isNotEmpty) {
-      return musicList.map((e) => MusicModel.fromJson(e)).toList();
-    } else {
-      throw Exception("Failed to fetch LOFIII TopPicks Music.");
+      throw Exception("Failed to fetch  Popular Music.");
     }
   }
 
 
-  // ------------------             LOFIII Artists Images    ---------------///
+  // ------------------              TopPicks Music    ---------------///
+  Future<List<MusicModel>> fetchTopPicksMusic() async {
+    final List<dynamic> musicList = await musicData.getTopPicksMusic();
+    if (musicList.isNotEmpty) {
+      return musicList.map((e) => MusicModel.fromJson(e)).toList();
+    } else {
+      throw Exception("Failed to fetch  TopPicks Music.");
+    }
+  }
+
+
+  // ------------------              Artists Images    ---------------///
   Future<List<ArtistModel>> fetchArtists() async {
     final List<dynamic> artistList = await musicData.getArtistsData();
     if (artistList.isNotEmpty) {
@@ -52,13 +52,13 @@ class MusicRepository {
 
 
 
-  // ------------------             LOFIII Vibes Music    ---------------///
-  Future<List<MusicModel>> fetchLOFIIIVibesMusic() async {
-    final List<dynamic> musicList = await musicData.getLOFIIIVibesMusic();
+  // ------------------              Vibes Music    ---------------///
+  Future<List<MusicModel>> fetchVibesMusic() async {
+    final List<dynamic> musicList = await musicData.getVibesMusic();
     if (musicList.isNotEmpty) {
       return musicList.map((e) => MusicModel.fromJson(e)).toList();
     } else {
-      throw Exception("Failed to fetch LOFIII Vibes Music.");
+      throw Exception("Failed to fetch  Vibes Music.");
     }
   }
 }

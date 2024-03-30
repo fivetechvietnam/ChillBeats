@@ -7,14 +7,14 @@ import 'package:one_context/one_context.dart';
 import '../../cubit/youtube_music/youtube_music_cubit.dart';
 import '../artists_data/artists_data_bloc.dart';
 import '../artists_data/artists_data_event.dart';
-import '../lofiii_all_music/lofiii_all_music_bloc.dart';
-import '../lofiii_all_music/lofiii_all_music_event.dart';
-import '../lofiii_popular_music/lofiii_popular_music_bloc.dart';
-import '../lofiii_special_music/lofiii_special_music_bloc.dart';
-import '../lofiii_top_picks_music/lofi_top_picks_music_bloc.dart';
-import '../lofiii_top_picks_music/lofi_top_picks_music_event.dart';
-import '../lofiii_vibes_music/lofiii_vibes_music_bloc.dart';
-import '../lofiii_vibes_music/lofiii_vibes_music_event.dart';
+import '../all_music/all_music_bloc.dart';
+import '../all_music/all_music_event.dart';
+import '../popular_music/popular_music_bloc.dart';
+import '../special_music/special_music_bloc.dart';
+import '../top_picks_music/top_picks_music_bloc.dart';
+import '../top_picks_music/top_picks_music_event.dart';
+import '../vibes_music/vibes_music_bloc.dart';
+import '../vibes_music/vibes_music_event.dart';
 
 part 'check_internet_connection_event.dart';
 part 'check_internet_connection_state.dart';
@@ -43,29 +43,29 @@ class CheckInternetConnectionBloc
 
     //----------Auto add Events on Internet Restored Event ---------------///
     on<InternetConnectionRestoredEvent>((event, emit) {
-      //--------Refresh LOFIII Special Music --------------///
+      //--------Refresh  Special Music --------------///
       OneContext()
           .context!
-          .read<LofiiiSpecialMusicBloc>()
-          .add(LOFIIISpecialMusicFetchEvent());
+          .read<SpecialMusicBloc>()
+          .add(SpecialMusicFetchEvent());
 
-      //--------Refresh LOFIII Popular Music --------------///
+      //--------Refresh  Popular Music --------------///
       OneContext()
           .context!
-          .read<LofiiiPopularMusicBloc>()
-          .add(LOFIIIPopularMusicFetchEvent());
+          .read<PopularMusicBloc>()
+          .add(PopularMusicFetchEvent());
 
-      //--------Refresh LOFIII TopPicks Music --------------///
+      //--------Refresh  TopPicks Music --------------///
       OneContext()
           .context!
-          .read<LofiiiTopPicksMusicBloc>()
-          .add(LOFIIITopPicksMusicFetchEvent());
+          .read<TopPicksMusicBloc>()
+          .add(TopPicksMusicFetchEvent());
 
-      //--------Refresh LOFIII All Music --------------///
+      //--------Refresh  All Music --------------///
       OneContext()
           .context!
-          .read<LofiiiAllMusicBloc>()
-          .add(LOFIIIAllMusicFetchEvent());
+          .read<AllMusicBloc>()
+          .add(AllMusicFetchEvent());
 
       //--------Refresh Artist Data --------------///
       OneContext()
@@ -74,11 +74,11 @@ class CheckInternetConnectionBloc
           .add(ArtistsDataFetchEvent());
     });
 
-    //--------Refresh LOFIII Vibes Music --------------///
+    //--------Refresh  Vibes Music --------------///
     OneContext()
         .context!
-        .read<LofiiiVibesMusicBloc>()
-        .add(LofIIIVibesMusicFetchEvent());
+        .read<VibesMusicBloc>()
+        .add(VibesMusicFetchEvent());
 
     OneContext().context!.read<YoutubeMusicCubit>().fetchMusic();
   }

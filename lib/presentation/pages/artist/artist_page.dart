@@ -12,8 +12,8 @@ import 'package:one_context/one_context.dart';
 
 import '../../../data/models/music_model.dart';
 import '../../../logic/bloc/favorite_button/favorite_button_bloc.dart';
-import '../../../logic/bloc/lofiii_all_music/lofiii_all_music_bloc.dart';
-import '../../../logic/bloc/lofiii_all_music/lofiii_all_music_state.dart';
+import '../../../logic/bloc/all_music/all_music_bloc.dart';
+import '../../../logic/bloc/all_music/all_music_state.dart';
 import '../../../logic/bloc/player/music_player_bloc.dart';
 import '../../../logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
 import '../../../logic/cubit/show_mini_player/show_mini_player_cubit.dart';
@@ -72,12 +72,12 @@ class _ArtistPageState extends State<ArtistPage> {
 
 
               SliverToBoxAdapter(
-                child: BlocBuilder<LofiiiAllMusicBloc, LofiiiAllMusicState>(
+                child: BlocBuilder<AllMusicBloc, AllMusicState>(
                   builder: (context, state) {
                     //?////////////////////
                     /// ----------   If state is Success
                     ////////////////////
-                    if (state is LofiiiAllMusicSuccessState) {
+                    if (state is AllMusicSuccessState) {
                       ///////////////////////////
                       /// -------------  Filtered List    ----------//
                       //////////////////////////
@@ -169,7 +169,7 @@ class _ArtistPageState extends State<ArtistPage> {
                     //?////////////////////
                     /// ----------   If state is Loading
                     ////////////////////
-                    else if (state is LofiiiAllMusicLoadingState) {
+                    else if (state is AllMusicLoadingState) {
                       return SliverToBoxAdapter(
                         child: BlocBuilder<ThemeModeCubit, ThemeModeState>(
                           builder: (context, themeState) {

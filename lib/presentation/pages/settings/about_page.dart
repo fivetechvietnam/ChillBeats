@@ -32,7 +32,7 @@ class AboutPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // LOFIII LOGO
+          //  LOGO
           BlocBuilder<ThemeModeCubit, ThemeModeState>(
             builder: (context, state) {
               return SlideInDown(
@@ -63,7 +63,7 @@ class AboutPage extends StatelessWidget {
 
           // GitHub Button
           Link(
-            uri: Uri.parse("https://github.com/ffurqanuddin/lofiii"),
+            uri: Uri.parse("https://github.com/ffurqanuddin/"),
             target: LinkTarget.blank,
             builder: (context, followLink) => TextButton(
               onPressed: () {

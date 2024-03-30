@@ -8,8 +8,8 @@ import 'package:lottie/lottie.dart';
 import 'package:one_context/one_context.dart';
 
 import '../../logic/bloc/favorite_button/favorite_button_bloc.dart';
-import '../../logic/bloc/lofiii_all_music/lofiii_all_music_bloc.dart';
-import '../../logic/bloc/lofiii_all_music/lofiii_all_music_state.dart';
+import '../../logic/bloc/all_music/all_music_bloc.dart';
+import '../../logic/bloc/all_music/all_music_state.dart';
 import '../widgets/heading_with_view_more_button/heading_with_view_more_button_widget.dart';
 import '../widgets/music_cards_list/music_cards_list_widget.dart';
 import '../widgets/lottie_animation/no_internet_lottie_animation_widget.dart';
@@ -35,13 +35,13 @@ class LibraryPage extends StatelessWidget {
           ///-   --------------       My Favorite
           BlocBuilder<FavoriteButtonBloc, FavoriteButtonState>(
             builder: (context, favoriteState) {
-              return BlocBuilder<LofiiiAllMusicBloc, LofiiiAllMusicState>(
+              return BlocBuilder<AllMusicBloc, AllMusicState>(
                 builder: (context, state) {
                   // Heading with View More Button Widget
                   return HeadingWithViewMoreButton(
                     heading: LocaleKeys.my_favorite.tr(),
                     viewMoreOnTap: () {
-                      if (state is LofiiiAllMusicSuccessState) {
+                      if (state is AllMusicSuccessState) {
                         // Filter the favorite list
                         final favoriteList = state.musicList
                             .where((element) => favoriteState.favoriteList
@@ -67,10 +67,10 @@ class LibraryPage extends StatelessWidget {
           ///       -------------Favorite List
           BlocBuilder<FavoriteButtonBloc, FavoriteButtonState>(
             builder: (context, favoriteState) {
-              return BlocBuilder<LofiiiAllMusicBloc, LofiiiAllMusicState>(
+              return BlocBuilder<AllMusicBloc, AllMusicState>(
                 builder: (context, state) {
                   //------------        If  Success State
-                  if (state is LofiiiAllMusicSuccessState) {
+                  if (state is AllMusicSuccessState) {
                     //  Filter the favorite list
                     final favoriteList = state.musicList
                         .where((element) =>
@@ -101,7 +101,7 @@ class LibraryPage extends StatelessWidget {
                     }
                   }
                   //?-----------            If Loading State
-                  else if (state is LofiiiAllMusicLoadingState) {
+                  else if (state is AllMusicLoadingState) {
                     return SliverToBoxAdapter(
                       child: SizedBox(
                         height: 0.30.sh,

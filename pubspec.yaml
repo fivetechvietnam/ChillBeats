@@ -87,7 +87,7 @@ dependencies:
   meta: ^1.11.0
   bloc: ^8.1.4
   nested: ^1.0.0
-
+  equalizer_flutter: ^0.0.1
 
 
 dev_dependencies:

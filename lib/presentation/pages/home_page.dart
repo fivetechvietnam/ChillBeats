@@ -10,16 +10,16 @@ import 'package:one_context/one_context.dart';
 import '../../logic/bloc/artists_data/artists_data_bloc.dart';
 import '../../logic/bloc/artists_data/artists_data_event.dart';
 import '../../logic/bloc/artists_data/artists_data_state.dart';
-import '../../logic/bloc/lofiii_all_music/lofiii_all_music_bloc.dart';
-import '../../logic/bloc/lofiii_all_music/lofiii_all_music_event.dart';
-import '../../logic/bloc/lofiii_popular_music/lofiii_popular_music_bloc.dart';
-import '../../logic/bloc/lofiii_special_music/lofiii_special_music_bloc.dart';
-import '../../logic/bloc/lofiii_top_picks_music/lofi_top_picks_music_bloc.dart';
-import '../../logic/bloc/lofiii_top_picks_music/lofi_top_picks_music_event.dart';
-import '../../logic/bloc/lofiii_top_picks_music/lofi_top_picks_music_state.dart';
-import '../../logic/bloc/lofiii_vibes_music/lofiii_vibes_music_bloc.dart';
-import '../../logic/bloc/lofiii_vibes_music/lofiii_vibes_music_event.dart';
-import '../../logic/bloc/lofiii_vibes_music/lofiii_vibes_music_state.dart';
+import '../../logic/bloc/all_music/all_music_bloc.dart';
+import '../../logic/bloc/all_music/all_music_event.dart';
+import '../../logic/bloc/popular_music/popular_music_bloc.dart';
+import '../../logic/bloc/special_music/special_music_bloc.dart';
+import '../../logic/bloc/top_picks_music/top_picks_music_bloc.dart';
+import '../../logic/bloc/top_picks_music/top_picks_music_event.dart';
+import '../../logic/bloc/top_picks_music/top_picks_music_state.dart';
+import '../../logic/bloc/vibes_music/vibes_music_bloc.dart';
+import '../../logic/bloc/vibes_music/vibes_music_event.dart';
+import '../../logic/bloc/vibes_music/vibes_music_state.dart';
 import '../widgets/artists_circle_avatar_list/artists_circle_cards_list_widget.dart';
 import '../widgets/heading_with_view_more_button/heading_with_view_more_button_widget.dart';
 import '../widgets/home_page_app_bar/home_app_bar.dart';
@@ -56,12 +56,12 @@ class _HomePageState extends State<HomePage> {
               //----------------------Special Section----------------------///
 
               ///-   --------------       Special Heading
-              BlocBuilder<LofiiiSpecialMusicBloc, LofiiiSpecialMusicState>(
+              BlocBuilder<SpecialMusicBloc, SpecialMusicState>(
                 builder: (context, state) {
                   return HeadingWithViewMoreButton(
                       heading: LocaleKeys.lofi_special.tr(),
                       viewMoreOnTap: () {
-                        if (state is LofiiiSpecialMusicSuccessState) {
+                        if (state is SpecialMusicSuccessState) {
                           OneContext().push(
                             MaterialPageRoute(
                               builder: (context) => ViewMorePage(
@@ -76,10 +76,10 @@ class _HomePageState extends State<HomePage> {
               ),
 
               /// ---------------       Special  Music List   ---------------///
-              BlocBuilder<LofiiiSpecialMusicBloc, LofiiiSpecialMusicState>(
+              BlocBuilder<SpecialMusicBloc, SpecialMusicState>(
                 builder: (context, state) {
                   //?----Fetching music is success
-                  if (state is LofiiiSpecialMusicSuccessState) {
+                  if (state is SpecialMusicSuccessState) {
                     if (state.musicList.isNotEmpty) {
                       return MusicCardsListWidget(
                         list: state.musicList,
@@ -96,8 +96,8 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
 
-                    //-----    LofiiiSpecialMusicLoadingState
-                  } else if (state is LofiiiSpecialMusicLoadingState) {
+                    //-----    SpecialMusicLoadingState
+                  } else if (state is SpecialMusicLoadingState) {
                     return SliverToBoxAdapter(
                       child: SizedBox(
                         height: 0.30.sh,
@@ -119,12 +119,12 @@ class _HomePageState extends State<HomePage> {
 
               //----------------------Lo-fi Popular Section----------------------///
               /// --------------------------      Popular    Heading
-              BlocBuilder<LofiiiPopularMusicBloc, LofiiiPopularMusicState>(
+              BlocBuilder<PopularMusicBloc, PopularMusicState>(
                 builder: (context, state) {
                   return HeadingWithViewMoreButton(
                       heading: LocaleKeys.lofi_popular.tr(),
                       viewMoreOnTap: () {
-                        if (state is LofiiiPopularMusicSuccessState) {
+                        if (state is PopularMusicSuccessState) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -140,10 +140,10 @@ class _HomePageState extends State<HomePage> {
               ),
 
               /// ----------------------------       Popular  Music List      --------------////
-              BlocBuilder<LofiiiPopularMusicBloc, LofiiiPopularMusicState>(
+              BlocBuilder<PopularMusicBloc, PopularMusicState>(
                 builder: (context, state) {
                   //?----Fetching music is success
-                  if (state is LofiiiPopularMusicSuccessState) {
+                  if (state is PopularMusicSuccessState) {
                     if (state.musicList.isNotEmpty) {
                       return MusicCardsListWidget(
                         list: state.musicList,
@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     }
-                  } else if (state is LofiiiPopularMusicLoadingState) {
+                  } else if (state is PopularMusicLoadingState) {
                     return SliverToBoxAdapter(
                       child: SizedBox(
                         height: 0.30.sh,
@@ -245,12 +245,12 @@ class _HomePageState extends State<HomePage> {
               //----------------------       TopPicks Section        ----------------------///
 
               /// --------------------------      TopPicks    Heading
-              BlocBuilder<LofiiiTopPicksMusicBloc, LofiiiTopPicksMusicState>(
+              BlocBuilder<TopPicksMusicBloc, TopPicksMusicState>(
                 builder: (context, state) {
                   return HeadingWithViewMoreButton(
                       heading: LocaleKeys.lofi_top_picks.tr(),
                       viewMoreOnTap: () {
-                        if (state is LofiiiTopPicksMusicSuccessState) {
+                        if (state is TopPicksMusicSuccessState) {
                           OneContext().push(
                             MaterialPageRoute(
                               builder: (context) => ViewMorePage(
@@ -265,10 +265,10 @@ class _HomePageState extends State<HomePage> {
               ),
 
               /// ----------------------------       TopPicks  Music List      --------------////
-              BlocBuilder<LofiiiTopPicksMusicBloc, LofiiiTopPicksMusicState>(
+              BlocBuilder<TopPicksMusicBloc, TopPicksMusicState>(
                 builder: (context, state) {
                   //?----Fetching music is success
-                  if (state is LofiiiTopPicksMusicSuccessState) {
+                  if (state is TopPicksMusicSuccessState) {
                     if (state.musicList.isEmpty) {
                       return SliverToBoxAdapter(
                         child: SizedBox(
@@ -283,7 +283,7 @@ class _HomePageState extends State<HomePage> {
                       list: state.musicList,
                       pageStorageKey: "topPicksStorageKey",
                     );
-                  } else if (state is LofiiiTopPicksMusicLoadingState) {
+                  } else if (state is TopPicksMusicLoadingState) {
                     return SliverToBoxAdapter(
                       child: SizedBox(
                         height: 0.30.sh,
@@ -306,12 +306,12 @@ class _HomePageState extends State<HomePage> {
               //----------------------------------------------------------------------///
               //----------------------Lo-fi Vibes Section----------------------///
               /// --------------------------      Vibes    Heading
-              BlocBuilder<LofiiiVibesMusicBloc, LofiiiVibesMusicState>(
+              BlocBuilder<VibesMusicBloc, VibesMusicState>(
                 builder: (context, state) {
                   return HeadingWithViewMoreButton(
                       heading: LocaleKeys.lofi_vibes.tr(),
                       viewMoreOnTap: () {
-                        if (state is LofiiiVibesMusicSuccessState) {
+                        if (state is VibesMusicSuccessState) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -327,10 +327,10 @@ class _HomePageState extends State<HomePage> {
               ),
 
               /// ----------------------------       Vibes  Music List      --------------////
-              BlocBuilder<LofiiiVibesMusicBloc, LofiiiVibesMusicState>(
+              BlocBuilder<VibesMusicBloc, VibesMusicState>(
                 builder: (context, state) {
                   //?----Fetching music is success
-                  if (state is LofiiiVibesMusicSuccessState) {
+                  if (state is VibesMusicSuccessState) {
                     if (state.musicList.isNotEmpty) {
                       return MusicCardsListWidget(
                         list: state.musicList,
@@ -346,7 +346,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     }
-                  } else if (state is LofiiiVibesMusicLoadingState) {
+                  } else if (state is VibesMusicLoadingState) {
                     return SliverToBoxAdapter(
                       child: SizedBox(
                         height: 0.30.sh,
@@ -383,24 +383,24 @@ class _HomePageState extends State<HomePage> {
 
   //---------------------------- M E T H O D S --------------------///
   Future<void> _onRefreshMethod() async {
-    //--------Refresh LOFIII Special Music --------------///
-    context.read<LofiiiSpecialMusicBloc>().add(LOFIIISpecialMusicFetchEvent());
+    //--------Refresh  Special Music --------------///
+    context.read<SpecialMusicBloc>().add(SpecialMusicFetchEvent());
 
-    //--------Refresh LOFIII Popular Music --------------///
-    context.read<LofiiiPopularMusicBloc>().add(LOFIIIPopularMusicFetchEvent());
+    //--------Refresh  Popular Music --------------///
+    context.read<PopularMusicBloc>().add(PopularMusicFetchEvent());
 
-    //--------Refresh LOFIII Top Picks Music --------------///
+    //--------Refresh  Top Picks Music --------------///
     context
-        .read<LofiiiTopPicksMusicBloc>()
-        .add(LOFIIITopPicksMusicFetchEvent());
+        .read<TopPicksMusicBloc>()
+        .add(TopPicksMusicFetchEvent());
 
-    //--------Refresh LOFIII All Music --------------///
-    context.read<LofiiiAllMusicBloc>().add(LOFIIIAllMusicFetchEvent());
+    //--------Refresh  All Music --------------///
+    context.read<AllMusicBloc>().add(AllMusicFetchEvent());
 
     //--------Refresh Artist Data --------------///
     context.read<ArtistsDataBloc>().add(ArtistsDataFetchEvent());
 
-    //--------Refresh LOFIII Vibes Music --------------///
-    context.read<LofiiiVibesMusicBloc>().add(LofIIIVibesMusicFetchEvent());
+    //--------Refresh  Vibes Music --------------///
+    context.read<VibesMusicBloc>().add(VibesMusicFetchEvent());
   }
 }
