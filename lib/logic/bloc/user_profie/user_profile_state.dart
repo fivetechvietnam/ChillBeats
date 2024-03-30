@@ -12,7 +12,7 @@ class UserProfileState extends Equatable {
   }
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [username, profileImageFilePath];
 }
 

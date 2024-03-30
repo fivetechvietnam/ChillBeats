@@ -15,7 +15,7 @@ class ThemeModeState extends Equatable {
 }
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [isDarkMode, isBlackMode,accentColor, localMusicSelectedTileIndex];
 }
 

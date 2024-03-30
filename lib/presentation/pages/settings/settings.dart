@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:chillbeats/presentation/pages/settings/privacy_policy.dart';
 import 'package:chillbeats/presentation/pages/settings/profile_page.dart';
-import 'package:chillbeats/resources/my_assets/my_assets.dart';
+import 'package:chillbeats/generated/assets.gen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:one_context/one_context.dart';
 
@@ -235,7 +235,7 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Center(
               child: Column(
                 children: [
-                  Lottie.asset(MyAssets.lottieWorkInProgressAnimation),
+                  Lottie.asset(Assets.jsons.lottieWorkInProgress),
                   Text(
                     "Work in progress, will be in next update!",
                     textAlign: TextAlign.center,

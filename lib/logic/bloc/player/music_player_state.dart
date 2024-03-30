@@ -24,7 +24,7 @@ class MusicPlayerSuccessState extends MusicPlayerState {
   MusicPlayerSuccessState({required this.positionStream,required this.durationStream,required this.playingStream, required this.audioPlayer, required this.combinedStreamPositionAndDurationAndBufferedList});
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [audioPlayer, positionStream, durationStream, playingStream, combinedStreamPositionAndDurationAndBufferedList];
 }
 
@@ -33,7 +33,7 @@ class MusicPlayerErrorState extends MusicPlayerState{
 
   final String errorMessage;
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 
 }

@@ -14,7 +14,7 @@ class SearchableListScrollControllerState extends Equatable {
     return SearchableListScrollControllerState(scrollOffset: scrollOffset??this.scrollOffset);
   }
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [scrollOffset];
 }
 

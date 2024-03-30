@@ -15,7 +15,7 @@ import '../../../logic/cubit/send_current_playing_music_data_to_player_screen/se
 import '../../../logic/cubit/show_mini_player/show_mini_player_cubit.dart';
 import '../../../logic/cubit/theme_mode/theme_mode_cubit.dart';
 import '../../../logic/cubit/youtube_music_player/youtube_music_player_cubit.dart';
-import '../../../resources/my_assets/my_assets.dart';
+import 'package:chillbeats/generated/assets.gen.dart';
 import '../../widgets/youtube_favorite_playlist/youtube_favorite_playlists_widget.dart';
 
 class YoutubeMusicPage extends StatefulWidget {
@@ -195,7 +195,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
                                                               .all(8.0),
                                                       child: Center(
                                                         child: Lottie.asset(
-                                                            MyAssets
+                                                            Assets.jsons
                                                                 .lottieLoadingAnimation),
                                                       ),
                                                     ),

@@ -9,17 +9,12 @@ import 'package:gap/gap.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:chillbeats/logic/cubit/now_playing_offline_music_data_to_player/now_playing_offline_music_data_to_player_cubit.dart';
 import 'package:chillbeats/logic/cubit/show_mini_player/show_mini_player_cubit.dart';
-import 'package:chillbeats/logic/cubit/youtube_music_player/youtube_music_player_cubit.dart';
 import 'package:chillbeats/presentation/pages/player/offline_player_page.dart';
-import 'package:pod_player/pod_player.dart';
-import 'package:signals/signals.dart';
-import 'package:signals/signals_flutter.dart';
 import '../../../logic/bloc/player/music_player_bloc.dart';
 import '../../../logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
 import '../../../logic/cubit/theme_mode/theme_mode_cubit.dart';
 import '../../pages/player/player_page.dart';
 import '../../pages/youtube_music/youtube_music_player_page.dart';
-import '../my_youtube_video_player_widget/my_youtube_video_player_widget.dart';
 
 class MiniPlayerPageWidget extends StatefulWidget {
   const MiniPlayerPageWidget(

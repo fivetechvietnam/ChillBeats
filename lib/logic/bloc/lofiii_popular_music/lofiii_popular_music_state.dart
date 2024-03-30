@@ -12,7 +12,7 @@ class LofiiiPopularMusicInitial extends LofiiiPopularMusicState {
 
 class LofiiiPopularMusicLoadingState extends LofiiiPopularMusicState{
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 class LofiiiPopularMusicSuccessState extends LofiiiPopularMusicState{
@@ -23,7 +23,7 @@ class LofiiiPopularMusicSuccessState extends LofiiiPopularMusicState{
   LofiiiPopularMusicSuccessState({required this.musicList});
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [musicList];
 }
 
@@ -36,6 +36,6 @@ class LofiiiPopularMusicFailureState extends LofiiiPopularMusicState {
   LofiiiPopularMusicFailureState({required this.errorMessage});
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [errorMessage];
 }

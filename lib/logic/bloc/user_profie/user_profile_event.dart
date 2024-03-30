@@ -9,11 +9,11 @@ class UserProfileChangeUsernameEvent extends UserProfileEvent{
   final String username;
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [username];
 }
 class UserProfileChangeUserProfilePictureEvent extends UserProfileEvent{
   @override
-  // TODO: implement props
+  
   List<Object?> get props =>[];
 }

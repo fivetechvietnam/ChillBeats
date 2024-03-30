@@ -11,6 +11,6 @@ class FavoriteButtonState extends Equatable {
     return FavoriteButtonState(favoriteList: favoriteList?? this.favoriteList);
   }
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [favoriteList];
 }

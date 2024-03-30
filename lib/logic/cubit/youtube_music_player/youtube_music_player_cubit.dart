@@ -6,10 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:chillbeats/di/dependency_injection.dart';
 import 'package:meta/meta.dart';
 import 'package:pod_player/pod_player.dart';
-import 'package:signals/signals.dart';
 
 part 'youtube_music_player_state.dart';
 

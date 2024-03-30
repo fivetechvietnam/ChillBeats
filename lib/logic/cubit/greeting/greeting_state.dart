@@ -10,7 +10,7 @@ part of 'greeting_cubit.dart';
   }
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [greeting];
 }
 

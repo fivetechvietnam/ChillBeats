@@ -14,7 +14,7 @@ class LofiiiAllMusicInitial extends LofiiiAllMusicState {
 
 class LofiiiAllMusicLoadingState extends LofiiiAllMusicState{
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 class LofiiiAllMusicSuccessState extends LofiiiAllMusicState{
@@ -25,7 +25,7 @@ class LofiiiAllMusicSuccessState extends LofiiiAllMusicState{
   LofiiiAllMusicSuccessState({required this.musicList});
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [musicList];
 }
 
@@ -38,6 +38,6 @@ class LofiiiAllMusicFailureState extends LofiiiAllMusicState {
   LofiiiAllMusicFailureState({required this.errorMessage});
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [errorMessage];
 }

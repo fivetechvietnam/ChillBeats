@@ -13,7 +13,7 @@ class ArtistsDataInitialState extends ArtistsDataState {
 
 class ArtistsDataLoadingState extends ArtistsDataState{
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 class ArtistsDataSuccessState extends ArtistsDataState{
@@ -24,7 +24,7 @@ class ArtistsDataSuccessState extends ArtistsDataState{
   ArtistsDataSuccessState({required this.artistList});
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [artistList];
 }
 
@@ -36,6 +36,6 @@ class ArtistsDataFailureState extends ArtistsDataState{
 
   ArtistsDataFailureState({required this.errorMessage});
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [errorMessage];
 }

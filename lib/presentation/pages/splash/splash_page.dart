@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:one_context/one_context.dart';
 import '../../../data/services/app_services.dart';
 import '../../../logic/bloc/lofiii_all_music/lofiii_all_music_bloc.dart';
@@ -14,7 +13,7 @@ import '../../../logic/cubit/greeting/greeting_cubit.dart';
 import '../../../logic/cubit/theme_mode/theme_mode_cubit.dart';
 import '../../../logic/cubit/youtube_music/youtube_music_cubit.dart';
 import '../../../resources/hive/hive_resources.dart';
-import '../../../resources/my_assets/my_assets.dart';
+import 'package:chillbeats/generated/assets.gen.dart';
 import '../initial/initial_page.dart';
 import '../onboarding_page.dart';
 
@@ -45,24 +44,22 @@ class _SplashPageState extends State<SplashPage> {
           return Stack(
             fit: StackFit.expand,
             children: [
-              
               ///! Logo
               Center(
-                child: SvgPicture.asset(
-                  state.isDarkMode
-                      ? MyAssets.lofiiiLogoDarkModeSvg
-                      : MyAssets.lofiiiLogoLightModeSvg,
-                  fit: BoxFit.contain,
-                ),
+                child: state.isDarkMode
+                    ? Assets.icons.darkMode.svg(fit: BoxFit.contain)
+                    : Assets.icons.lightMode.svg(fit: BoxFit.contain),
               ),
 
-
               ///---- App Version Info
-               Padding(
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text(AppServices.appFullVersion, style: TextStyle(fontSize: 12.sp),),
+                  child: Text(
+                    AppServices.appFullVersion,
+                    style: TextStyle(fontSize: 12.sp),
+                  ),
                 ),
               )
             ],
@@ -86,7 +83,7 @@ class _SplashPageState extends State<SplashPage> {
             MaterialPageRoute(builder: (context) => const OnBoardingPage()));
       } else {
         OneContext().pushReplacement(
-            MaterialPageRoute(builder: (context) =>  InitialPage()));
+            MaterialPageRoute(builder: (context) => InitialPage()));
       }
     });
   }
@@ -112,7 +109,4 @@ class _SplashPageState extends State<SplashPage> {
     ///?--------------- Fetch Youtube Music ------------------///
     context.read<YoutubeMusicCubit>().fetchMusic();
   }
-
-
-
 }

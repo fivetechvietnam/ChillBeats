@@ -14,7 +14,7 @@ part of 'send_music_data_to_player_cubit.dart';
   }
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [musicIndex, fullMusicList,youtubeMusicList];
 }
 

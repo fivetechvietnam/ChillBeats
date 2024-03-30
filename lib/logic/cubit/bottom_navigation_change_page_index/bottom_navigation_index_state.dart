@@ -10,7 +10,7 @@ part of 'bottom_navigation_index_cubit.dart';
     return BottomNavigationIndexState(pageIndex: pageIndex?? this.pageIndex);
   }
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [pageIndex];
 }
 

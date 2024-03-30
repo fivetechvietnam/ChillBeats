@@ -10,7 +10,7 @@ class MusicPlayerInitializeEvent extends MusicPlayerEvent{
   final String url;
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [url];
 }
 
@@ -18,28 +18,28 @@ class MusicPlayerInitializeEvent extends MusicPlayerEvent{
 class MusicPlayerTogglePlayPauseEvent extends MusicPlayerEvent{
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 
 class MusicPlayerStopEvent extends MusicPlayerEvent{
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 
 class MusicPlayerForwardEvent extends MusicPlayerEvent{
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 
 class MusicPlayerBackwardEvent extends MusicPlayerEvent{
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 
@@ -47,14 +47,14 @@ class MusicPlayerBackwardEvent extends MusicPlayerEvent{
 class MusicPlayerRepeatEvent extends MusicPlayerEvent{
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 
 class MusicPlayerShuffleEvent extends MusicPlayerEvent{
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 
@@ -63,7 +63,7 @@ class MusicPlayerSeekEvent extends MusicPlayerEvent{
 
   final  position;
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [position];
 }
 
@@ -72,7 +72,7 @@ class MusicPlayerVolumeSetEvent extends MusicPlayerEvent{
 
   final volumeLevel;
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [volumeLevel];
 }
 

@@ -18,12 +18,12 @@ import '../../logic/bloc/lofiii_top_picks_music/lofi_top_picks_music_state.dart'
 import '../../logic/bloc/lofiii_vibes_music/lofiii_vibes_music_bloc.dart';
 import '../../logic/bloc/lofiii_vibes_music/lofiii_vibes_music_event.dart';
 import '../../logic/bloc/lofiii_vibes_music/lofiii_vibes_music_state.dart';
-import '../../resources/my_assets/my_assets.dart';
 import '../widgets/artists_circle_avatar_list/artists_circle_cards_list_widget.dart';
 import '../widgets/heading_with_view_more_button/heading_with_view_more_button_widget.dart';
 import '../widgets/home_page_app_bar/home_app_bar.dart';
 import '../widgets/music_cards_list/music_cards_list_widget.dart';
 import '../widgets/lottie_animation/no_internet_lottie_animation_widget.dart';
+import 'package:chillbeats/generated/assets.gen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                       child: SizedBox(
                         height: 0.30.sh,
                         child: Center(
-                          child: Lottie.asset(MyAssets.lottieLoadingAnimation,
+                          child: Lottie.asset(Assets.jsons.lottieLoadingAnimation,
                               width: 0.2.sw),
                         ),
                       ),
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                       child: SizedBox(
                         height: 0.30.sh,
                         child: Center(
-                          child: Lottie.asset(MyAssets.lottieLoadingAnimation,
+                          child: Lottie.asset(Assets.jsons.lottieLoadingAnimation,
                               width: 0.2.sw),
                         ),
                       ),
@@ -223,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Center(
-                            child: Lottie.asset(MyAssets.lottieLoadingAnimation,
+                            child: Lottie.asset(Assets.jsons.lottieLoadingAnimation,
                                 width: 0.2.sw),
                           ),
                         ),
@@ -286,7 +286,7 @@ class _HomePageState extends State<HomePage> {
                       child: SizedBox(
                         height: 0.30.sh,
                         child: Center(
-                          child: Lottie.asset(MyAssets.lottieLoadingAnimation,
+                          child: Lottie.asset(Assets.jsons.lottieLoadingAnimation,
                               width: 0.2.sw),
                         ),
                       ),
@@ -349,7 +349,7 @@ class _HomePageState extends State<HomePage> {
                       child: SizedBox(
                         height: 0.30.sh,
                         child: Center(
-                          child: Lottie.asset(MyAssets.lottieLoadingAnimation,
+                          child: Lottie.asset(Assets.jsons.lottieLoadingAnimation,
                               width: 0.2.sw),
                         ),
                       ),

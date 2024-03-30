@@ -5,13 +5,13 @@ sealed class YoutubeMusicState extends Equatable{}
 
 final class YoutubeMusicInitialState extends YoutubeMusicState {
   @override
-  // TODO: implement props
+  
   List<Object?> get props => throw UnimplementedError();
 }
 
 final class YoutubeMusicLoadingState extends YoutubeMusicState {
   @override
-  // TODO: implement props
+  
   List<Object?> get props => throw UnimplementedError();
 }
 
@@ -22,7 +22,7 @@ final class YoutubeMusicSuccessState extends YoutubeMusicState {
   final  List<Future<List<Video>>> favoriteFuturePlayLists;
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [musicList, favoriteFuturePlayLists];
 }
 
@@ -33,7 +33,7 @@ final Future<List<Video>> searchList;
 final Future<List<String>> searchSuggestions;
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [searchList, searchSuggestions];
 }
 
@@ -41,6 +41,6 @@ final class YoutubeMusicErrorState extends YoutubeMusicState {
   YoutubeMusicErrorState({required this.errorMessage});
   final String errorMessage;
   @override
-  // TODO: implement props
+  
   List<Object?> get props =>[errorMessage];
 }

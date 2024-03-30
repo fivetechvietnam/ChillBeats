@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,10 +8,10 @@ import 'package:one_context/one_context.dart';
 import '../../logic/bloc/favorite_button/favorite_button_bloc.dart';
 import '../../logic/bloc/lofiii_all_music/lofiii_all_music_bloc.dart';
 import '../../logic/bloc/lofiii_all_music/lofiii_all_music_state.dart';
-import '../../resources/my_assets/my_assets.dart';
 import '../widgets/heading_with_view_more_button/heading_with_view_more_button_widget.dart';
 import '../widgets/music_cards_list/music_cards_list_widget.dart';
 import '../widgets/lottie_animation/no_internet_lottie_animation_widget.dart';
+import 'package:chillbeats/generated/assets.gen.dart';
 
 class LibraryPage extends StatelessWidget {
   const LibraryPage({
@@ -103,7 +102,7 @@ class LibraryPage extends StatelessWidget {
                       child: SizedBox(
                         height: 0.30.sh,
                         child: Center(
-                          child: Lottie.asset(MyAssets.lottieLoadingAnimation,
+                          child: Lottie.asset(Assets.jsons.lottieLoadingAnimation,
                               width: 0.2.sw),
                         ),
                       ),

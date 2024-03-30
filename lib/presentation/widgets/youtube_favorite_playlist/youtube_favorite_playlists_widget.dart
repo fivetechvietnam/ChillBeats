@@ -7,7 +7,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../logic/cubit/theme_mode/theme_mode_cubit.dart';
 import '../../../logic/cubit/youtube_music/youtube_music_cubit.dart';
-import '../../../resources/my_assets/my_assets.dart';
+import 'package:chillbeats/generated/assets.gen.dart';
 import '../../pages/youtube_music/youtube_favorite_playlist_page.dart';
 
 ///!-------------- Youtube Favorite Playlist --------------//
@@ -138,7 +138,7 @@ class YoutubeFavoritePlaylistWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Center(
-            child: Lottie.asset(MyAssets.lottieLoadingAnimation),
+            child: Lottie.asset(Assets.jsons.lottieLoadingAnimation),
           ),
         ),
       ),

@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     locator.get<ScrollController>().dispose();
     locator.get<Floating>().dispose();
     super.dispose();

@@ -9,7 +9,7 @@ class FetchMusicFromLocalStorageInitial extends FetchMusicFromLocalStorageState 
 }
 class FetchMusicFromLocalStorageLoadingState extends FetchMusicFromLocalStorageState {
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 class FetchMusicFromLocalStorageSuccessState extends FetchMusicFromLocalStorageState {
@@ -18,7 +18,7 @@ class FetchMusicFromLocalStorageSuccessState extends FetchMusicFromLocalStorageS
 
   FetchMusicFromLocalStorageSuccessState({required this.musicsList});
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [musicsList];
 }
 
@@ -28,6 +28,6 @@ class FetchMusicFromLocalStorageFailureState extends FetchMusicFromLocalStorageS
 
   FetchMusicFromLocalStorageFailureState({required this.failureMessage});
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [failureMessage];
 }

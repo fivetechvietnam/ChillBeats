@@ -8,7 +8,7 @@ class FavoriteButtonToggleEvent extends FavoriteButtonEvent{
   final String title;
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [title];
 }
 

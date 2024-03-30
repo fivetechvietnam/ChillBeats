@@ -1,19 +1,19 @@
 
 import 'dart:io';
+
+import 'package:chillbeats/data/services/app_permissions_service.dart';
+import 'package:chillbeats/generated/assets.gen.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:chillbeats/data/services/app_permissions_service.dart';
 import 'package:one_context/one_context.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../logic/bloc/user_profie/user_profile_bloc.dart';
 import '../../resources/hive/hive_resources.dart';
-import '../../resources/my_assets/my_assets.dart';
 import '../widgets/disclaimer_message_widget/disclaimer_message_widget.dart';
 import '../widgets/onboarding_skip_button/on_boarding_page_skip_button.dart';
 import 'initial/initial_page.dart';
@@ -40,7 +40,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     usernameController.dispose();
   }
@@ -54,8 +54,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           ///!--------  LOFIII  Logo
           Opacity(
             opacity: 0.2,
-            child: SvgPicture.asset(
-              MyAssets.lofiiiLogoDarkModeSvg,
+            child: Assets.icons.darkMode.svg(
               height: 1.sh,
             ),
           ),

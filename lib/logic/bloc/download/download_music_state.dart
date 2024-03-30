@@ -5,7 +5,7 @@ abstract class DownloadMusicState extends Equatable{}
 
 class DownloadMusicInitialState extends DownloadMusicState {
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
 class DownloadMusicLoadingState extends DownloadMusicState {
@@ -24,7 +24,7 @@ class DownloadMusicProgressState extends DownloadMusicState {
   final double progress;
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [progress];
 }
 
@@ -34,7 +34,7 @@ class DownloadMusicSuccessState extends DownloadMusicState {
   final String fileName;
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [fileName];
 }
 
@@ -42,6 +42,6 @@ class DownloadMusicFailureState extends DownloadMusicState {
   DownloadMusicFailureState({required this.errorMessage});
   final String errorMessage;
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [errorMessage];
 }

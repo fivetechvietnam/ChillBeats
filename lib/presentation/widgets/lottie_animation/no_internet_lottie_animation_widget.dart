@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:chillbeats/generated/assets.gen.dart';
 
-import '../../../resources/my_assets/my_assets.dart';
+
 
 class NoInternetLottieAnimation extends StatelessWidget {
   const NoInternetLottieAnimation({
@@ -17,8 +18,8 @@ class NoInternetLottieAnimation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: LottieBuilder.asset(
+        Assets.jsons.noInternetLottieAnimation,
         animate: true,
-        MyAssets.lottieNoInternetAnimation,
         fit: BoxFit.contain,
         width: 0.4.sw,
         height: 0.4.sw,
