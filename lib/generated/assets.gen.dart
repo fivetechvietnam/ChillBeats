@@ -20,16 +20,27 @@ class $AssetsIconsGen {
   /// File path: assets/icons/light_mode.svg
   SvgGenImage get lightMode => const SvgGenImage('assets/icons/light_mode.svg');
 
+  /// File path: assets/icons/logo.svg
+  SvgGenImage get logo => const SvgGenImage('assets/icons/logo.svg');
+
   /// File path: assets/icons/screenshot1.svg
   SvgGenImage get screenshot1 =>
       const SvgGenImage('assets/icons/screenshot1.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [darkMode, lightMode, screenshot1];
+  List<SvgGenImage> get values => [darkMode, lightMode, logo, screenshot1];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/appstore.png
+  AssetGenImage get appstore =>
+      const AssetGenImage('assets/images/appstore.png');
+
+  /// File path: assets/images/playstore.png
+  AssetGenImage get playstore =>
+      const AssetGenImage('assets/images/playstore.png');
 
   /// File path: assets/images/screenshot1.jpg
   AssetGenImage get screenshot1 =>
@@ -57,6 +68,8 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        appstore,
+        playstore,
         screenshot1,
         screenshot2,
         screenshot3,
