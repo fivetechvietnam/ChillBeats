@@ -38,7 +38,8 @@ https://github.com/arman-aminian/lofi-generator
 https://github.com/Gitster7/AI-Music-Generator
 https://omkarvatsa.hashnode.dev/lofi-music-generator
 
-
+https://www.epidemicsound.com/music/themes/epidemic-essentials/lofi-beats-essentials/?_us=adwords&_usx=11304661669_&utm_source=google&utm_medium=paidsearch&utm_campaign=11304661669&utm_term=&gad_source=1&gclid=Cj0KCQjw8J6wBhDXARIsAPo7QA8PEs1nfrHDHy7JRmXL4tXJ32lfKrQG64SXkYix_vfwyRSvcpWSx14aAha8EALw_wcB
+https://music.apple.com/vn/album/chill-lofi-beats/1569595164?l=vi
 
 ## Screenshots
 

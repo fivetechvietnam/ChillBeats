@@ -21,7 +21,6 @@ class CustomBottomNavigationWidget extends StatelessWidget {
     EvaIcons.settings
   ];
 
-
   @override
   Widget build(BuildContext context) {
     final bottomNavigationIndexState = state;
@@ -44,15 +43,21 @@ class CustomBottomNavigationWidget extends StatelessWidget {
               height: 0.08.sh,
               width: 0.85.sw,
               decoration: BoxDecoration(
-                  color: state.isDarkMode
-                      ? Theme.of(context).primaryColor
-                      : Colors.white,
-                  borderRadius: BorderRadius.circular(50)),
+                color: state.isDarkMode
+                    ? Theme.of(context).primaryColor
+                    : Colors.white,
+                borderRadius: BorderRadius.circular(50),
+                border: Border.all(
+                  width: 1,
+                  color: Color(state.accentColor).withOpacity(0.5)
+                ),
+              ),
               child: ListView.builder(
                 padding: EdgeInsets.zero,
                 physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: _icons.length,
+                shrinkWrap: true, //just set this property
                 ///Check Here
                 itemBuilder: (context, index) => Container(
                   width: 0.17.sw,
