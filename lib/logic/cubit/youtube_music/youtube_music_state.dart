@@ -1,46 +1,59 @@
 part of 'youtube_music_cubit.dart';
 
 @immutable
-sealed class YoutubeMusicState extends Equatable{}
+sealed class YoutubeMusicState extends Equatable {}
 
 final class YoutubeMusicInitialState extends YoutubeMusicState {
   @override
-  
   List<Object?> get props => throw UnimplementedError();
 }
 
 final class YoutubeMusicLoadingState extends YoutubeMusicState {
   @override
-  
   List<Object?> get props => throw UnimplementedError();
 }
 
-
 final class YoutubeMusicSuccessState extends YoutubeMusicState {
-  YoutubeMusicSuccessState({required this.musicList, required this.favoriteFuturePlayLists,});
+  YoutubeMusicSuccessState({
+    required this.musicList,
+    required this.favoriteFuturePlayLists,
+  });
   final Future<List<Video>> musicList;
-  final  List<Future<List<Video>>> favoriteFuturePlayLists;
+  final List<Future<List<Video>>> favoriteFuturePlayLists;
 
   @override
-  
   List<Object?> get props => [musicList, favoriteFuturePlayLists];
 }
 
+final class YoutubeMusicSearchState extends YoutubeMusicState {
+  YoutubeMusicSearchState({
+    required this.searchList,
+    required this.searchSuggestions,
+    required this.showSuggestion,
+  });
+  final Future<List<Video>> searchList;
+  final Future<List<String>> searchSuggestions;
+  final bool showSuggestion;
 
-final class YoutubeMusicSearchState extends YoutubeMusicState{
-  YoutubeMusicSearchState({required this.searchList, required this.searchSuggestions});
-final Future<List<Video>> searchList;
-final Future<List<String>> searchSuggestions;
+  YoutubeMusicSearchState copyWith({
+    showSuggestion,
+    searchList,
+    searchSuggestions,
+  }) {
+    return YoutubeMusicSearchState(
+      showSuggestion: showSuggestion ?? this.showSuggestion,
+      searchList: searchList ?? this.searchList,
+      searchSuggestions: searchSuggestions ?? this.searchSuggestions,
+    );
+  }
 
   @override
-  
-  List<Object?> get props => [searchList, searchSuggestions];
+  List<Object?> get props => [searchList, searchSuggestions, showSuggestion];
 }
 
 final class YoutubeMusicErrorState extends YoutubeMusicState {
   YoutubeMusicErrorState({required this.errorMessage});
   final String errorMessage;
   @override
-  
-  List<Object?> get props =>[errorMessage];
+  List<Object?> get props => [errorMessage];
 }

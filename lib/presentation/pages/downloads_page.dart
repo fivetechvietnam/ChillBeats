@@ -30,7 +30,6 @@ class DownloadsPage extends StatefulWidget {
 class _DownloadsPageState extends State<DownloadsPage> {
   @override
   void initState() {
-    
     super.initState();
     context
         .read<FetchMusicFromLocalStorageBloc>()
@@ -41,7 +40,6 @@ class _DownloadsPageState extends State<DownloadsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       //--------- App Bar ------------///
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -54,8 +52,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
       ),
 
       //-------  Floating Action Button ------------------///
-      floatingActionButton: const NowPlayingPositionFloatingButtonWidget(),
-
+      // floatingActionButton: const NowPlayingPositionFloatingButtonWidget(),
 
       //----------   Body ---------//
       body:
@@ -65,9 +62,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
         builder: (context, themeState) {
           return BlocConsumer<FetchMusicFromLocalStorageBloc,
               FetchMusicFromLocalStorageState>(
-            listener: (context, state) {
-              
-            },
+            listener: (context, state) {},
             builder: (context, state) {
               if (state is FetchMusicFromLocalStorageSuccessState) {
                 return FutureBuilder(
@@ -87,8 +82,8 @@ class _DownloadsPageState extends State<DownloadsPage> {
                               duration: const Duration(milliseconds: 300),
                               child: SearchableList(
                                 //----- Scroll Controller ------//
-                                scrollController:
-                                    locator.get<ScrollController>(),
+                                // scrollController:
+                                //     locator.get<ScrollController>(),
                                 // ----- For Storing List Position ------///
                                 key: const PageStorageKey("LocalMusic"),
 
@@ -258,16 +253,8 @@ class _DownloadsPageState extends State<DownloadsPage> {
     //----  Change Selected Tile Index
     context.read<ThemeModeCubit>().changeSelectedTileIndex(index: index);
 
-
     //----  Save Current Playing Music Offset
-    context
-        .read<
-        SearchableListScrollControllerCubit>()
-        .updateScrollOffset(
-        scrollOffset: locator
-            .get<ScrollController>()
-            .offset);
+    context.read<SearchableListScrollControllerCubit>().updateScrollOffset(
+        scrollOffset: locator.get<ScrollController>().offset);
   }
 }
-
-

@@ -17,29 +17,30 @@ import '../../pages/player/player_page.dart';
 import '../../pages/youtube_music/youtube_music_player_page.dart';
 
 class MiniPlayerPageWidget extends StatefulWidget {
-  const MiniPlayerPageWidget(
-      {super.key,
-      this.playerHeight,
-      this.playerWidth,
-      this.playerAlignment,
-      this.paddingTop,
-      this.paddingBottom,
-      this.paddingLeft,
-      this.paddingRight,
-      this.bottomMargin,
-      this.borderRadiusTopLeft,
-      this.borderRadiusTopRight});
+  const MiniPlayerPageWidget({
+    super.key,
+    this.playerHeight,
+    this.playerWidth,
+    this.playerAlignment,
+    this.paddingTop,
+    this.paddingBottom,
+    this.paddingLeft,
+    this.paddingRight,
+    this.bottomMargin,
+    this.borderRadiusTopLeft,
+    this.borderRadiusTopRight,
+  });
 
-  final playerHeight;
-  final playerWidth;
-  final playerAlignment;
-  final paddingTop;
-  final paddingBottom;
-  final paddingLeft;
-  final paddingRight;
-  final bottomMargin;
-  final borderRadiusTopLeft;
-  final borderRadiusTopRight;
+  final double? playerHeight;
+  final double? playerWidth;
+  final AlignmentGeometry? playerAlignment;
+  final double? paddingTop;
+  final double? paddingBottom;
+  final double? paddingLeft;
+  final double? paddingRight;
+  final double? bottomMargin;
+  final double? borderRadiusTopLeft;
+  final double? borderRadiusTopRight;
 
   @override
   State<MiniPlayerPageWidget> createState() => _MiniPlayerPageWidgetState();
@@ -63,7 +64,8 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(widget.borderRadiusTopLeft ?? 50),
-                    topRight: Radius.circular(widget.borderRadiusTopRight ?? 50),
+                    topRight:
+                        Radius.circular(widget.borderRadiusTopRight ?? 50),
                   ),
                 ),
                 child: BlocBuilder<ThemeModeCubit, ThemeModeState>(
@@ -76,8 +78,8 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
 
                       //-------!
                       child: Container(
-                        margin:
-                            EdgeInsets.only(bottom: widget.bottomMargin ?? 0.06.sh),
+                        margin: EdgeInsets.only(
+                            bottom: widget.bottomMargin ?? 0.06.sh),
                         height: widget.playerHeight ?? 0.1.sh,
                         width: widget.playerWidth ?? 0.85.sw,
                         decoration: BoxDecoration(
@@ -91,9 +93,10 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                   Color(themeState.accentColor),
                                 ]),
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(widget.borderRadiusTopLeft ?? 50),
-                            topRight:
-                                Radius.circular(widget.borderRadiusTopRight ?? 50),
+                            topLeft: Radius.circular(
+                                widget.borderRadiusTopLeft ?? 50),
+                            topRight: Radius.circular(
+                                widget.borderRadiusTopRight ?? 50),
                           ),
                         ),
                         child: Padding(
@@ -401,56 +404,51 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                     //       );
                                     //     }
 
-                                        //----- Thumbnail
-                                        // else {
-                                        //   return
-                                            CachedNetworkImage(
-                                            imageUrl: musicDataState
-                                                .youtubeMusicList[
-                                            musicDataState.musicIndex]
-                                                .thumbnails!
-                                                .last
-                                                .url
-                                                .toString(),
-                                            imageBuilder:
-                                                (context, imageProvider) =>
+                                    //----- Thumbnail
+                                    // else {
+                                    //   return
+                                    CachedNetworkImage(
+                                      imageUrl: musicDataState
+                                          .youtubeMusicList[
+                                              musicDataState.musicIndex]
+                                          .thumbnails!
+                                          .last
+                                          .url
+                                          .toString(),
+                                      imageBuilder: (context, imageProvider) =>
 
-                                            //- Animation
-                                            SpinPerfect(
-                                              infinite: true,
-                                              duration:
-                                              const Duration(seconds: 15),
-                                              child: CircleAvatar(
-                                                backgroundColor: Colors.transparent,
-                                                onBackgroundImageError: (exception, stackTrace) => const Icon(Icons.music_note),
-                                                backgroundImage: imageProvider,
-                                                radius: 19.spMax,
-                                              ),
-                                            ),
-                                            placeholder: (context, url) =>
-                                                CircleAvatar(
-                                                  radius: 19.spMax,
-                                                  child: Icon(
-                                                    FontAwesomeIcons.video,
-                                                    size: 12.spMax,
-                                                    color:
-                                                    Color(
-                                                        themeState.accentColor),
-                                                  ),
-                                                ),
-                                            errorWidget: (context, url,
-                                                error) =>
-                                                CircleAvatar(
-                                                  radius: 19.spMax,
-                                                  child: Icon(
-                                                    FontAwesomeIcons.music,
-                                                    size: 12.spMax,
-                                                    color:
-                                                    Color(
-                                                        themeState.accentColor),
-                                                  ),
-                                                ),
-                                          ),
+                                          //- Animation
+                                          SpinPerfect(
+                                        infinite: true,
+                                        duration: const Duration(seconds: 15),
+                                        child: CircleAvatar(
+                                          backgroundColor: Colors.transparent,
+                                          onBackgroundImageError:
+                                              (exception, stackTrace) =>
+                                                  const Icon(Icons.music_note),
+                                          backgroundImage: imageProvider,
+                                          radius: 19.spMax,
+                                        ),
+                                      ),
+                                      placeholder: (context, url) =>
+                                          CircleAvatar(
+                                        radius: 19.spMax,
+                                        child: Icon(
+                                          FontAwesomeIcons.video,
+                                          size: 12.spMax,
+                                          color: Color(themeState.accentColor),
+                                        ),
+                                      ),
+                                      errorWidget: (context, url, error) =>
+                                          CircleAvatar(
+                                        radius: 19.spMax,
+                                        child: Icon(
+                                          FontAwesomeIcons.music,
+                                          size: 12.spMax,
+                                          color: Color(themeState.accentColor),
+                                        ),
+                                      ),
+                                    ),
                                     //     }
                                     //   },
                                     // ),
@@ -488,7 +486,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                                         musicDataState
                                                             .musicIndex]
                                                     .channelName ??
-                                                "",
+                                                "youtube",
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
@@ -499,7 +497,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
                                       ),
                                     ),
 
-                                    const Gap(5),
+                                    const Gap(8),
                                   ],
                                 ),
                               );
@@ -527,7 +525,7 @@ class _MiniPlayerPageWidgetState extends State<MiniPlayerPageWidget> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>  YouTubeMusicPlayerPage(),
+            builder: (context) => YouTubeMusicPlayerPage(),
           ));
     } else {
       if (showMiniPlayerState.isOnlineMusic) {

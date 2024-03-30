@@ -37,9 +37,23 @@ class YoutubeMusicCubit extends Cubit<YoutubeMusicState> {
       Future<List<Video>> searchList = yt.fetchSearchVideo(query);
       Future<List<String>> searchSuggestion = yt.fetchSuggestions(query);
       emit(YoutubeMusicSearchState(
-          searchList: searchList, searchSuggestions: searchSuggestion));
+        searchList: searchList,
+        searchSuggestions: searchSuggestion,
+        showSuggestion: true,
+      ));
     } catch (e) {
       emit(YoutubeMusicErrorState(errorMessage: e.toString()));
     }
+  }
+
+  showSuggestions({required passYouTubeMusicSearchState}) {
+    emit(passYouTubeMusicSearchState.copyWith(showSuggestion: true));
+  }
+
+  hideSuggestions(
+      {required YoutubeMusicSearchState passYouTubeMusicSearchState}) {
+    emit(passYouTubeMusicSearchState.copyWith(
+      showSuggestion: false,
+    ));
   }
 }
