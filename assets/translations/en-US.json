@@ -9,5 +9,11 @@
   "good_morning" : "Good Morning",
   "good_afternoon" : "Good Afternoon",
   "good_evening" : "Good Evening",
-  "good_neight" : "Good Night"
+  "good_neight" : "Good Night",
+  "view_more": "View more",
+  "lofi_special": "LoFi Special",
+  "lofi_popular": "LoFi Popular",
+  "lofi_top_picks": "LoFi TopPicks",
+  "lofi_vibes": "LoFi Vibes",
+  "lofitube": "LoFiTube"
 }

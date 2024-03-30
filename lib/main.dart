@@ -42,6 +42,9 @@ import 'package:easy_localization/easy_localization.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Localization language
+  await EasyLocalization.ensureInitialized();
+
   // Initialize Get It
   initializeLocator();
 
@@ -50,9 +53,6 @@ void main() async {
 
   // The following line will enable the Android and iOS wakelock.
   WakelockPlus.enable();
-
-  // Localization language
-  await EasyLocalization.ensureInitialized();
 
   //  Initialize Hive Database
   await MyHive.initializeHive();
@@ -100,11 +100,10 @@ class _MyAppState extends State<MyApp> {
     // MultiBlocProvider for managing multiple BLoCs
     return MultiBlocProvider(
       providers: _providers(),
-
-      //     Initializing ScreenUtil for screen adaptation
+      // Initializing ScreenUtil for screen adaptation
       child: ScreenUtilInit(
         splitScreenMode: true,
-        //    Building the application with proper theme
+        // Building the application with proper theme
         builder: (context, child) =>
             BlocBuilder<ThemeModeCubit, ThemeModeState>(
           builder: (context, state) {
@@ -129,13 +128,20 @@ class _MyAppState extends State<MyApp> {
                     )
                   : Themes.lightTheme, //  State is not DarkMode
               title: 'ChillBeats',
+
+              debugShowCheckedModeBanner: false,
+
+              // Configure Navigator key
+              navigatorKey: OneContext().key,
+
+              // Configure [OneContext] to dialogs, overlays, snackbars, and ThemeMode
+              builder: OneContext().builder,
+
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,
               locale: context.locale,
+
               home: const SplashPage(),
-              debugShowCheckedModeBanner: false,
-              builder: OneContext().builder,
-              navigatorKey: OneContext().key,
             );
           },
         ),

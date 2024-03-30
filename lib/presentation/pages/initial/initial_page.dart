@@ -18,7 +18,7 @@ class InitialPage extends StatefulWidget {
 
 
 
-  InitialPage({super.key});
+  const InitialPage({super.key});
 
   @override
   State<InitialPage> createState() => _InitialPageState();

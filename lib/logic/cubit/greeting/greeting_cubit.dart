@@ -2,6 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:chillbeats/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
@@ -18,13 +19,13 @@ class GreetingCubit extends Cubit<GreetingState> {
 
     // Checking the current hour to determine the appropriate greeting.
     if (hour < 12) {
-      emit(state.copyWith(greeting: LocaleKeys.good_morning));
+      emit(state.copyWith(greeting: LocaleKeys.good_morning.tr()));
     } else if (hour < 17) {
-      emit(state.copyWith(greeting: LocaleKeys.good_afternoon));
+      emit(state.copyWith(greeting: LocaleKeys.good_afternoon.tr()));
     } else if (hour < 21) {
-      emit(state.copyWith(greeting: LocaleKeys.good_evening));
+      emit(state.copyWith(greeting: LocaleKeys.good_evening.tr()));
     } else {
-      emit(state.copyWith(greeting: LocaleKeys.good_neight));
+      emit(state.copyWith(greeting: LocaleKeys.good_neight.tr()));
     }
   }
 }

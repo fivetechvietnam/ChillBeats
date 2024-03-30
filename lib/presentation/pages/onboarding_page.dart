@@ -32,7 +32,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   late final DeviceInfoPlugin info;
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     info = DeviceInfoPlugin();
     usernameController = TextEditingController();

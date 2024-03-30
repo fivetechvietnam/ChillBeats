@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chillbeats/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,7 +46,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              "LOFIIITube ",
+              LocaleKeys.lofitube.tr(),
               style: TextStyle(
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w500,

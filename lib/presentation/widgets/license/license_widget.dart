@@ -19,6 +19,9 @@ class LicenceWidget extends StatelessWidget {
       title: "License",
       iconData: Icons.description,
       onTap: () {
+        if (!OneContext.hasContext){
+          return;
+        }
         OneContext().showDialog(
           builder: (context) => AlertDialog(
             title: const Text('Licenses'),
@@ -45,6 +48,9 @@ class LicenceWidget extends StatelessWidget {
 
               TextButton(
                 onPressed: () {
+                  if (!OneContext.hasContext){
+                    return;
+                  }
                   OneContext().showDialog(builder: (p0) => const AboutDialog(
                     applicationVersion: AppServices.appFullVersion,
 

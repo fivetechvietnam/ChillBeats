@@ -46,7 +46,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(fontSize: 19.sp, letterSpacing: 1),
                   ),
                 ),
-            
+
                 //----------------Theme SECTION-----------------------------///
                 Row(
                   children: [
@@ -57,11 +57,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     const Icon(EvaIcons.colorPalette)
                   ],
                 ),
-            
+
                 SizedBox(
                   height: 0.01.sh,
                 ),
-            
+
                 //----------------Accent Color Switch Tile-----------------------------///
                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, state) {
@@ -75,7 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                 ),
-            
+
                 //----------------Dark Mode Switch Tile-----------------------------///
                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, state) {
@@ -87,7 +87,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         title: const Text("Dark Mode"));
                   },
                 ),
-            
+
                 //----------------Black Mode Switch Tile-----------------------------///
                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, state) {
@@ -96,23 +96,25 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: SwitchListTile(
                           value: state.isBlackMode,
                           onChanged: (value) {
-                            context.read<ThemeModeCubit>().changeIntoBlackMode();
+                            context
+                                .read<ThemeModeCubit>()
+                                .changeIntoBlackMode();
                           },
                           title: const Text("Black Mode")),
                     );
                   },
                 ),
-            
+
                 Gap(0.02.sh),
-            
+
                 //-------------------GENERAL SECTION-----------------------------///
                 Text(
                   "  GENERAL",
                   style: TextStyle(fontSize: 16.sp, letterSpacing: 1.5),
                 ),
-            
+
                 Gap(0.01.sh),
-            
+
                 //----------------Profile-----------------------------///
                 SettingsListTileWidget(
                   title: "Profile",
@@ -123,9 +125,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     ));
                   },
                 ),
-            
+
                 _divider(),
-            
+
                 //----------------Equalizer-----------------------------///
                 BlocBuilder<ThemeModeCubit, ThemeModeState>(
                   builder: (context, state) {
@@ -136,9 +138,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                 ),
-            
+
                 _divider(),
-            
+
                 //----------------Feedback-----------------------------///
                 SettingsListTileWidget(
                   title: "Feedback",
@@ -147,9 +149,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     await _feedBackButtonOnTap();
                   },
                 ),
-            
+
                 _divider(),
-            
+
                 //----------------Privacy Policy-----------------------------///
                 SettingsListTileWidget(
                   title: "Privacy Policy",
@@ -160,14 +162,14 @@ class _SettingsPageState extends State<SettingsPage> {
                     ));
                   },
                 ),
-            
+
                 _divider(),
-            
+
                 //---------------- Licenses-----------------------------///
                 const LicenceWidget(),
-            
+
                 _divider(),
-            
+
                 //----------------About-----------------------------///
                 SettingsListTileWidget(
                     title: "About",
@@ -177,7 +179,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         builder: (context) => const AboutPage(),
                       ));
                     }),
-            
+
                 SizedBox(
                   height: 0.1.sh,
                 ),
@@ -192,9 +194,10 @@ class _SettingsPageState extends State<SettingsPage> {
   Divider _divider() {
     return const Divider();
   }
- ///
+
+  ///
   //------------------------    M E T H O D S  --------------------///
- //
+  //
 
   _accentColorTileOnTap() {
     OneContext.instance.showModalBottomSheet(
@@ -218,7 +221,10 @@ class _SettingsPageState extends State<SettingsPage> {
   }) {
     return InkWell(
       onTap: () {
-       OneContext().context?.read<ThemeModeCubit>().changeAccentColor(colorCode: colorCode);
+        OneContext()
+            .context
+            ?.read<ThemeModeCubit>()
+            .changeAccentColor(colorCode: colorCode);
       },
       child: CircleAvatar(
         backgroundColor: Color(colorCode),
@@ -228,6 +234,9 @@ class _SettingsPageState extends State<SettingsPage> {
 
   /// -------     Equalizer On Tap
   equalizerOnTap() async {
+    if (!OneContext.hasContext) {
+      return;
+    }
     OneContext().showDialog(
       builder: (context) => AlertDialog(
         title: Padding(
@@ -260,5 +269,3 @@ class _SettingsPageState extends State<SettingsPage> {
     await FlutterEmailSender.send(sendEmail);
   }
 }
-
-

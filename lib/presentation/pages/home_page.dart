@@ -1,3 +1,5 @@
+import 'package:chillbeats/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,13 +59,13 @@ class _HomePageState extends State<HomePage> {
               BlocBuilder<LofiiiSpecialMusicBloc, LofiiiSpecialMusicState>(
                 builder: (context, state) {
                   return HeadingWithViewMoreButton(
-                      heading: "LOFIII Special",
+                      heading: LocaleKeys.lofi_special.tr(),
                       viewMoreOnTap: () {
                         if (state is LofiiiSpecialMusicSuccessState) {
                           OneContext().push(
                             MaterialPageRoute(
                               builder: (context) => ViewMorePage(
-                                topHeading: "LOFIII Special",
+                                topHeading: LocaleKeys.lofi_special.tr(),
                                 musicList: state.musicList,
                               ),
                             ),
@@ -120,14 +122,14 @@ class _HomePageState extends State<HomePage> {
               BlocBuilder<LofiiiPopularMusicBloc, LofiiiPopularMusicState>(
                 builder: (context, state) {
                   return HeadingWithViewMoreButton(
-                      heading: "LOFIII Popular",
+                      heading: LocaleKeys.lofi_popular.tr(),
                       viewMoreOnTap: () {
                         if (state is LofiiiPopularMusicSuccessState) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ViewMorePage(
-                                topHeading: "LOFIII Popular",
+                                topHeading: LocaleKeys.lofi_popular.tr(),
                                 musicList: state.musicList,
                               ),
                             ),
@@ -246,13 +248,13 @@ class _HomePageState extends State<HomePage> {
               BlocBuilder<LofiiiTopPicksMusicBloc, LofiiiTopPicksMusicState>(
                 builder: (context, state) {
                   return HeadingWithViewMoreButton(
-                      heading: "LOFIII TopPicks",
+                      heading: LocaleKeys.lofi_top_picks.tr(),
                       viewMoreOnTap: () {
                         if (state is LofiiiTopPicksMusicSuccessState) {
                           OneContext().push(
                             MaterialPageRoute(
                               builder: (context) => ViewMorePage(
-                                topHeading: "LOFIII TopPicks",
+                                topHeading: LocaleKeys.lofi_top_picks.tr(),
                                 musicList: state.musicList,
                               ),
                             ),
@@ -307,14 +309,14 @@ class _HomePageState extends State<HomePage> {
               BlocBuilder<LofiiiVibesMusicBloc, LofiiiVibesMusicState>(
                 builder: (context, state) {
                   return HeadingWithViewMoreButton(
-                      heading: "LOFIII Vibes",
+                      heading: LocaleKeys.lofi_vibes.tr(),
                       viewMoreOnTap: () {
                         if (state is LofiiiVibesMusicSuccessState) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ViewMorePage(
-                                topHeading: "LOFIII Vibes",
+                                topHeading: LocaleKeys.lofi_vibes.tr(),
                                 musicList: state.musicList,
                               ),
                             ),
