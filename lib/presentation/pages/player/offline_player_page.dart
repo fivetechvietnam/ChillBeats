@@ -9,9 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:lofiii/logic/cubit/now_playing_offline_music_data_to_player/now_playing_offline_music_data_to_player_cubit.dart';
-import 'package:lofiii/logic/cubit/searchable_list_scroll_controller/download_scroll_controller_state.dart';
-import 'package:lofiii/logic/cubit/searchable_list_scroll_controller/searchableList_scroll_controller_cubit.dart';
+import 'package:chillbeats/logic/cubit/now_playing_offline_music_data_to_player/now_playing_offline_music_data_to_player_cubit.dart';
+import 'package:chillbeats/logic/cubit/searchable_list_scroll_controller/download_scroll_controller_state.dart';
+import 'package:chillbeats/logic/cubit/searchable_list_scroll_controller/searchableList_scroll_controller_cubit.dart';
 import 'package:one_context/one_context.dart';
 
 import '../../../logic/bloc/player/music_player_bloc.dart';

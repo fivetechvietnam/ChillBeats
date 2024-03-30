@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.lyrilab.lofiii"
+    namespace "pro.five.tech.solution.chillbeats"
     compileSdk 34
     ndkVersion flutter.ndkVersion
 
@@ -35,7 +35,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.lyrilab.lofiii"
+        applicationId "pro.five.tech.solution.chillbeats"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

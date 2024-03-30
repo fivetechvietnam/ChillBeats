@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:lofiii/data/services/app_permissions_service.dart';
-import 'package:lofiii/di/dependency_injection.dart';
+import 'package:chillbeats/data/services/app_permissions_service.dart';
+import 'package:chillbeats/di/dependency_injection.dart';
 import 'package:meta/meta.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 

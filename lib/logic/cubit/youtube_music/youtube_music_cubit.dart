@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:lofiii/data/datasources/youtube/youtube_playlists_ids.dart';
-import 'package:lofiii/di/dependency_injection.dart';
+import 'package:chillbeats/data/datasources/youtube/youtube_playlists_ids.dart';
+import 'package:chillbeats/di/dependency_injection.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:youtube_scrape_api/models/video.dart';

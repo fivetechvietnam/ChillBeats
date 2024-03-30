@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lofiii/data/data.dart';
+import 'package:chillbeats/data/data.dart';
 
 void main() {
   const validArtists = ['Chill', 'Hip-Hop', 'Fruits', 'Minnie'];

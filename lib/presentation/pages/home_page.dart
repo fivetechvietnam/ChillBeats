@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:lofiii/presentation/pages/view_more/view_more_page.dart';
+import 'package:chillbeats/presentation/pages/view_more/view_more_page.dart';
 import 'package:lottie/lottie.dart';
 import 'package:one_context/one_context.dart';
 import '../../logic/bloc/artists_data/artists_data_bloc.dart';

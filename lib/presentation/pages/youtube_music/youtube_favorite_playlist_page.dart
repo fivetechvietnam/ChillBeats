@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lofiii/logic/cubit/theme_mode/theme_mode_cubit.dart';
-import 'package:lofiii/presentation/pages/youtube_music/youtube_music_player_page.dart';
+import 'package:chillbeats/logic/cubit/theme_mode/theme_mode_cubit.dart';
+import 'package:chillbeats/presentation/pages/youtube_music/youtube_music_player_page.dart';
 import 'package:one_context/one_context.dart';
 import 'package:youtube_scrape_api/models/video.dart';
 

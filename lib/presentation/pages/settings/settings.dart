@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:lofiii/presentation/pages/settings/privacy_policy.dart';
-import 'package:lofiii/presentation/pages/settings/profile_page.dart';
-import 'package:lofiii/resources/my_assets/my_assets.dart';
+import 'package:chillbeats/presentation/pages/settings/privacy_policy.dart';
+import 'package:chillbeats/presentation/pages/settings/profile_page.dart';
+import 'package:chillbeats/resources/my_assets/my_assets.dart';
 import 'package:lottie/lottie.dart';
 import 'package:one_context/one_context.dart';
 

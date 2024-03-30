@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:lofiii/di/dependency_injection.dart';
+import 'package:chillbeats/di/dependency_injection.dart';
 
 import 'music_data_urls.dart';
 

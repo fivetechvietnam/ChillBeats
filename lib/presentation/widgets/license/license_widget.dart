@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:lofiii/data/services/app_services.dart';
+import 'package:chillbeats/data/services/app_services.dart';
 import 'package:one_context/one_context.dart';
 
 import '../../../resources/consts/consts.dart';

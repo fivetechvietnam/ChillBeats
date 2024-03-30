@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lofiii/logic/bloc/download/download_music_bloc.dart';
-import 'package:lofiii/logic/cubit/now_playing_offline_music_data_to_player/now_playing_offline_music_data_to_player_cubit.dart';
-import 'package:lofiii/logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
-import 'package:lofiii/logic/cubit/theme_mode/theme_mode_cubit.dart';
+import 'package:chillbeats/logic/bloc/download/download_music_bloc.dart';
+import 'package:chillbeats/logic/cubit/now_playing_offline_music_data_to_player/now_playing_offline_music_data_to_player_cubit.dart';
+import 'package:chillbeats/logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
+import 'package:chillbeats/logic/cubit/theme_mode/theme_mode_cubit.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../logic/cubit/flip_card/flip_card_cubit.dart';

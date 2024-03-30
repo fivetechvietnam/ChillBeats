@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:lofiii/logic/cubit/theme_mode/theme_mode_cubit.dart';
+import 'package:chillbeats/logic/cubit/theme_mode/theme_mode_cubit.dart';
 import 'package:one_context/one_context.dart';
 import '../../../logic/bloc/player/music_player_bloc.dart';
 import '../../../logic/cubit/gridview_max_count/gridview_max_cout_cubit.dart';

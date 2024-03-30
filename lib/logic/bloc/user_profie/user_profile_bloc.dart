@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lofiii/di/dependency_injection.dart';
+import 'package:chillbeats/di/dependency_injection.dart';
 import 'package:meta/meta.dart';
 
 import '../../../resources/hive/hive_resources.dart';

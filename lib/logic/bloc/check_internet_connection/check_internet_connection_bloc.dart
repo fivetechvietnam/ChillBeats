@@ -1,7 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart'; // Import this for BuildContext
-import 'package:lofiii/di/dependency_injection.dart';
+import 'package:chillbeats/di/dependency_injection.dart';
 import 'package:one_context/one_context.dart';
 
 import '../../cubit/youtube_music/youtube_music_cubit.dart';

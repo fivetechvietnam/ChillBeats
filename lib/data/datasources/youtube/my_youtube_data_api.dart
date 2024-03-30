@@ -2,8 +2,8 @@
 
 
 
-    import 'package:lofiii/data/datasources/youtube/youtube_playlists_ids.dart';
-import 'package:lofiii/data/repositories/youtube_repository.dart';
+    import 'package:chillbeats/data/datasources/youtube/youtube_playlists_ids.dart';
+import 'package:chillbeats/data/repositories/youtube_repository.dart';
 import 'package:youtube_scrape_api/models/video.dart';
 import 'package:youtube_scrape_api/youtube_scrape_api.dart';
 

@@ -1,3 +1,12 @@
+# ChillBeats - ChillBeats is your ultimate companion for unwinding and discovering the perfect soundtrack for any moment
+
+flutter pub run change_app_package_name:main pro.five.tech.solution.chillbeats
+
+
+# Refer 
+## A Flutter Music App with BLoC
+https://flutterawesome.com/a-flutter-music-app-with-bloc/
+
 # LOFIII - Flutter Open Source Music Streaming App for Lo-Fi lovers 
 
 ![LOFIII Logo](assets/lofiii_dark_mode.svg)

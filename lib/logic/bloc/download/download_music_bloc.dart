@@ -6,8 +6,8 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:lofiii/data/services/app_permissions_service.dart';
-import 'package:lofiii/di/dependency_injection.dart';
+import 'package:chillbeats/data/services/app_permissions_service.dart';
+import 'package:chillbeats/di/dependency_injection.dart';
 
 import 'package:permission_handler/permission_handler.dart';
 

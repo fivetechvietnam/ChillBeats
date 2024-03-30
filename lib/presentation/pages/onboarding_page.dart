@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:lofiii/data/services/app_permissions_service.dart';
+import 'package:chillbeats/data/services/app_permissions_service.dart';
 import 'package:one_context/one_context.dart';
 import 'package:permission_handler/permission_handler.dart';
 

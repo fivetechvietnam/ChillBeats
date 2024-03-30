@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:lofiii/logic/cubit/searchable_list_scroll_controller/download_scroll_controller_state.dart';
+import 'package:chillbeats/logic/cubit/searchable_list_scroll_controller/download_scroll_controller_state.dart';
 
 
 
