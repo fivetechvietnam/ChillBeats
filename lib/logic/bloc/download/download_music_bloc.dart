@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:chillbeats/generated/locale_keys.g.dart';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:chillbeats/data/services/app_permissions_service.dart';
@@ -17,7 +19,7 @@ part 'download_music_event.dart';
 part 'download_music_state.dart';
 
 class DownloadMusicBloc extends Bloc<DownloadMusicEvent, DownloadMusicState> {
-  final  dio = locator.get<Dio>();
+  final dio = locator.get<Dio>();
 
   DownloadMusicBloc() : super(DownloadMusicInitialState()) {
     on<DownloadNowEvent>(_downloadNowEvent);
@@ -26,11 +28,10 @@ class DownloadMusicBloc extends Bloc<DownloadMusicEvent, DownloadMusicState> {
 
   Future<void> _downloadNowEvent(
       DownloadNowEvent event, Emitter<DownloadMusicState> emit) async {
- // Check if storage write permission is granted
+    // Check if storage write permission is granted
     if (await AppPermissionService.storagePermission()) {
       try {
         emit(DownloadMusicLoadingState(fileName: event.fileName));
-
 
         final musicDir = Directory("/storage/emulated/0/Music/").path;
 
@@ -39,18 +40,24 @@ class DownloadMusicBloc extends Bloc<DownloadMusicEvent, DownloadMusicState> {
           '$musicDir${event.fileName.trim()}.m4a',
           onReceiveProgress: (received, total) {
             log('percentage: ${(received / total * 100).toStringAsFixed(0)}%');
-            emit(DownloadMusicProgressState(progress: (received / total * 100)));
+            emit(
+                DownloadMusicProgressState(progress: (received / total * 100)));
           },
         );
 
         add(MusicIsSuccessfullyDownloadedEvent(fileName: event.fileName));
-        await NotificationService().showNotification(title: "Downloaded Successfully",body: event.fileName);
+        await NotificationService().showNotification(
+          title: LocaleKeys.downloaded_successfully.tr(),
+          body: event.fileName,
+        );
         await Future.delayed(const Duration(seconds: 10));
         emit(DownloadMusicInitialState());
-
       } catch (e) {
         emit(DownloadMusicFailureState(errorMessage: e.toString()));
-        await NotificationService().showNotification(title: "Download Failure",body: "${event.fileName} is failed to download" );
+        await NotificationService().showNotification(
+          title: LocaleKeys.download_failure.tr(),
+          body: LocaleKeys.file_is_failed_to_download.tr(args: [event.fileName]),
+        );
         log(e.toString());
         await Future.delayed(const Duration(seconds: 10));
         emit(DownloadMusicInitialState());

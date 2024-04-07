@@ -163,7 +163,7 @@ final String pageStorageKey;
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontSize: 8.sp, fontWeight: FontWeight.w500),
+                                  fontSize: 12.sp, fontWeight: FontWeight.w500),
                             ),
                           )
                         ],

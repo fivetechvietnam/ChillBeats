@@ -34,5 +34,11 @@ abstract class  LocaleKeys {
   static const no_music_found = 'no_music_found';
   static const no_music_available = 'no_music_available';
   static const local_music = 'local_music';
+  static const file_is_downloading = 'file_is_downloading';
+  static const file_is_successfully_download = 'file_is_successfully_download';
+  static const download_now = 'download_now';
+  static const downloaded_successfully = 'downloaded_successfully';
+  static const file_is_failed_to_download = 'file_is_failed_to_download';
+  static const download_failure = 'download_failure';
 
 }

@@ -81,7 +81,7 @@ class ArtistsCardsListWidget extends StatelessWidget {
                                 "Image isn't loaded, please check your Internet connection!",
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 5,
-                                style: TextStyle(fontSize: 8.sp),
+                                style: TextStyle(fontSize: 12.sp),
                               ),
                             ),
                           ),
@@ -95,7 +95,7 @@ class ArtistsCardsListWidget extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          fontSize: 8.sp, fontWeight: FontWeight.w500),
+                          fontSize: 12.sp, fontWeight: FontWeight.w500),
                     )
                   ],
                 ),

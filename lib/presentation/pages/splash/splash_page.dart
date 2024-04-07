@@ -1,7 +1,8 @@
+import 'package:chillbeats/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../data/services/app_services.dart';
 import '../../../logic/bloc/all_music/all_music_bloc.dart';
 import '../../../logic/bloc/all_music/all_music_event.dart';
 import '../../../logic/bloc/popular_music/popular_music_bloc.dart';
@@ -15,6 +16,7 @@ import '../../../resources/hive/hive_resources.dart';
 import 'package:chillbeats/generated/assets.gen.dart';
 import '../initial/initial_page.dart';
 import '../onboarding_page.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -24,15 +26,23 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  String appVersion = "1.0.0(1)";
+
   @override
   void initState() {
-    
     super.initState();
-
+    _getAppVersion();
     _fetchMusic();
 
     //---------Navigate To OnBoarding/Initial Page After Three Seconds-----//
     goToNextPage();
+  }
+
+  _getAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      appVersion = "${packageInfo.version}(${packageInfo.buildNumber})";
+    });
   }
 
   @override
@@ -45,7 +55,25 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               /// Logo
               Center(
-                child: Assets.icons.logo.svg(fit: BoxFit.contain)
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Assets.icons.logo.svg(
+                      fit: BoxFit.contain,
+                      width: 300,
+                      height: 300,
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 8, right: 16, left: 16),
+                      child: Text(
+                        LocaleKeys.app_slogan.tr(),
+                        style: const TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ],
+                ),
               ),
 
               //- App Version Info
@@ -54,7 +82,7 @@ class _SplashPageState extends State<SplashPage> {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    AppServices.appFullVersion,
+                    appVersion,
                     style: TextStyle(fontSize: 12.sp),
                   ),
                 ),
@@ -93,8 +121,7 @@ class _SplashPageState extends State<SplashPage> {
     BlocProvider.of<PopularMusicBloc>(context).add(PopularMusicFetchEvent());
 
     //-----------Fetch  TopPicks Music ------___--------///
-    BlocProvider.of<TopPicksMusicBloc>(context)
-        .add(TopPicksMusicFetchEvent());
+    BlocProvider.of<TopPicksMusicBloc>(context).add(TopPicksMusicFetchEvent());
 
     //-----------Fetch  All Music ------___--------///
     BlocProvider.of<AllMusicBloc>(context).add(AllMusicFetchEvent());

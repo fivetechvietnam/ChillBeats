@@ -88,8 +88,9 @@ class HomePageSliverAppBar extends StatelessWidget {
                                     child: Text(
                                       state.greeting,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 20.sp),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 20.sp,
+                                      ),
                                     ),
                                   );
                                 },
@@ -102,9 +103,10 @@ class HomePageSliverAppBar extends StatelessWidget {
                                     child: Text(
                                       state.username,
                                       style: TextStyle(
-                                          letterSpacing: 1,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10.sp),
+                                        letterSpacing: 1,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12.sp,
+                                      ),
                                     ),
                                   );
                                 },

@@ -1,4 +1,6 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:chillbeats/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -85,26 +87,30 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                                   builder: (context, state) {
                                     if (state is DownloadMusicInitialState) {
                                       return Center(
-                                          child: GlassButtonWidget(
-                                        onPressed: () {
-                                          BlocProvider.of<DownloadMusicBloc>(
-                                                  context)
-                                              .add(DownloadNowEvent(
-                                                  url: fetchMusicState
-                                                      .fullMusicList[
-                                                          fetchMusicState
-                                                              .musicIndex]
-                                                      .url,
-                                                  fileName: fetchMusicState
-                                                      .fullMusicList[
-                                                          fetchMusicState
-                                                              .musicIndex]
-                                                      .title,
-                                                  context: context));
-                                        },
-                                        label: "Download Now",
-                                        iconData: FontAwesomeIcons.download,
-                                      ));
+                                        child: GlassButtonWidget(
+                                          onPressed: () {
+                                            BlocProvider.of<DownloadMusicBloc>(
+                                                    context)
+                                                .add(
+                                              DownloadNowEvent(
+                                                url: fetchMusicState
+                                                    .fullMusicList[
+                                                        fetchMusicState
+                                                            .musicIndex]
+                                                    .url,
+                                                fileName: fetchMusicState
+                                                    .fullMusicList[
+                                                        fetchMusicState
+                                                            .musicIndex]
+                                                    .title,
+                                                context: context,
+                                              ),
+                                            );
+                                          },
+                                          label: LocaleKeys.download_now.tr(),
+                                          iconData: FontAwesomeIcons.download,
+                                        ),
+                                      );
                                     } else {
                                       return const SizedBox.shrink();
                                     }
@@ -137,7 +143,8 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.all(12.spMax),
                                 child: Text(
-                                  "${state.fileName} is downloading",
+                                  LocaleKeys.file_is_downloading
+                                      .tr(args: [state.fileName]),
                                   maxLines: 1,
                                   style: TextStyle(
                                     color: Colors.white,
@@ -173,7 +180,8 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "${state.fileName} is Successfully Download",
+                              LocaleKeys.file_is_successfully_download
+                                  .tr(args: [state.fileName]),
                               maxLines: 1,
                               style: TextStyle(
                                   color: Colors.white,
@@ -189,7 +197,7 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                           return Padding(
                             padding: EdgeInsets.all(12.spMax),
                             child: Text(
-                              "${state.errorMessage}",
+                              state.errorMessage,
                               maxLines: 5,
                               style: TextStyle(
                                   color: Colors.white,

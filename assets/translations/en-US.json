@@ -6,10 +6,10 @@
     "company": "5Tech Solution Ltd",
     "email": "info@5ts.pro"
   },
-  "good_morning" : "Good Morning",
-  "good_afternoon" : "Good Afternoon",
-  "good_evening" : "Good Evening",
-  "good_neight" : "Good Night",
+  "good_morning": "Good Morning",
+  "good_afternoon": "Good Afternoon",
+  "good_evening": "Good Evening",
+  "good_neight": "Good Night",
   "view_more": "View more",
   "lofi_special": "LoFi Special",
   "lofi_popular": "LoFi Popular",
@@ -32,5 +32,11 @@
   "no_favorite_items_available": "No Favorite Items available",
   "no_music_found": "No Music Found!",
   "no_music_available": "No Music Available",
-  "local_music": "Local  Music"
+  "local_music": "Local  Music",
+  "file_is_downloading": "{} is downloading",
+  "file_is_successfully_download": "{} is successfully download",
+  "download_now": "Download now",
+  "downloaded_successfully": "Downloaded successfully",
+  "file_is_failed_to_download": "{} is failed to download",
+  "download_failure": "Download failure"
 }

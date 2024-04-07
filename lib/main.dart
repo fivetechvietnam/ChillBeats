@@ -2,6 +2,7 @@ import 'package:floating/floating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chillbeats/data/services/notification_service.dart';
 import 'package:chillbeats/di/dependency_injection.dart';
@@ -39,6 +40,19 @@ import 'resources/theme/themes.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+@pragma('vm:entry-point')
+void notificationTapBackground(NotificationResponse notificationResponse) {
+  // ignore: avoid_print
+  print('notification(${notificationResponse.id}) action tapped: '
+      '${notificationResponse.actionId} with'
+      ' payload: ${notificationResponse.payload}');
+  if (notificationResponse.input?.isNotEmpty ?? false) {
+    // ignore: avoid_print
+    print(
+        'notification action tapped with input: ${notificationResponse.input}');
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -147,51 +161,24 @@ class _MyAppState extends State<MyApp> {
   //----------------   B L O C   P R O V I D E R S   -------------///
   List<SingleChildWidget> _providers(BuildContext context) {
     return [
+      BlocProvider(create: (context) => YoutubeMusicCubit()),
+      BlocProvider(create: (context) => YoutubeMusicPlayerCubit()),
+      BlocProvider(create: (context) => ThemeModeCubit()),
+      BlocProvider(create: (context) => BottomNavigationIndexCubit()),
+      BlocProvider(create: (context) => MusicPlayerBloc()),
+      BlocProvider(create: (context) => SpecialMusicBloc()),
+      BlocProvider(create: (context) => PopularMusicBloc()),
+      BlocProvider(create: (context) => TopPicksMusicBloc()),
+      BlocProvider(create: (context) => AllMusicBloc()),
+      BlocProvider(create: (context) => VibesMusicBloc()),
+      BlocProvider(create: (context) => ArtistsDataBloc()),
       BlocProvider(
-        create: (context) => ThemeModeCubit(),
-      ),
-      BlocProvider(
-        create: (context) => BottomNavigationIndexCubit(),
-      ),
-      BlocProvider(
-        create: (context) => MusicPlayerBloc(),
-      ),
-      BlocProvider(
-        create: (context) => SpecialMusicBloc(),
-      ),
-      BlocProvider(
-        create: (context) => PopularMusicBloc(),
-      ),
-      BlocProvider(
-        create: (context) => TopPicksMusicBloc(),
-      ),
-      BlocProvider(
-        create: (context) => AllMusicBloc(),
-      ),
-      BlocProvider(
-        create: (context) => VibesMusicBloc(),
-      ),
-      BlocProvider(
-        create: (context) => ArtistsDataBloc(),
-      ),
-      BlocProvider(
-        create: (context) => CurrentlyPlayingMusicDataToPlayerCubit(),
-      ),
-      BlocProvider(
-        create: (context) => ShowMiniPlayerCubit(),
-      ),
-      BlocProvider(
-        create: (context) => GreetingCubit(),
-      ),
-      BlocProvider(
-        create: (context) => SearchSystemCubit(),
-      ),
-      BlocProvider(
-        create: (context) => GridviewMaxCountCubit(),
-      ),
-      BlocProvider(
-        create: (context) => ChangeSystemVolumeCubit(),
-      ),
+          create: (context) => CurrentlyPlayingMusicDataToPlayerCubit()),
+      BlocProvider(create: (context) => ShowMiniPlayerCubit()),
+      BlocProvider(create: (context) => GreetingCubit()),
+      BlocProvider(create: (context) => SearchSystemCubit()),
+      BlocProvider(create: (context) => GridviewMaxCountCubit()),
+      BlocProvider(create: (context) => ChangeSystemVolumeCubit()),
       BlocProvider(create: (context) => FavoriteButtonBloc()),
       BlocProvider(create: (context) => RepeatMusicCubit()),
       BlocProvider(create: (context) => DownloadMusicBloc()),
@@ -201,8 +188,6 @@ class _MyAppState extends State<MyApp> {
       BlocProvider(
           create: (context) => NowPlayingOfflineMusicDataToPlayerCubit()),
       BlocProvider(create: (context) => SearchableListScrollControllerCubit()),
-      BlocProvider(create: (context) => YoutubeMusicCubit()),
-      BlocProvider(create: (context) => YoutubeMusicPlayerCubit()),
       BlocProvider(
         create: (context) => CheckInternetConnectionBloc(context),
       ),

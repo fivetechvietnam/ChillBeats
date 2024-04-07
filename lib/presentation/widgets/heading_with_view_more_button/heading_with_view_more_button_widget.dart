@@ -35,7 +35,7 @@ class HeadingWithViewMoreButton extends StatelessWidget {
                   child: Text(
                     LocaleKeys.view_more.tr(),
                     style: TextStyle(
-                        fontSize: 10.sp, color: Color(state.accentColor)),
+                        fontSize: 12.sp, color: Color(state.accentColor)),
                   ),
                 );
               },
