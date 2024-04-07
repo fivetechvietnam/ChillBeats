@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:chillbeats/presentation/pages/view_more/view_more_page.dart';
 import 'package:lottie/lottie.dart';
-import 'package:one_context/one_context.dart';
 import '../../logic/bloc/artists_data/artists_data_bloc.dart';
 import '../../logic/bloc/artists_data/artists_data_event.dart';
 import '../../logic/bloc/artists_data/artists_data_state.dart';
@@ -62,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                       heading: LocaleKeys.lofi_special.tr(),
                       viewMoreOnTap: () {
                         if (state is SpecialMusicSuccessState) {
-                          OneContext().push(
+                          Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => ViewMorePage(
                                 topHeading: LocaleKeys.lofi_special.tr(),
@@ -251,7 +250,7 @@ class _HomePageState extends State<HomePage> {
                       heading: LocaleKeys.lofi_top_picks.tr(),
                       viewMoreOnTap: () {
                         if (state is TopPicksMusicSuccessState) {
-                          OneContext().push(
+                          Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => ViewMorePage(
                                 topHeading: LocaleKeys.lofi_top_picks.tr(),
@@ -384,23 +383,22 @@ class _HomePageState extends State<HomePage> {
   //---------------------------- M E T H O D S --------------------///
   Future<void> _onRefreshMethod() async {
     //--------Refresh  Special Music --------------///
-    context.read<SpecialMusicBloc>().add(SpecialMusicFetchEvent());
+    BlocProvider.of<SpecialMusicBloc>(context).add(SpecialMusicFetchEvent());
 
     //--------Refresh  Popular Music --------------///
-    context.read<PopularMusicBloc>().add(PopularMusicFetchEvent());
+    BlocProvider.of<PopularMusicBloc>(context).add(PopularMusicFetchEvent());
 
     //--------Refresh  Top Picks Music --------------///
-    context
-        .read<TopPicksMusicBloc>()
+    BlocProvider.of<TopPicksMusicBloc>(context)
         .add(TopPicksMusicFetchEvent());
 
     //--------Refresh  All Music --------------///
-    context.read<AllMusicBloc>().add(AllMusicFetchEvent());
+    BlocProvider.of<AllMusicBloc>(context).add(AllMusicFetchEvent());
 
     //--------Refresh Artist Data --------------///
-    context.read<ArtistsDataBloc>().add(ArtistsDataFetchEvent());
+    BlocProvider.of<ArtistsDataBloc>(context).add(ArtistsDataFetchEvent());
 
     //--------Refresh  Vibes Music --------------///
-    context.read<VibesMusicBloc>().add(VibesMusicFetchEvent());
+    BlocProvider.of<VibesMusicBloc>(context).add(VibesMusicFetchEvent());
   }
 }

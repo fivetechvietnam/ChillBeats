@@ -9,7 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:chillbeats/logic/cubit/theme_mode/theme_mode_cubit.dart';
-import 'package:one_context/one_context.dart';
 import '../../../logic/bloc/player/music_player_bloc.dart';
 import '../../../logic/cubit/gridview_max_count/gridview_max_cout_cubit.dart';
 import '../../../logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
@@ -42,7 +41,7 @@ class _ViewMorePageState extends State<ViewMorePage> {
             automaticallyImplyLeading: false,
             leading: IconButton(
                 onPressed: () {
-                  OneContext().pop();
+                  Navigator.of(context).pop();
                 },
                 icon: const Icon(CupertinoIcons.back)),
             title: Text(
@@ -50,7 +49,7 @@ class _ViewMorePageState extends State<ViewMorePage> {
             ),
             actions: [
               IconButton(onPressed: () {
-                context.read<GridviewMaxCountCubit>().changeMaxCount();
+                BlocProvider.of<GridviewMaxCountCubit>(context).changeMaxCount();
               }, icon:
                   BlocBuilder<GridviewMaxCountCubit, GridviewMaxCountState>(
                 builder: (context, state) {
@@ -213,19 +212,18 @@ class _ViewMorePageState extends State<ViewMorePage> {
   // ----------------- M E T H O D S----------------///
   void playMusicMethod(int index, BuildContext context, musicList) {
     //------      Initialize & Play Music ------///
-    context
-        .read<MusicPlayerBloc>()
+    BlocProvider.of<MusicPlayerBloc>(context)
         .add(MusicPlayerInitializeEvent(url: musicList[index].url));
 
     //--       Send Current Music Data-----///
-    context.read<CurrentlyPlayingMusicDataToPlayerCubit>().sendDataToPlayer(
+    BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context).sendDataToPlayer(
           musicIndex: index,
           imageUrl: musicList[index].image.toString(),
           fullMusicList: musicList,
         );
 
     //--        Show Mini Player-----///
-    context.read<ShowMiniPlayerCubit>().showMiniPlayer();
-    context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).showMiniPlayer();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).youtubeMusicIsNotPlaying();
   }
 }

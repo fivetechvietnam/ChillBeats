@@ -10,7 +10,6 @@ import 'package:chillbeats/presentation/pages/settings/privacy_policy.dart';
 import 'package:chillbeats/presentation/pages/settings/profile_page.dart';
 import 'package:chillbeats/generated/assets.gen.dart';
 import 'package:lottie/lottie.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../../logic/cubit/theme_mode/theme_mode_cubit.dart';
 import '../../../resources/theme/colors_palates.dart';
@@ -63,47 +62,47 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
 
                 //----------------Accent Color Switch Tile-----------------------------///
-                BlocBuilder<ThemeModeCubit, ThemeModeState>(
-                  builder: (context, state) {
-                    return ListTile(
-                      title: const Text("Accent Color"),
-                      trailing: CircleAvatar(
-                        radius: 15.spMax,
-                        backgroundColor: Color(state.accentColor),
-                      ),
-                      onTap: _accentColorTileOnTap,
-                    );
-                  },
-                ),
+                // BlocBuilder<ThemeModeCubit, ThemeModeState>(
+                //   builder: (context, state) {
+                //     return ListTile(
+                //       title: const Text("Accent Color"),
+                //       trailing: CircleAvatar(
+                //         radius: 15.spMax,
+                //         backgroundColor: Color(state.accentColor),
+                //       ),
+                //       onTap: _accentColorTileOnTap(context),
+                //     );
+                //   },
+                // ),
 
-                //----------------Dark Mode Switch Tile-----------------------------///
-                BlocBuilder<ThemeModeCubit, ThemeModeState>(
-                  builder: (context, state) {
-                    return SwitchListTile(
-                        value: state.isDarkMode,
-                        onChanged: (value) {
-                          context.read<ThemeModeCubit>().changeThemeMode();
-                        },
-                        title: const Text("Dark Mode"));
-                  },
-                ),
+                // //----------------Dark Mode Switch Tile-----------------------------///
+                // BlocBuilder<ThemeModeCubit, ThemeModeState>(
+                //   builder: (context, state) {
+                //     return SwitchListTile(
+                //         value: state.isDarkMode,
+                //         onChanged: (value) {
+                //           BlocProvider.of<ThemeModeCubit>(context).changeThemeMode();
+                //         },
+                //         title: const Text("Dark Mode"));
+                //   },
+                // ),
 
-                //----------------Black Mode Switch Tile-----------------------------///
-                BlocBuilder<ThemeModeCubit, ThemeModeState>(
-                  builder: (context, state) {
-                    return Visibility(
-                      visible: state.isDarkMode,
-                      child: SwitchListTile(
-                          value: state.isBlackMode,
-                          onChanged: (value) {
-                            context
-                                .read<ThemeModeCubit>()
-                                .changeIntoBlackMode();
-                          },
-                          title: const Text("Black Mode")),
-                    );
-                  },
-                ),
+                // //----------------Black Mode Switch Tile-----------------------------///
+                // BlocBuilder<ThemeModeCubit, ThemeModeState>(
+                //   builder: (context, state) {
+                //     return Visibility(
+                //       visible: state.isDarkMode,
+                //       child: SwitchListTile(
+                //           value: state.isBlackMode,
+                //           onChanged: (value) {
+                //             context
+                //                 .read<ThemeModeCubit>()
+                //                 .changeIntoBlackMode();
+                //           },
+                //           title: const Text("Black Mode")),
+                //     );
+                //   },
+                // ),
 
                 Gap(0.02.sh),
 
@@ -120,7 +119,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: "Profile",
                   iconData: EvaIcons.person,
                   onTap: () {
-                    OneContext().push(MaterialPageRoute(
+                    Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const ProfilePage(),
                     ));
                   },
@@ -157,7 +156,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: "Privacy Policy",
                   iconData: Icons.policy,
                   onTap: () {
-                    OneContext().push(MaterialPageRoute(
+                    Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const PrivacyPolicyPage(),
                     ));
                   },
@@ -175,7 +174,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     title: "About",
                     iconData: CupertinoIcons.info,
                     onTap: () {
-                      OneContext().push(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const AboutPage(),
                       ));
                     }),
@@ -199,8 +198,8 @@ class _SettingsPageState extends State<SettingsPage> {
   //------------------------    M E T H O D S  --------------------///
   //
 
-  _accentColorTileOnTap() {
-    OneContext.instance.showModalBottomSheet(
+  _accentColorTileOnTap(BuildContext context) {
+    showModalBottomSheet(
       elevation: 1,
       backgroundColor: Colors.transparent,
       showDragHandle: true,
@@ -212,6 +211,7 @@ class _SettingsPageState extends State<SettingsPage> {
           colorCode: MyColor.colorHexCodesList[index],
         ),
       ),
+      context: context,
     );
   }
 
@@ -221,9 +221,7 @@ class _SettingsPageState extends State<SettingsPage> {
   }) {
     return InkWell(
       onTap: () {
-        OneContext()
-            .context
-            ?.read<ThemeModeCubit>()
+        BlocProvider.of<ThemeModeCubit>(context)
             .changeAccentColor(colorCode: colorCode);
       },
       child: CircleAvatar(
@@ -233,11 +231,8 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   /// -------     Equalizer On Tap
-  equalizerOnTap() async {
-    if (!OneContext.hasContext) {
-      return;
-    }
-    OneContext().showDialog(
+  equalizerOnTap(BuildContext context) async {
+    showDialog(
       builder: (context) => AlertDialog(
         title: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -254,6 +249,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             )),
       ),
+      context: context,
     );
   }
 

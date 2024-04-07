@@ -2,7 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:chillbeats/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +17,6 @@ import 'package:searchable_listview/searchable_listview.dart';
 import '../../logic/cubit/searchable_list_scroll_controller/searchableList_scroll_controller_cubit.dart';
 import '../../logic/cubit/show_mini_player/show_mini_player_cubit.dart';
 import '../widgets/mini_music_visualizer/mini_music_visualizer_widget.dart';
-import '../widgets/now_playing_position_floating_button/now_playing_position_floating_button_widget.dart';
 
 class DownloadsPage extends StatefulWidget {
   const DownloadsPage({super.key});
@@ -31,8 +29,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
   @override
   void initState() {
     super.initState();
-    context
-        .read<FetchMusicFromLocalStorageBloc>()
+    BlocProvider.of<FetchMusicFromLocalStorageBloc>(context)
         .add(FetchMusicFromLocalStorageInitializationEvent());
     locator.get<ScrollController>();
   }
@@ -223,13 +220,12 @@ class _DownloadsPageState extends State<DownloadsPage> {
       required musicListLength,
       required snapshotMusicList}) {
     //--Play Music------
-    context
-        .read<MusicPlayerBloc>()
+    BlocProvider.of<MusicPlayerBloc>(context)
         .add(MusicPlayerInitializeEvent(url: currentMusic));
 
-    context.read<ShowMiniPlayerCubit>().showMiniPlayer();
-    context.read<ShowMiniPlayerCubit>().offlineMusicIsPlaying();
-    context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).showMiniPlayer();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).offlineMusicIsPlaying();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).youtubeMusicIsNotPlaying();
 
     // //--Show Offline Player Screen ----///
     showModalBottomSheet(
@@ -239,7 +235,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
     );
 
     //- Send Data to Offline Player
-    context.read<NowPlayingOfflineMusicDataToPlayerCubit>().sendDataToPlayer(
+    BlocProvider.of<NowPlayingOfflineMusicDataToPlayerCubit>(context).sendDataToPlayer(
         musicIndex: index,
         futureMusicList: musicList,
         musicTitle: musicTitle,
@@ -251,10 +247,10 @@ class _DownloadsPageState extends State<DownloadsPage> {
     FocusManager.instance.primaryFocus?.unfocus();
 
     //----  Change Selected Tile Index
-    context.read<ThemeModeCubit>().changeSelectedTileIndex(index: index);
+    BlocProvider.of<ThemeModeCubit>(context).changeSelectedTileIndex(index: index);
 
     //----  Save Current Playing Music Offset
-    context.read<SearchableListScrollControllerCubit>().updateScrollOffset(
+    BlocProvider.of<SearchableListScrollControllerCubit>(context).updateScrollOffset(
         scrollOffset: locator.get<ScrollController>().offset);
   }
 }

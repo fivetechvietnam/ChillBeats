@@ -1,8 +1,5 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:chillbeats/data/services/app_services.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../../resources/consts/consts.dart';
 import '../settings_list_tile/settings_list_tile_widget.dart';
@@ -12,17 +9,13 @@ class LicenceWidget extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return SettingsListTileWidget(
       title: "License",
       iconData: Icons.description,
       onTap: () {
-        if (!OneContext.hasContext){
-          return;
-        }
-        OneContext().showDialog(
+        showDialog(
           builder: (context) => AlertDialog(
             title: const Text('Licenses'),
             content: const SingleChildScrollView(
@@ -43,22 +36,17 @@ class LicenceWidget extends StatelessWidget {
               ),
             ),
             actions: [
-
-
-
               TextButton(
                 onPressed: () {
-                  if (!OneContext.hasContext){
-                    return;
-                  }
-                  OneContext().showDialog(builder: (p0) => const AboutDialog(
-                    applicationVersion: AppServices.appFullVersion,
-
-                  ));
+                  showDialog(
+                    builder: (p0) => const AboutDialog(
+                      applicationVersion: AppServices.appFullVersion,
+                    ),
+                    context: context,
+                  );
                 },
                 child: const Text('More Licenses'),
               ),
-
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -67,6 +55,7 @@ class LicenceWidget extends StatelessWidget {
               ),
             ],
           ),
+          context: context,
         );
       },
     );

@@ -2,13 +2,10 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:chillbeats/logic/cubit/theme_mode/theme_mode_cubit.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../../data/models/music_model.dart';
 import '../../../logic/bloc/favorite_button/favorite_button_bloc.dart';
@@ -48,7 +45,7 @@ class _ArtistPageState extends State<ArtistPage> {
               color: Colors.white,
             ),
             onPressed: () {
-              OneContext().pop();
+              Navigator.of(context).pop();
             }),
       ),
 
@@ -144,7 +141,7 @@ class _ArtistPageState extends State<ArtistPage> {
                                     const EdgeInsets.symmetric(horizontal: 5),
                                 child: IconButton(
                                   onPressed: () {
-                                    context.read<FavoriteButtonBloc>().add(
+                                    BlocProvider.of<FavoriteButtonBloc>(context).add(
                                         FavoriteButtonToggleEvent(
                                             title: filteredList[index].title));
                                     setState(() {});
@@ -231,16 +228,15 @@ class _ArtistPageState extends State<ArtistPage> {
   void _listTileOnTap(
       BuildContext context, List<MusicModel> filteredList, int index) {
     //-Initialize & Play Music ------///
-    context
-        .read<MusicPlayerBloc>()
+    BlocProvider.of<MusicPlayerBloc>(context)
         .add(MusicPlayerInitializeEvent(url: filteredList[index].url));
 
     //--Show Mini Player-----///
-    context.read<ShowMiniPlayerCubit>().showMiniPlayer();
-    context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).showMiniPlayer();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).youtubeMusicIsNotPlaying();
 
     //--Send Current Music Data-----///
-    context.read<CurrentlyPlayingMusicDataToPlayerCubit>().sendDataToPlayer(
+    BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context).sendDataToPlayer(
         musicIndex: index,
         imageUrl: filteredList[index].image.toString(),
         fullMusicList: filteredList);

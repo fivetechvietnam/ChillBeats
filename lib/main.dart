@@ -15,7 +15,6 @@ import 'package:chillbeats/logic/cubit/youtube_music/youtube_music_cubit.dart';
 import 'package:chillbeats/presentation/pages/splash/splash_page.dart';
 import 'package:chillbeats/resources/hive/hive_resources.dart';
 import 'package:nested/nested.dart';
-import 'package:one_context/one_context.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'logic/bloc/artists_data/artists_data_bloc.dart';
 import 'logic/bloc/check_internet_connection/check_internet_connection_bloc.dart';
@@ -38,6 +37,8 @@ import 'logic/cubit/theme_mode/theme_mode_cubit.dart';
 import 'logic/cubit/youtube_music_player/youtube_music_player_cubit.dart';
 import 'resources/theme/themes.dart';
 import 'package:easy_localization/easy_localization.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -99,7 +100,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     // MultiBlocProvider for managing multiple BLoCs
     return MultiBlocProvider(
-      providers: _providers(),
+      providers: _providers(context),
       // Initializing ScreenUtil for screen adaptation
       child: ScreenUtilInit(
         splitScreenMode: true,
@@ -128,15 +129,9 @@ class _MyAppState extends State<MyApp> {
                     )
                   : Themes.lightTheme, //  State is not DarkMode
               title: 'ChillBeats',
-
-              debugShowCheckedModeBanner: false,
-
               // Configure Navigator key
-              navigatorKey: OneContext().key,
-
-              // Configure [OneContext] to dialogs, overlays, snackbars, and ThemeMode
-              builder: OneContext().builder,
-
+              navigatorKey: navigatorKey,
+              debugShowCheckedModeBanner: false,
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,
               locale: context.locale,
@@ -150,13 +145,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   //----------------   B L O C   P R O V I D E R S   -------------///
-  List<SingleChildWidget> _providers() {
+  List<SingleChildWidget> _providers(BuildContext context) {
     return [
       BlocProvider(
-        create: (context) => BottomNavigationIndexCubit(),
+        create: (context) => ThemeModeCubit(),
       ),
       BlocProvider(
-        create: (context) => ThemeModeCubit(),
+        create: (context) => BottomNavigationIndexCubit(),
       ),
       BlocProvider(
         create: (context) => MusicPlayerBloc(),
@@ -189,9 +184,6 @@ class _MyAppState extends State<MyApp> {
         create: (context) => GreetingCubit(),
       ),
       BlocProvider(
-        create: (context) => CheckInternetConnectionBloc(),
-      ),
-      BlocProvider(
         create: (context) => SearchSystemCubit(),
       ),
       BlocProvider(
@@ -211,6 +203,9 @@ class _MyAppState extends State<MyApp> {
       BlocProvider(create: (context) => SearchableListScrollControllerCubit()),
       BlocProvider(create: (context) => YoutubeMusicCubit()),
       BlocProvider(create: (context) => YoutubeMusicPlayerCubit()),
+      BlocProvider(
+        create: (context) => CheckInternetConnectionBloc(context),
+      ),
     ];
   }
 }

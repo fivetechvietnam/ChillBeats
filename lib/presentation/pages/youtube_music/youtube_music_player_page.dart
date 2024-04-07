@@ -12,7 +12,6 @@ import 'package:chillbeats/logic/cubit/send_current_playing_music_data_to_player
 import 'package:chillbeats/logic/cubit/theme_mode/theme_mode_cubit.dart';
 import 'package:chillbeats/logic/cubit/youtube_music_player/youtube_music_player_cubit.dart';
 import 'package:chillbeats/utils/format_duration.dart';
-import 'package:one_context/one_context.dart';
 import 'package:pod_player/pod_player.dart';
 import 'package:signals/signals_flutter.dart';
 import 'package:signals/signals_flutter_extended.dart';
@@ -31,8 +30,6 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
   final videoIsBuffering = signal(true);
   final floating = locator.get<Floating>();
 
-
-
   @override
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (context, orientation) {
@@ -40,7 +37,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
       bool landscape = orientation == Orientation.landscape;
       return PopScope(
         canPop: true,
-        onPopInvoked: (bool) async {
+        onPopInvoked: (didPop) async {
           if (orientation == Orientation.landscape) {
             await SystemChrome.setPreferredOrientations(
                 [DeviceOrientation.portraitUp]);
@@ -87,7 +84,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
 
                         onVerticalDragUpdate: (details) {
                           //-------  Change System Volume
-                          _changeVolume(details);
+                          _changeVolume(details, context);
                         },
 
                         onHorizontalDragUpdate: (details) async {
@@ -102,8 +99,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                           //-------------------------------------------------------//
                           ///-----------------------  Player --------------------///
                           //-------------------------------------------------------//
-                          child: const MyYouTubeVideoPlayerWidget(
-                          ),
+                          child: const MyYouTubeVideoPlayerWidget(),
                         ),
                       ),
 
@@ -116,7 +112,6 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                           child: SlideInLeft(
                             child: IconButton(
                               onPressed: () async {
-
                                 if (orientation == Orientation.landscape) {
                                   await SystemChrome.setPreferredOrientations(
                                       [DeviceOrientation.portraitUp]);
@@ -124,7 +119,7 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                                       SystemUiMode.manual,
                                       overlays: SystemUiOverlay.values);
                                 }
-                                OneContext().pop();
+                                Navigator.of(context).pop();
                               },
                               icon: Icon(
                                 CupertinoIcons.back,
@@ -165,7 +160,8 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                           child: SlideInRight(
                             child: IconButton(
                               onPressed: () async {
-                                await _floatingButtonOnTap(playerState);
+                                await _floatingButtonOnTap(
+                                    playerState, context);
                               },
                               icon: const Icon(
                                 Icons.picture_in_picture,
@@ -291,7 +287,11 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                           onPressed: () {
                             if (fetchState.musicIndex > 0) {
                               backwardButtonClicked(
-                                  fetchState, controller, playerState);
+                                fetchState,
+                                controller,
+                                playerState,
+                                context,
+                              );
                             }
                           },
                           icon: Icon(
@@ -365,7 +365,11 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
                             if (fetchState.musicIndex <
                                 fetchState.youtubeMusicList.length) {
                               nextMusicButtonClicked(
-                                  fetchState, controller, playerState);
+                                fetchState,
+                                controller,
+                                playerState,
+                                context,
+                              );
                             }
                           },
                           icon: Icon(
@@ -525,14 +529,12 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
   //--------------------------Floating Button On Tap-------------------------------///
   //----------------------------------- ---------------------------------------///
   Future<void> _floatingButtonOnTap(
-      YoutubeMusicPlayerSuccessState playerState) async {
+      YoutubeMusicPlayerSuccessState playerState, BuildContext context) async {
     final canUsePiP = await floating.isPipAvailable;
 
     if (canUsePiP) {
       await floating.enable();
-      OneContext()
-          .context!
-          .read<YoutubeMusicPlayerCubit>()
+      BlocProvider.of<YoutubeMusicPlayerCubit>(context)
           .hidePlayerButtons(state: playerState);
     }
   }
@@ -558,11 +560,9 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
 
   //--------------------------Change Volume -------------------------------///
   //----------------------------------- ---------------------------------------///
-  void _changeVolume(DragUpdateDetails details) {
-    OneContext()
-        .context!
-        .read<ChangeSystemVolumeCubit>()
-        .change(details: details, context: OneContext().context!);
+  void _changeVolume(DragUpdateDetails details, BuildContext context) {
+    BlocProvider.of<ChangeSystemVolumeCubit>(context)
+        .change(details: details, context: context);
   }
 
   //-------------------------- Change Video Position On Horizontal Dragging-------------------------------///
@@ -581,41 +581,31 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
         0, playerState.controller.totalVideoLength.inSeconds);
 
     playerState.controller.videoSeekTo(Duration(seconds: newSeekPosition));
-    updateWidgetsSignals(OneContext().context!);
-    context
-        .read<YoutubeMusicPlayerCubit>()
+    updateWidgetsSignals(context);
+    BlocProvider.of<YoutubeMusicPlayerCubit>(context)
         .showCurrentPositionOnHorizontalDragging(state: playerState);
   }
 
   //--------------------------Next Music Button On Tap-------------------------------///
   //----------------------------------- ---------------------------------------///
   void nextMusicButtonClicked(
-      FetchCurrentPlayingMusicDataToPlayerState fetchState,
-      PodPlayerController controller,
-      YoutubeMusicPlayerSuccessState playerState) {
+    FetchCurrentPlayingMusicDataToPlayerState fetchState,
+    PodPlayerController controller,
+    YoutubeMusicPlayerSuccessState playerState,
+    BuildContext context,
+  ) {
     int index = fetchState.musicIndex;
     if (index < fetchState.youtubeMusicList.length) {
       index++;
-
-      OneContext()
-          .context!
-          .read<YoutubeMusicPlayerCubit>()
+      BlocProvider.of<YoutubeMusicPlayerCubit>(context)
           .hidePlayerButtons(state: playerState);
-
-
 
       videoPosition.value = 0;
       videoTotalDuration.value = 0;
       controller.changeVideo(
           playVideoFrom: PlayVideoFrom.youtube(
               fetchState.youtubeMusicList[index].videoId.toString()));
-
-
-
-
-      OneContext()
-          .context!
-          .read<CurrentlyPlayingMusicDataToPlayerCubit>()
+      BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context)
           .sendYouTubeDataToPlayer(
               youtubeList: fetchState.youtubeMusicList, musicIndex: index);
     }
@@ -624,38 +614,40 @@ class YouTubeMusicPlayerPage extends StatelessWidget {
   //--------------------------Previous Button On Tap-------------------------------///
   //----------------------------------- ---------------------------------------///
   void backwardButtonClicked(
-      FetchCurrentPlayingMusicDataToPlayerState fetchState,
-      PodPlayerController controller,
-      YoutubeMusicPlayerSuccessState playerState) {
+    FetchCurrentPlayingMusicDataToPlayerState fetchState,
+    PodPlayerController controller,
+    YoutubeMusicPlayerSuccessState playerState,
+    BuildContext context,
+  ) {
     int index = fetchState.musicIndex;
     if (index > 0) {
       index--;
-
-      OneContext()
-          .context!
-          .read<YoutubeMusicPlayerCubit>()
+      BlocProvider.of<YoutubeMusicPlayerCubit>(context)
           .hidePlayerButtons(state: playerState);
 
       videoPosition.value = 0;
       videoTotalDuration.value = 0;
       controller.changeVideo(
-          playVideoFrom: PlayVideoFrom.youtube(
-              fetchState.youtubeMusicList[index].videoId.toString()));
-      OneContext()
-          .context!
-          .read<CurrentlyPlayingMusicDataToPlayerCubit>()
+        playVideoFrom: PlayVideoFrom.youtube(
+          fetchState.youtubeMusicList[index].videoId.toString(),
+        ),
+      );
+      BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context)
           .sendYouTubeDataToPlayer(
-              youtubeList: fetchState.youtubeMusicList, musicIndex: index);
+        youtubeList: fetchState.youtubeMusicList,
+        musicIndex: index,
+      );
     }
   }
 
   //----------------  Slider Theme
   SliderThemeData _sliderThemeData() {
     return SliderThemeData(
-        activeTickMarkColor: Colors.white,
-        activeTrackColor: Colors.white,
-        trackHeight: 0.015.sh,
-        thumbColor: Colors.white,
-        inactiveTrackColor: Colors.grey.withOpacity(0.5));
+      activeTickMarkColor: Colors.white,
+      activeTrackColor: Colors.white,
+      trackHeight: 0.015.sh,
+      thumbColor: Colors.white,
+      inactiveTrackColor: Colors.grey.withOpacity(0.5),
+    );
   }
 }

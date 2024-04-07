@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../../logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
 import '../../../logic/cubit/show_mini_player/show_mini_player_cubit.dart';
@@ -55,7 +54,7 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                       ///!----------Back Button------//
                       IconButton(
                           onPressed: () {
-                            OneContext().pop();
+                            Navigator.of(context).pop();
                           },
                           icon: const Icon(
                             CupertinoIcons.back,
@@ -72,23 +71,17 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                             controller: controller,
                             autofocus: true,
                             onSubmitted: (value) {
-                              OneContext()
-                                  .context!
-                                  .read<YoutubeMusicCubit>()
+                              BlocProvider.of<YoutubeMusicCubit>(context)
                                   .searchMusic(query: value);
 
                               if (state is YoutubeMusicSearchState) {
-                                OneContext()
-                                    .context!
-                                    .read<YoutubeMusicCubit>()
+                                BlocProvider.of<YoutubeMusicCubit>(context)
                                     .hideSuggestions(
                                         passYouTubeMusicSearchState: state);
                               }
                             },
                             onChanged: (value) {
-                              OneContext()
-                                  .context!
-                                  .read<YoutubeMusicCubit>()
+                              BlocProvider.of<YoutubeMusicCubit>(context)
                                   .searchMusic(query: value);
                               _scrollController.jumpTo(0);
                             },
@@ -132,19 +125,16 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                           controller.text =
                                               snapshot.data![index].toString();
 
-                                          OneContext()
-                                              .context!
-                                              .read<YoutubeMusicCubit>()
+                                          BlocProvider.of<YoutubeMusicCubit>(
+                                                  context)
                                               .searchMusic(
-                                              query: controller.text);
-                                          OneContext()
-                                              .context!
-                                              .read<YoutubeMusicCubit>()
+                                                  query: controller.text);
+                                          BlocProvider.of<YoutubeMusicCubit>(
+                                                  context)
                                               .hideSuggestions(
-                                              passYouTubeMusicSearchState:
-                                              state);
+                                                  passYouTubeMusicSearchState:
+                                                      state);
                                           _scrollController.jumpTo(0);
-
                                         },
                                       ),
                                     ),
@@ -218,12 +208,12 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
                                                   videosList: snapshot.data,
                                                   index: index,
                                                 );
-                                                OneContext()
-                                                    .context!
-                                                    .read<YoutubeMusicCubit>()
+                                                BlocProvider.of<
+                                                            YoutubeMusicCubit>(
+                                                        context)
                                                     .hideSuggestions(
-                                                    passYouTubeMusicSearchState:
-                                                    state);
+                                                        passYouTubeMusicSearchState:
+                                                            state);
                                               },
                                               child: Card(
                                                 shape: RoundedRectangleBorder(
@@ -486,24 +476,20 @@ class _YouTubeSearchPageState extends State<YouTubeSearchPage> {
     required index,
   }) async {
     ///!------- Initialize Player
-    OneContext()
-        .context!
-        .read<YoutubeMusicPlayerCubit>()
+    BlocProvider.of<YoutubeMusicPlayerCubit>(context)
         .initializePlayer(videoId: videoId);
 
     ///!-----Show Player Screen ----///
-    OneContext().push(MaterialPageRoute(
+    Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => YouTubeMusicPlayerPage(),
     ));
 
     ///!-----Send Current Music Data-----///
-    OneContext()
-        .context!
-        .read<CurrentlyPlayingMusicDataToPlayerCubit>()
+    BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context)
         .sendYouTubeDataToPlayer(youtubeList: videosList, musicIndex: index);
 
     ///!-----Show Mini Player-----///
-    context.read<ShowMiniPlayerCubit>().showMiniPlayer();
-    context.read<ShowMiniPlayerCubit>().youtubeMusicIsPlaying();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).showMiniPlayer();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).youtubeMusicIsPlaying();
   }
 }

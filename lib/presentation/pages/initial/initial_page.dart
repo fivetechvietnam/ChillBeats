@@ -42,11 +42,11 @@ class _InitialPageState extends State<InitialPage> {
       onPopInvoked: (didPop) {
         if (backButtonPressCount == 0) {
           // Change the page index to 0
-          context.read<BottomNavigationIndexCubit>().changePageIndex(index: 0);
+          BlocProvider.of<BottomNavigationIndexCubit>(context).changePageIndex(index: 0);
           backButtonPressCount++;
           // Prevent the app from exiting
         } else {
-          context.read<BottomNavigationIndexCubit>().changePageIndex(index: 0);
+          BlocProvider.of<BottomNavigationIndexCubit>(context).changePageIndex(index: 0);
           // Allow the app to exit;
           didPop;
         }

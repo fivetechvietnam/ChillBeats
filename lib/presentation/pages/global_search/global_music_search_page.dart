@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_context/one_context.dart';
 import '../../../logic/bloc/all_music/all_music_bloc.dart';
 import '../../../logic/bloc/all_music/all_music_state.dart';
 import '../../../logic/bloc/player/music_player_bloc.dart';
@@ -48,7 +47,7 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
         actions: [
           IconButton(
               onPressed: () {
-                OneContext().pop();
+                Navigator.of(context).pop();
               },
               icon: const Icon(CupertinoIcons.back)),
 
@@ -59,10 +58,10 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
                     autofocus: true,
                     onChanged: (value) {
                       if (state is AllMusicSuccessState) {
-                        context.read<SearchSystemCubit>().addSearchList(allMusicList: state.musicList);
+                        BlocProvider.of<SearchSystemCubit>(context).addSearchList(allMusicList: state.musicList);
                       }
                       /// Add
-                      context.read<SearchSystemCubit>().searchNow(val: value);
+                      BlocProvider.of<SearchSystemCubit>(context).searchNow(val: value);
                       _scrollController.jumpTo(0);
                     },
                     controller: searchController,
@@ -159,18 +158,17 @@ class _GlobalMusicSearchPageState extends State<GlobalMusicSearchPage> {
   // ----------------- M E T H O D S----------------///
   void _playMusicMethod({required index,required SearchSystemState state}) {
     //-Initialize & Play Music ------///
-    context
-        .read<MusicPlayerBloc>()
+    BlocProvider.of<MusicPlayerBloc>(context)
         .add(MusicPlayerInitializeEvent(url: state.filteredlist[index].url));
 
     //--Send Current Music Data-----///
-    context.read<CurrentlyPlayingMusicDataToPlayerCubit>().sendDataToPlayer(
+    BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context).sendDataToPlayer(
     fullMusicList: state.filteredlist,
       musicIndex: index
     );
 
     //--Show Mini Player-----///
-    context.read<ShowMiniPlayerCubit>().showMiniPlayer();
-    context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).showMiniPlayer();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).youtubeMusicIsNotPlaying();
   }
 }

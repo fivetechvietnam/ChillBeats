@@ -36,7 +36,7 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                 alignment: Alignment.topRight,
                 child: IconButton(
                   onPressed: () {
-                    context.read<FlipCardCubit>().toggleCard();
+                    BlocProvider.of<FlipCardCubit>(context).toggleCard();
                   },
                   icon: const Icon(
                     Icons.flip,
@@ -87,7 +87,7 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                                         return Center(
                                             child: GlassButtonWidget(
                                           onPressed: () {
-                                            context.read<DownloadMusicBloc>().add(
+                                            BlocProvider.of<DownloadMusicBloc>(context).add(
                                                 DownloadNowEvent(
                                                     url: fetchMusicState
                                                         .fullMusicList[

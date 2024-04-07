@@ -30,6 +30,8 @@ flutter pub run change_app_package_name:main pro.five.tech.solution.chillbeats
 
 
 # Refer 
+Clone the repository: git clone https://github.com/Hamad-Anwar/Flutter-Music-Player-App-With-BLoc.git
+https://github.com/ffurqanuddin/lofiii
 ## A Flutter Music App with BLoC
 https://github.com/brucejh99/RNN-lofi-generator
 

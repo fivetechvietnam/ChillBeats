@@ -799,7 +799,7 @@ class _PlayerPageState extends State<PlayerPage> {
       context
           .read<MusicPlayerBloc>()
           .add(MusicPlayerInitializeEvent(url: state.fullMusicList[index].url));
-      context.read<CurrentlyPlayingMusicDataToPlayerCubit>().sendDataToPlayer(
+      BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context).sendDataToPlayer(
           musicIndex: index, fullMusicList: state.fullMusicList);
     }
   }
@@ -813,7 +813,7 @@ class _PlayerPageState extends State<PlayerPage> {
       context
           .read<MusicPlayerBloc>()
           .add(MusicPlayerInitializeEvent(url: state.fullMusicList[index].url));
-      context.read<CurrentlyPlayingMusicDataToPlayerCubit>().sendDataToPlayer(
+      BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context).sendDataToPlayer(
           musicIndex: index, fullMusicList: state.fullMusicList);
     }
   }

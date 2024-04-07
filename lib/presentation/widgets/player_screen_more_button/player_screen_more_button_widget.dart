@@ -64,7 +64,7 @@ class PlayerScreenMoreButtonWidget extends StatelessWidget {
                 //               onTap: () {
                 //                 Navigator.pop(context);
                 //                 Navigator.pop(context);
-                //                 context.read<DownloadMusicBloc>().add(
+                //                 BlocProvider.of<DownloadMusicBloc>(context).add(
                 //                     DownloadNowEvent(
                 //                         url: fetchCurrentMusicState
                 //                             .fullMusicList[

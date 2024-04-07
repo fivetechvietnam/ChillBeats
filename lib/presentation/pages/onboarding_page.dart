@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:chillbeats/data/services/app_permissions_service.dart';
@@ -9,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:one_context/one_context.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../logic/bloc/user_profie/user_profile_bloc.dart';
@@ -28,11 +26,9 @@ class OnBoardingPage extends StatefulWidget {
 class _OnBoardingPageState extends State<OnBoardingPage> {
   late final TextEditingController usernameController;
 
-
   late final DeviceInfoPlugin info;
   @override
   void initState() {
-    
     super.initState();
     info = DeviceInfoPlugin();
     usernameController = TextEditingController();
@@ -40,7 +36,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   @override
   void dispose() {
-    
     super.dispose();
     usernameController.dispose();
   }
@@ -177,28 +172,22 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   Future<void> _profilePicPencilButtonOnTap(BuildContext context) async {
     await Permission.mediaLibrary.request();
     await Permission.photos.request();
-    context
-        .read<UserProfileBloc>()
+    BlocProvider.of<UserProfileBloc>(context)
         .add(UserProfileChangeUserProfilePictureEvent());
   }
 
   //----- Get Started Button On Tap
   Future<void> _getStartedButtonOnTap(BuildContext context) async {
-
-
-
-   await AppPermissionService.storagePermission();
+    await AppPermissionService.storagePermission();
 
     //--!   Change User
-    context
-        .read<UserProfileBloc>()
+    BlocProvider.of<UserProfileBloc>(context)
         .add(UserProfileChangeUsernameEvent(username: usernameController.text));
 
     ///--!  Navigate to Initial Page
-   OneContext().pushReplacement(
-        MaterialPageRoute(
-          builder: (context) =>  InitialPage(),
-        ));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => const InitialPage(),
+    ));
 
     // Don't Show this screen after restarting app
     MyHiveBoxes.settingBox.put(MyHiveKeys.showOnBoardingScreenHiveKey, false);

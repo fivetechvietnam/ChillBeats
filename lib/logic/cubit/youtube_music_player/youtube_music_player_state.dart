@@ -15,6 +15,7 @@ final class YoutubeMusicPlayerLoadingState extends YoutubeMusicPlayerState {
   List<Object?> get props => [];
 }
 
+// ignore: must_be_immutable
 final class YoutubeMusicPlayerSuccessState extends YoutubeMusicPlayerState {
   YoutubeMusicPlayerSuccessState({
     required this.controller,

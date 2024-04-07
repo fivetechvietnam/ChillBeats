@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chillbeats/logic/cubit/theme_mode/theme_mode_cubit.dart';
 import 'package:chillbeats/presentation/pages/youtube_music/youtube_music_player_page.dart';
-import 'package:one_context/one_context.dart';
 import 'package:youtube_scrape_api/models/video.dart';
 
 import '../../../logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
@@ -36,7 +35,6 @@ class _YouTubeFavoritePlaylistPageState
 
   @override
   void initState() {
-    
     controller = ScrollController();
     super.initState();
   }
@@ -141,26 +139,26 @@ class _YouTubeFavoritePlaylistPageState
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 3, horizontal: 4),
-                                child: BlocBuilder<ThemeModeCubit,
-                                    ThemeModeState>(
+                                child:
+                                    BlocBuilder<ThemeModeCubit, ThemeModeState>(
                                   builder: (context, themeState) {
                                     // Tile
                                     return ListTile(
                                       onTap: () {
-                                        _listTileOnTap(videoId, snapshot,
-                                            index, );
+                                        _listTileOnTap(
+                                          videoId,
+                                          snapshot,
+                                          index,
+                                        );
                                       },
                                       titleTextStyle: TextStyle(
-                                          color: Colors.white
-                                              .withOpacity(0.9)),
+                                          color: Colors.white.withOpacity(0.9)),
                                       iconColor: Colors.white,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
-                                      tileColor:
-                                          Color(themeState.accentColor)
-                                              .withOpacity(0.1),
+                                      tileColor: Color(themeState.accentColor)
+                                          .withOpacity(0.1),
 
                                       /// ---- Thumbnail
                                       leading: CircleAvatar(
@@ -208,30 +206,27 @@ class _YouTubeFavoritePlaylistPageState
 
   //------------------------------------------------------------------------------------------------//
   //-------------------------------------------  Methods ---------------------------------------///
-  void _listTileOnTap(String videoId, AsyncSnapshot<List<Video>> snapshot,
-      int index, ) {
-
-
+  void _listTileOnTap(
+    String videoId,
+    AsyncSnapshot<List<Video>> snapshot,
+    int index,
+  ) {
     //- Initialize Player
-    OneContext()
-        .context!
-        .read<YoutubeMusicPlayerCubit>()
+    BlocProvider.of<YoutubeMusicPlayerCubit>(context)
         .initializePlayer(videoId: videoId);
 
     //--Show Player Screen ----///
-    OneContext()
+    Navigator.of(context)
         .push(MaterialPageRoute(
-      builder: (context) =>  YouTubeMusicPlayerPage(),
+      builder: (context) => YouTubeMusicPlayerPage(),
     ))
         .then((value) {
       //--Show Mini Player-----///
-      OneContext().context!.read<ShowMiniPlayerCubit>().showMiniPlayer();
-      OneContext().context!.read<ShowMiniPlayerCubit>().youtubeMusicIsPlaying();
+      BlocProvider.of<ShowMiniPlayerCubit>(context).showMiniPlayer();
+      BlocProvider.of<ShowMiniPlayerCubit>(context).youtubeMusicIsPlaying();
 
       //--Send Current Music Data-----///
-      OneContext()
-          .context!
-          .read<CurrentlyPlayingMusicDataToPlayerCubit>()
+       BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context)
           .sendYouTubeDataToPlayer(
               youtubeList: snapshot.data!, musicIndex: index);
     });

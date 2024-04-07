@@ -10,7 +10,6 @@ import 'package:chillbeats/logic/cubit/youtube_music/youtube_music_cubit.dart';
 import 'package:chillbeats/presentation/pages/youtube_music/youtube_music_player_page.dart';
 import 'package:chillbeats/presentation/pages/youtube_music/youtube_search_page.dart';
 import 'package:lottie/lottie.dart';
-import 'package:one_context/one_context.dart';
 import 'package:youtube_scrape_api/models/video.dart';
 
 import '../../../logic/cubit/send_current_playing_music_data_to_player_screen/send_music_data_to_player_cubit.dart';
@@ -31,7 +30,7 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
   @override
   void initState() {
     //--------------- Fetch Youtube Music ------------------///
-    context.read<YoutubeMusicCubit>().fetchMusic();
+    BlocProvider.of<YoutubeMusicCubit>(context).fetchMusic();
     super.initState();
   }
 
@@ -304,31 +303,29 @@ class _YoutubeMusicPageState extends State<YoutubeMusicPage> {
     int index,
   ) async {
     //- Initialize Player
-    OneContext()
-        .context!
-        .read<YoutubeMusicPlayerCubit>()
+    BlocProvider.of<YoutubeMusicPlayerCubit>(context)
         .initializePlayer(videoId: video.videoId);
 
     //--Show Player Screen ----///
 
-    OneContext().push(MaterialPageRoute(
+    Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => YouTubeMusicPlayerPage(),
     ));
 
     //--Send Current Music Data-----///
-    OneContext()
-        .context!
-        .read<CurrentlyPlayingMusicDataToPlayerCubit>()
+    BlocProvider.of<CurrentlyPlayingMusicDataToPlayerCubit>(context)
         .sendYouTubeDataToPlayer(
-            youtubeList: snapshot.data!, musicIndex: index);
+      youtubeList: snapshot.data!,
+      musicIndex: index,
+    );
 
     //--Show Mini Player-----///
-    OneContext().context!.read<ShowMiniPlayerCubit>().showMiniPlayer();
-    OneContext().context!.read<ShowMiniPlayerCubit>().youtubeMusicIsPlaying();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).showMiniPlayer();
+    BlocProvider.of<ShowMiniPlayerCubit>(context).youtubeMusicIsPlaying();
   }
 
   Future _onRefresh() async {
     //--------------- Fetch Youtube Music ------------------///
-    OneContext().context!.read<YoutubeMusicCubit>().fetchMusic();
+    BlocProvider.of<YoutubeMusicCubit>(context).fetchMusic();
   }
 }

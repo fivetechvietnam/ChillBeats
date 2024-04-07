@@ -16,6 +16,16 @@ abstract class  LocaleKeys {
   static const lofi_popular = 'lofi_popular';
   static const lofi_top_picks = 'lofi_top_picks';
   static const lofi_vibes = 'lofi_vibes';
+  static const lofi_study = 'lofi_study';
+  static const lofi_relax = 'lofi_relax';
+  static const lofi_work = 'lofi_work';
+  static const lofi_sleep = 'lofi_sleep';
+  static const lofi_concentrate = 'lofi_concentrate';
+  static const lofi_meditate = 'lofi_meditate';
+  static const lofi_chilling_out = 'lofi_chilling_out';
+  static const lofi_write = 'lofi_write';
+  static const lofi_create_inspiration = 'lofi_create_inspiration';
+  static const lofi_rainy_days = 'lofi_rainy_days';
   static const lofitube = 'lofitube';
   static const trending_music = 'trending_music';
   static const lofi_playlists = 'lofi_playlists';

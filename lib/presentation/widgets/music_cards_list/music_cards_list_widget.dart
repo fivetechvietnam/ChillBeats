@@ -41,13 +41,13 @@ final String pageStorageKey;
                     //----------------------------------?Music Card On Tap
                     onTap: () {
                       //-Initialize & Play Music ------///
-                      context.read<MusicPlayerBloc>().add(
+                      BlocProvider.of<MusicPlayerBloc>(context).add(
                           MusicPlayerInitializeEvent(url: list[index].url));
 
                       //--Show Mini Player-----///
-                      context.read<ShowMiniPlayerCubit>().showMiniPlayer();
-                      context.read<ShowMiniPlayerCubit>().onlineMusicIsPlaying();
-                      context.read<ShowMiniPlayerCubit>().youtubeMusicIsNotPlaying();
+                      BlocProvider.of<ShowMiniPlayerCubit>(context).showMiniPlayer();
+                      BlocProvider.of<ShowMiniPlayerCubit>(context).onlineMusicIsPlaying();
+                      BlocProvider.of<ShowMiniPlayerCubit>(context).youtubeMusicIsNotPlaying();
 
                       //--Send Current Music Data-----///
                       context

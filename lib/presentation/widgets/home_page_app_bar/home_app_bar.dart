@@ -12,7 +12,6 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_context/one_context.dart';
 
 class HomePageSliverAppBar extends StatelessWidget {
   const HomePageSliverAppBar({super.key});
@@ -39,7 +38,7 @@ class HomePageSliverAppBar extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            OneContext().push(MaterialPageRoute(
+                            Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const ProfilePage(),
                             ));
                           },
@@ -122,7 +121,7 @@ class HomePageSliverAppBar extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 15.w),
                     child: IconButton(
                       onPressed: () {
-                        OneContext().push(MaterialPageRoute(
+                        Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const GlobalMusicSearchPage(),
                         ));
                         log("\n Search Button is Pressed!");

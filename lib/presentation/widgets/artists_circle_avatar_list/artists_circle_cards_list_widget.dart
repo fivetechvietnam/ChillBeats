@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../../data/models/artist_model.dart';
 import '../../pages/artist/artist_page.dart';
@@ -46,14 +45,15 @@ class ArtistsCardsListWidget extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: BounceInLeft(
                           child: Card(
-                              shape: const CircleBorder(),
-                              color: Colors.transparent,
-                              margin: EdgeInsets.zero,
-                              child: CircleAvatar(
-                                radius: 55.w,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: imageProvider,
-                              )),
+                            shape: const CircleBorder(),
+                            color: Colors.transparent,
+                            margin: EdgeInsets.zero,
+                            child: CircleAvatar(
+                              radius: 55.w,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: imageProvider,
+                            ),
+                          ),
                         ),
                       ),
 
@@ -107,10 +107,13 @@ class ArtistsCardsListWidget extends StatelessWidget {
 
   //-----------        Methods    -------------///
   void _artistCardOnTap(BuildContext context, int index) {
-    OneContext().push(
-        MaterialPageRoute(
-          builder: (context) => ArtistPage(
-              artistName: artistList[index].name, image: artistList[index].img),
-        ));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ArtistPage(
+          artistName: artistList[index].name,
+          image: artistList[index].img,
+        ),
+      ),
+    );
   }
 }

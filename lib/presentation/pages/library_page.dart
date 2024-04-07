@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chillbeats/presentation/pages/view_more/view_more_page.dart';
 import 'package:lottie/lottie.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../logic/bloc/favorite_button/favorite_button_bloc.dart';
 import '../../logic/bloc/all_music/all_music_bloc.dart';
@@ -48,7 +47,7 @@ class LibraryPage extends StatelessWidget {
                                 .contains(element.title))
                             .toList();
                         // Navigate to View More Page with filtered list
-                        OneContext().push(
+                        Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => ViewMorePage(
                               topHeading: LocaleKeys.my_favorite.tr(),

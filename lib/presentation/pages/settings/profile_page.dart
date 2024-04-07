@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_context/one_context.dart';
 import '../../../logic/bloc/user_profie/user_profile_bloc.dart';
 import '../../../logic/cubit/theme_mode/theme_mode_cubit.dart';
 import '../../widgets/blur_background_profile_image_widget/blur_background_profile_image_widget.dart';
@@ -42,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              OneContext().pop();
+              Navigator.of(context).pop();
             },
             icon: const Icon(
               CupertinoIcons.back,
@@ -156,7 +155,7 @@ class _ProfileImageCircleAvatarButton extends StatelessWidget {
                     child: CircleAvatar(
                         child: IconButton(
                             onPressed: () {
-                              context.read<UserProfileBloc>().add(
+                              BlocProvider.of<UserProfileBloc>(context).add(
                                   UserProfileChangeUserProfilePictureEvent());
                             },
                             icon: const Icon(
@@ -207,10 +206,10 @@ class _ProfileNameTextFieldWidget extends StatelessWidget {
                   TextField(
                     maxLines: 1,
                     onSubmitted: (value) {
-                      context.read<UserProfileBloc>().add(
+                      BlocProvider.of<UserProfileBloc>(context).add(
                           UserProfileChangeUsernameEvent(
                               username: usernameController.text));
-                      OneContext().pop();
+                      Navigator.of(context).pop();
                     },
                     controller: usernameController,
                     decoration: InputDecoration(
@@ -309,9 +308,9 @@ class _SaveButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.read<UserProfileBloc>().add(
+        BlocProvider.of<UserProfileBloc>(context).add(
             UserProfileChangeUsernameEvent(username: usernameController.text));
-        OneContext().pop();
+        Navigator.of(context).pop();
       },
       child: BlocBuilder<ThemeModeCubit, ThemeModeState>(
         builder: (context, state) {

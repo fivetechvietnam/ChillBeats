@@ -1,0 +1,319 @@
+ 
+[
+    {
+        "id": 0,
+        "title": "Morning Routine",
+        "artists": [
+            "Ghostrifter Official"
+        ],
+        "url": "https://drive.google.com/uc?id=1KOpuHiaxMGpoxnBMOyeGKz7GssJY99Sv",
+        "image": "https://drive.google.com/uc?id=1LF7ARc4LjCW8TWyhZvEVWZqBJoNRCSsd"
+    },
+    {
+        "id": 1,
+        "title": "Pehle Bhi Main",
+        "artists": [
+            "Gravero",
+            "Vishal Mishra"
+        ],
+        "url": "https://drive.google.com/uc?id=1Ke-nyufqd_q41q6gku8ZCKhQQ35f-ows",
+        "image": "https://drive.google.com/uc?id=1LHJn-EoERTap5D6-NgCjuJ6uXyicrPSn"
+    },
+    {
+        "id": 2,
+        "title": "Khamoshiyan",
+        "artists": [
+            "Silent Ocean",
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1LTgOLYemm_dDcqKmNUSLgXpMYiTSSDl5",
+        "image": "https://drive.google.com/uc?id=1Ldd1Al3YoGAcHQWQcLBdwlSm-eS5C4FW"
+    },
+
+
+    {
+        "id": 26,
+        "title": "Janana Zama",
+        "artists": [
+            "Shan Khan",
+            "Furqan Uddin"
+        ],
+        "url": "https://drive.google.com/uc?id=1YoxkkvnVlm2z-N0zPkZCEgCmNDZUyzse",
+        "image": "https://drive.google.com/uc?id=1YniGpsu3jv1yjqxln7mVsT7m7kWxG74i"
+    },
+
+    {
+        "id": 27,
+        "title": "Kabhi Jo Badal",
+        "artists": [
+            "Gravero",
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1YI8cWh6-azR4eVV8XjtqJBZHKBhafs1l",
+        "image": "https://drive.google.com/uc?id=1YTrtdcwRuxqCVGqPGlf5K0Kxmcc-qYTH"
+    },
+
+
+    {
+        "id": 28,
+        "title": "Chale Jana Phir",
+        "artists": [
+            "Denny",
+            "Rahul Mishra",
+            "Jay Guldekar",
+            "Furqan Uddin"
+        ],
+        "url": "https://drive.google.com/uc?id=1XPO80BOnRnNU_KcWDGhBMJ-Exec1zcwa",
+        "image": "https://drive.google.com/uc?id=1_Pyk_043ZVU3b95ZDI5x8AB6ZxhKeiGj"
+    },
+
+
+
+    {
+        "id": 3,
+        "title": "Let Me Down Slowly X Main Dhoondne Ko Zamaane Mein",
+        "artists": [
+            "Gravero",
+            "Alec Benjamin",
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1Kdhr7IH6gKD-pYp9GQQ5w444xBLie2Ye",
+        "image": "https://drive.google.com/uc?id=1LBNpem1-ib20MANGqOlZibTTbMtocSh3"
+    },
+    {
+        "id": 4,
+        "title": "Jo Tu Na Mila",
+        "artists": [
+            "Asim Azhar",
+            "Wormono"
+        ],
+        "url": "https://drive.google.com/uc?id=1LPs8DMC5LBnKPy86c7KZXIcdK_SuMwav",
+        "image": "https://drive.google.com/uc?id=1LIb-xjdPfHQ3API7HsDGqL_l8kayKuLi"
+    },
+    {
+        "id": 5,
+        "title": "Aaj Bhi",
+        "artists": [
+            "Vishal Mishra",
+            "Wormono"
+        ],
+        "url": "https://drive.google.com/uc?id=1Ke9vTxtW5X9UUltzU1cHjvtB93B3Xm7f",
+        "image": "https://drive.google.com/uc?id=1KjmxtDGfG0i6-WTv7AZXNCBWUN0OT5JJ"
+    },
+    {
+        "id": 6,
+        "title": "Milne Hai Mujhse Aayi",
+        "artists": [
+            "Lofi-2307",
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1KCKVl8cNTOjFY_G8DyES9PS0TRWef2pf",
+        "image": "https://drive.google.com/uc?id=1KlHwMnCBBomNLnsvE92vZITUTdpZtGYV"
+    },
+    {
+        "id": 7,
+        "title": "Hasi Ban Gaye",
+        "artists": [
+            "Ami Mishra"
+        ],
+        "url": "https://drive.google.com/uc?id=1-YfU3v5Icu8jYOM2Kf6kj_isr-lV3Q0N",
+        "image": "https://drive.google.com/uc?id=1DXY6HsOEifKNiGPerGzFWtrUOEzbRD_y"
+    },
+    {
+        "id": 8,
+        "title": "Tum Tak",
+        "artists": [
+            "Swattrex"
+        ],
+        "url": "https://drive.google.com/uc?id=1LqawEkR5uZTTT7hgowj1w85R7VuReDi4",
+        "image": "https://drive.google.com/uc?id=1Lkq7gNpSqzgFtPYdlGV1RPmI7D8_Vh9W"
+    },
+    {
+        "id": 9,
+        "title": "Jeene De Na",
+        "artists": [
+            "Raj Barman"
+        ],
+        "url": "https://drive.google.com/uc?id=1UF8wUndQCfoAlpBxBoYRiOq6fToBBt8h",
+        "image": "https://drive.google.com/uc?id=1pCcCYr5FZmljloVJzFFMizsqj4N5ZAP5"
+    },
+    {
+        "id": 10,
+        "title": "Mere Haath Mein",
+        "artists": [
+            "Sonu Nigam",
+            "Sunidhi Chauhan"
+        ],
+        "url": "https://drive.google.com/uc?id=1pkqNgTXJS1kz-szgOtDw2I5VwASNQu7M",
+        "image": "https://drive.google.com/uc?id=1va4RV4b9keV2NIy5qWM3A-vOAd0pDPkN"
+    },
+    {
+        "id": 11,
+        "title": "Besharam Rang",
+        "artists": [
+            "Shilpa Rao"
+        ],
+        "url": "https://drive.google.com/uc?id=18FGoR9_yPIW9cGaMW1tVg34yf8V3KDzl",
+        "image": "https://drive.google.com/uc?id=1IoEuBKzJ7XvHxe0CDh-D-zJlcwpky7Pl"
+    },
+    {
+        "id": 12,
+        "title": "Muskurane",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1xUc_Go3HlSG95PJO21dNs8VtxpkiAJ69",
+        "image": "https://drive.google.com/uc?id=1e2vVy8rbClzMstOB2X75fPpB2ouV-ZZB"
+    },
+    {
+        "id": 13,
+        "title": "Kabhii Tumhhe",
+        "artists": [
+            "Darshan Raval"
+        ],
+        "url": "https://drive.google.com/uc?id=1136O21UGkW9YX9rvPAMI3GRb_Xn4NB3O",
+        "image": "https://drive.google.com/uc?id=1BXHurz5ZQlK2ANCPTkMFgykqVe67j1vH"
+    },
+
+    {
+        "id": 14,
+        "title": "Isq Risk",
+        "artists": [
+            "Rahat Fateh Ali Khan"
+        ],
+        "url": "https://drive.google.com/uc?id=1hI4AgxwmR3JZ_jCTiMML8WEh9K4Q-oaf",
+        "image": "https://drive.google.com/uc?id=1L_hc6rDLSklhwa1QNEmiBvG5R3-luj6Y"
+    },
+    {
+        "id": 15,
+        "title": "Hawayein",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1NcWxYrlWbSe9pohW69kpycmfhQaQgKVI",
+        "image": "https://drive.google.com/uc?id=1jDszzf-L4BisXP84csN-AViUibJ33ueZ"
+    },
+    {
+        "id": 16,
+        "title": "Sanam Re",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1VcPjjC2Wayqk9QQEHTnxO2f8bgwYqI5l",
+        "image": "https://drive.google.com/uc?id=1J7TcYsiAaijKCNHNMr-xQHM-jJczzerW"
+    },
+
+    {
+        "id": 17,
+        "title": "Ik Vaari Aa",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=14NF4A9bjzqmpYwxJW8pjreH8VnK4UMM6",
+        "image": "https://drive.google.com/uc?id=12Q08YdOW8wyDEZ2dKEndQhyzgpz9dfvO"
+    },
+    {
+        "id": 18,
+        "title": "Meri Zindagi Hai Tu",
+        "artists": [
+            "Jubin Nautiyal",
+            "Neeti Mohan"
+        ],
+        "url": "https://drive.google.com/uc?id=1HvY9t22iRbdaHwOlDP5mMAe2xD1wtEyI",
+        "image": "https://drive.google.com/uc?id=19nExqTB6rq-eb_T3CQVSLGZiiK_OWAsJ"
+    },
+    {
+        "id": 19,
+        "title": "Pal",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1ncAkibk5EUBoS2yRGhaw8ZsJBJ9_0gxP",
+        "image": "https://drive.google.com/uc?id=1csWHf2Rbkeqqpk3kaWGTPw4uivv3jG56"
+    },
+    {
+        "id": 20,
+        "title": "Aapke Pyaar Mein",
+        "artists": [
+            "Alka Yagnik"
+        ],
+        "url": "https://drive.google.com/uc?id=1DSm7v5WXycm1BK2gieZG0FD2ZEIzlSU7",
+        "image": "https://drive.google.com/uc?id=1620VO5-Xk-bYW-MFj86DGdxDpJFlnc4X"
+    },
+    {
+        "id": 21,
+        "title": "Bedardeya",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1ohXdX838L2heWHMVRAF6E-EfTjqBZfX4",
+        "image": "https://drive.google.com/uc?id=18eQiBBzbZIQJV5hfd-hBdXCsq0jpCa-j"
+    },
+    {
+        "id": 22,
+        "title": "Paniyon Sa",
+        "artists": [
+            "Atif Aslam"
+        ],
+        "url": "https://drive.google.com/uc?id=1FSudmdBbG6GZzjSXmnbwciSZSugpj7W5",
+        "image": "https://drive.google.com/uc?id=1AX-9ndANFd0w-znVqnDP7UGidR4uYPuw"
+    },
+    {
+        "id": 23,
+        "title": "Maine Royaan",
+        "artists": [
+            "Tanveer Evan"
+        ],
+        "url": "https://drive.google.com/uc?id=1kRtrLBG55VqAUdt8sgjJFF3QtXA8pZ8J",
+        "image": "https://drive.google.com/uc?id=1Muj94hpfcuijoom1QjKayMzDupWJKr0U"
+    },
+    {
+        "id": 24,
+        "title": "Shayad X Samjhawan",
+        "artists": [
+            "Arijit Singh"
+        ],
+        "url": "https://drive.google.com/uc?id=1cBZC1Xy8gGbbVQE3ZECmnrZhp0oUpFU9",
+        "image": "https://drive.google.com/uc?id=1B2vFHgf_wHfsvl688RuK7kDwnkQzZZA8"
+    },
+    {
+        "id": 25,
+        "title": "Falak Tak",
+        "artists": [
+            "Wormono"
+        ],
+        "url": "https://drive.google.com/uc?id=1KDIwil-yMZGxIDZHq-Ib8gXmSxexPSBn",
+        "image": "https://drive.google.com/uc?id=1L2bwD7jaOmRgrUMOK32scN15aHi17UbS"
+    },
+    {
+        "id": 29,
+        "title": "Chana Mereya",
+        "artists": [
+            "Arijit Singh",
+            "Furqan Uddin"
+        ],
+        "url": "https://drive.google.com/uc?id=1TeNnTYDjdiwvep6DRcds3FwcblHfMdY0",
+        "image": "https://drive.google.com/uc?id=/1TaLFoZkQM2Vh8UoHaWrnv3LjumByQruF"
+    },
+    {
+        "id": 30,
+        "title": "Te Amo",
+        "artists": [
+            "Ash King",
+            "Sunidhi Chauhan"
+        ],
+        "url": "https://drive.google.com/uc?id=1_j42hvYaIuDBYINvL4OkmJXbQ6UqJ24t",
+        "image": "https://drive.google.com/uc?id=1__2-feeVtc3LnfWYYJyCNp052_xdrdox"
+    },
+    {
+        "id": 31,
+        "title": "Tere Vaaste",
+        "artists": [
+            "Sachin Jigar",
+            "Shashk Tiwari",
+            "Varun Jain"
+        ],
+        "url": "https://drive.google.com/uc?id=1aGJnzCSwQlwPRDFiKShjVLiA6WMSB3nd",
+        "image": "https://drive.google.com/uc?id=1aE2GO0R2khmHlNILr9MAPkbszchvZ6nT"
+    }
+]

@@ -4,7 +4,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,7 +11,6 @@ import 'package:just_audio/just_audio.dart';
 import 'package:chillbeats/logic/cubit/now_playing_offline_music_data_to_player/now_playing_offline_music_data_to_player_cubit.dart';
 import 'package:chillbeats/logic/cubit/searchable_list_scroll_controller/download_scroll_controller_state.dart';
 import 'package:chillbeats/logic/cubit/searchable_list_scroll_controller/searchableList_scroll_controller_cubit.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../../logic/bloc/player/music_player_bloc.dart';
 import '../../../logic/cubit/chnage_system_volume/chnage_system_volume_cubit.dart';
@@ -40,7 +38,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
         leading: ElasticInRight(
           child: IconButton(
               onPressed: () {
-                OneContext().pop();
+                Navigator.of(context).pop();
               },
               icon: Icon(
                 CupertinoIcons.back,
@@ -584,11 +582,11 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
       index++;
 
       //--Change Music------
-      context.read<MusicPlayerBloc>().add(MusicPlayerInitializeEvent(
+      BlocProvider.of<MusicPlayerBloc>(context).add(MusicPlayerInitializeEvent(
           url: state.snapshotMusicList![index].uri.toString()));
 
       //- Also Change Music Title and Artist on Next Button Clicked
-      context.read<NowPlayingOfflineMusicDataToPlayerCubit>().sendDataToPlayer(
+      BlocProvider.of<NowPlayingOfflineMusicDataToPlayerCubit>(context).sendDataToPlayer(
             musicIndex: index,
             futureMusicList: state.futureMusicList,
             musicTitle: state.snapshotMusicList![index].title,
@@ -596,7 +594,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
           );
 
       //----  Change Selected Tile Index
-      context.read<ThemeModeCubit>().changeSelectedTileIndex(index: index);
+      BlocProvider.of<ThemeModeCubit>(context).changeSelectedTileIndex(index: index);
     }
   }
 
@@ -607,11 +605,11 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
       index--;
 
       //--Change Music------
-      context.read<MusicPlayerBloc>().add(MusicPlayerInitializeEvent(
+      BlocProvider.of<MusicPlayerBloc>(context).add(MusicPlayerInitializeEvent(
           url: state.snapshotMusicList![index].uri.toString()));
 
       //- Also Change Music Title and Artist on Back Button Clicked
-      context.read<NowPlayingOfflineMusicDataToPlayerCubit>().sendDataToPlayer(
+      BlocProvider.of<NowPlayingOfflineMusicDataToPlayerCubit>(context).sendDataToPlayer(
             musicIndex: index,
             futureMusicList: state.futureMusicList,
             musicTitle: state.snapshotMusicList![index].title,
@@ -619,7 +617,7 @@ class _OfflinePlayerPageState extends State<OfflinePlayerPage> {
           );
 
       //----  Change Selected Tile Index
-      context.read<ThemeModeCubit>().changeSelectedTileIndex(index: index);
+      BlocProvider.of<ThemeModeCubit>(context).changeSelectedTileIndex(index: index);
     }
   }
 }

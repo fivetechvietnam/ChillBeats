@@ -2,7 +2,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart'; // Import this for BuildContext
 import 'package:chillbeats/di/dependency_injection.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../cubit/youtube_music/youtube_music_cubit.dart';
 import '../artists_data/artists_data_bloc.dart';
@@ -22,9 +21,11 @@ part 'check_internet_connection_state.dart';
 class CheckInternetConnectionBloc
     extends Bloc<CheckInternetConnectionEvent, CheckInternetConnectionState> {
   final connectivity = locator.get<Connectivity>();
+  final BuildContext context; // Add context here
 
   // Constructor to initialize the bloc with Connectivity instance
-  CheckInternetConnectionBloc() : super(CheckInternetConnectionInitial()) {
+  CheckInternetConnectionBloc(this.context)
+      : super(CheckInternetConnectionInitial()) {
     // Listen for changes in connectivity
     connectivity.onConnectivityChanged.listen((connectivityResult) {
       // If connectivity is neither mobile nor wifi, dispatch NoInternetConnectionEvent
@@ -41,45 +42,27 @@ class CheckInternetConnectionBloc
       emit(NoInternetConnectionState());
     });
 
-    //----------Auto add Events on Internet Restored Event ---------------///
+    // ----------Auto add Events on Internet Restored Event ---------------///
     on<InternetConnectionRestoredEvent>((event, emit) {
       //--------Refresh  Special Music --------------///
-      OneContext()
-          .context!
-          .read<SpecialMusicBloc>()
-          .add(SpecialMusicFetchEvent());
+      BlocProvider.of<SpecialMusicBloc>(context).add(SpecialMusicFetchEvent());
 
       //--------Refresh  Popular Music --------------///
-      OneContext()
-          .context!
-          .read<PopularMusicBloc>()
-          .add(PopularMusicFetchEvent());
+      BlocProvider.of<PopularMusicBloc>(context).add(PopularMusicFetchEvent());
 
       //--------Refresh  TopPicks Music --------------///
-      OneContext()
-          .context!
-          .read<TopPicksMusicBloc>()
+      BlocProvider.of<TopPicksMusicBloc>(context)
           .add(TopPicksMusicFetchEvent());
 
       //--------Refresh  All Music --------------///
-      OneContext()
-          .context!
-          .read<AllMusicBloc>()
-          .add(AllMusicFetchEvent());
+      BlocProvider.of<AllMusicBloc>(context).add(AllMusicFetchEvent());
 
       //--------Refresh Artist Data --------------///
-      OneContext()
-          .context!
-          .read<ArtistsDataBloc>()
-          .add(ArtistsDataFetchEvent());
+      BlocProvider.of<ArtistsDataBloc>(context).add(ArtistsDataFetchEvent());
     });
 
     //--------Refresh  Vibes Music --------------///
-    OneContext()
-        .context!
-        .read<VibesMusicBloc>()
-        .add(VibesMusicFetchEvent());
-
-    OneContext().context!.read<YoutubeMusicCubit>().fetchMusic();
+    BlocProvider.of<VibesMusicBloc>(context).add(VibesMusicFetchEvent());
+    BlocProvider.of<YoutubeMusicCubit>(context).fetchMusic();
   }
 }

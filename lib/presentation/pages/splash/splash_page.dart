@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_context/one_context.dart';
 import '../../../data/services/app_services.dart';
 import '../../../logic/bloc/all_music/all_music_bloc.dart';
 import '../../../logic/bloc/all_music/all_music_event.dart';
@@ -77,10 +76,10 @@ class _SplashPageState extends State<SplashPage> {
     //--    Navigate To Next Screen
     Future.delayed(const Duration(seconds: 2), () {
       if (onBoarding) {
-        OneContext().pushReplacement(
+        Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const OnBoardingPage()));
       } else {
-        OneContext().pushReplacement(
+        Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const InitialPage()));
       }
     });
@@ -88,23 +87,22 @@ class _SplashPageState extends State<SplashPage> {
 
   _fetchMusic() {
     //-----------Fetch  Special Music ------___--------///
-    context.read<SpecialMusicBloc>().add(SpecialMusicFetchEvent());
+    BlocProvider.of<SpecialMusicBloc>(context).add(SpecialMusicFetchEvent());
 
     //-----------Fetch  Popular Music ------___--------///
-    context.read<PopularMusicBloc>().add(PopularMusicFetchEvent());
+    BlocProvider.of<PopularMusicBloc>(context).add(PopularMusicFetchEvent());
 
     //-----------Fetch  TopPicks Music ------___--------///
-    context
-        .read<TopPicksMusicBloc>()
+    BlocProvider.of<TopPicksMusicBloc>(context)
         .add(TopPicksMusicFetchEvent());
 
     //-----------Fetch  All Music ------___--------///
-    context.read<AllMusicBloc>().add(AllMusicFetchEvent());
+    BlocProvider.of<AllMusicBloc>(context).add(AllMusicFetchEvent());
 
     //-------------Update Home Page Greeting Message -------///
-    context.read<GreetingCubit>().updateGreeting();
+    BlocProvider.of<GreetingCubit>(context).updateGreeting();
 
     //--------------- Fetch Youtube Music ------------------///
-    context.read<YoutubeMusicCubit>().fetchMusic();
+    BlocProvider.of<YoutubeMusicCubit>(context).fetchMusic();
   }
 }

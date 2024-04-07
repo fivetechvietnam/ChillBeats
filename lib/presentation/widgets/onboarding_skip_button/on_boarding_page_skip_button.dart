@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_context/one_context.dart';
 
 import '../../../data/services/app_permissions_service.dart';
 import '../../../resources/hive/hive_resources.dart';
@@ -13,7 +12,6 @@ class OnBoardingSkipButton extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,16 +20,15 @@ class OnBoardingSkipButton extends StatelessWidget {
         alignment: Alignment.topRight,
         child: TextButton(
           onPressed: () async {
-
-         await AppPermissionService.storagePermission();
+            await AppPermissionService.storagePermission();
 
             // Don't Show this screen after restarting app
             MyHiveBoxes.settingBox
                 .put(MyHiveKeys.showOnBoardingScreenHiveKey, false);
 
-         OneContext().pushReplacement(
+            Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) =>  InitialPage(),
+                builder: (context) => const InitialPage(),
               ),
             );
           },

@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:chillbeats/data/services/app_services.dart';
-import 'package:one_context/one_context.dart';
 import 'package:url_launcher/link.dart';
 
 import '../../../logic/cubit/theme_mode/theme_mode_cubit.dart';
@@ -22,7 +21,7 @@ class AboutPage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            OneContext().pop();
+            Navigator.of(context).pop();
           },
           icon: const Icon(CupertinoIcons.back),
         ),
