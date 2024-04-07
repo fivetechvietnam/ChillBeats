@@ -71,48 +71,49 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
 
                     //------- If already not Downloaded shows this
                     // else {
-                      return
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            //----  Download Button ------//
-                            ZoomIn(
-                              child: BlocBuilder<CurrentlyPlayingMusicDataToPlayerCubit,
-                                  FetchCurrentPlayingMusicDataToPlayerState>(
-                                builder: (context, fetchMusicState) {
-                                  return BlocBuilder<DownloadMusicBloc,
-                                      DownloadMusicState>(
-                                    builder: (context, state) {
-                                      if (state is DownloadMusicInitialState) {
-                                        return Center(
-                                            child: GlassButtonWidget(
-                                          onPressed: () {
-                                            BlocProvider.of<DownloadMusicBloc>(context).add(
-                                                DownloadNowEvent(
-                                                    url: fetchMusicState
-                                                        .fullMusicList[
-                                                            fetchMusicState
-                                                                .musicIndex]
-                                                        .url,
-                                                    fileName: fetchMusicState
-                                                        .fullMusicList[
-                                                            fetchMusicState
-                                                                .musicIndex]
-                                                        .title,
-                                                    context: context));
-                                          },
-                                          label: "Download Now",
-                                          iconData: FontAwesomeIcons.download,
-                                        ));
-                                      } else {
-                                        return const SizedBox.shrink();
-                                      }
-                                    },
-                                  );
-                                },
-                              ),
+                    return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          //----  Download Button ------//
+                          ZoomIn(
+                            child: BlocBuilder<
+                                CurrentlyPlayingMusicDataToPlayerCubit,
+                                FetchCurrentPlayingMusicDataToPlayerState>(
+                              builder: (context, fetchMusicState) {
+                                return BlocBuilder<DownloadMusicBloc,
+                                    DownloadMusicState>(
+                                  builder: (context, state) {
+                                    if (state is DownloadMusicInitialState) {
+                                      return Center(
+                                          child: GlassButtonWidget(
+                                        onPressed: () {
+                                          BlocProvider.of<DownloadMusicBloc>(
+                                                  context)
+                                              .add(DownloadNowEvent(
+                                                  url: fetchMusicState
+                                                      .fullMusicList[
+                                                          fetchMusicState
+                                                              .musicIndex]
+                                                      .url,
+                                                  fileName: fetchMusicState
+                                                      .fullMusicList[
+                                                          fetchMusicState
+                                                              .musicIndex]
+                                                      .title,
+                                                  context: context));
+                                        },
+                                        label: "Download Now",
+                                        iconData: FontAwesomeIcons.download,
+                                      ));
+                                    } else {
+                                      return const SizedBox.shrink();
+                                    }
+                                  },
+                                );
+                              },
                             ),
-                          ]);
+                          ),
+                        ]);
                     // }
                   },
                 );
@@ -136,13 +137,14 @@ class PlayerScreenPlayerButtonsBackSectionWidget extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.all(12.spMax),
                                 child: Text(
-                                  "${state.fileName} is Downloading",
+                                  "${state.fileName} is downloading",
                                   maxLines: 1,
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12.spMax,
-                                      overflow: TextOverflow.ellipsis,
-                                      fontWeight: FontWeight.w500),
+                                    color: Colors.white,
+                                    fontSize: 12.spMax,
+                                    overflow: TextOverflow.ellipsis,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                               const Padding(

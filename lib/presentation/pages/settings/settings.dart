@@ -62,47 +62,49 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
 
                 //----------------Accent Color Switch Tile-----------------------------///
-                // BlocBuilder<ThemeModeCubit, ThemeModeState>(
-                //   builder: (context, state) {
-                //     return ListTile(
-                //       title: const Text("Accent Color"),
-                //       trailing: CircleAvatar(
-                //         radius: 15.spMax,
-                //         backgroundColor: Color(state.accentColor),
-                //       ),
-                //       onTap: _accentColorTileOnTap(context),
-                //     );
-                //   },
-                // ),
+                BlocBuilder<ThemeModeCubit, ThemeModeState>(
+                  builder: (context, state) {
+                    return ListTile(
+                      title: const Text("Accent Color"),
+                      trailing: CircleAvatar(
+                        radius: 15.spMax,
+                        backgroundColor: Color(state.accentColor),
+                      ),
+                      onTap: () {
+                        _accentColorTileOnTap(context);
+                      }
+                    );
+                  },
+                ),
 
-                // //----------------Dark Mode Switch Tile-----------------------------///
-                // BlocBuilder<ThemeModeCubit, ThemeModeState>(
-                //   builder: (context, state) {
-                //     return SwitchListTile(
-                //         value: state.isDarkMode,
-                //         onChanged: (value) {
-                //           BlocProvider.of<ThemeModeCubit>(context).changeThemeMode();
-                //         },
-                //         title: const Text("Dark Mode"));
-                //   },
-                // ),
+                //----------------Dark Mode Switch Tile-----------------------------///
+                BlocBuilder<ThemeModeCubit, ThemeModeState>(
+                  builder: (context, state) {
+                    return SwitchListTile(
+                        value: state.isDarkMode,
+                        onChanged: (value) {
+                          BlocProvider.of<ThemeModeCubit>(context)
+                              .changeThemeMode();
+                        },
+                        title: const Text("Dark Mode"));
+                  },
+                ),
 
-                // //----------------Black Mode Switch Tile-----------------------------///
-                // BlocBuilder<ThemeModeCubit, ThemeModeState>(
-                //   builder: (context, state) {
-                //     return Visibility(
-                //       visible: state.isDarkMode,
-                //       child: SwitchListTile(
-                //           value: state.isBlackMode,
-                //           onChanged: (value) {
-                //             context
-                //                 .read<ThemeModeCubit>()
-                //                 .changeIntoBlackMode();
-                //           },
-                //           title: const Text("Black Mode")),
-                //     );
-                //   },
-                // ),
+                //----------------Black Mode Switch Tile-----------------------------///
+                BlocBuilder<ThemeModeCubit, ThemeModeState>(
+                  builder: (context, state) {
+                    return Visibility(
+                      visible: state.isDarkMode,
+                      child: SwitchListTile(
+                          value: state.isBlackMode,
+                          onChanged: (value) {
+                            BlocProvider.of<ThemeModeCubit>(context)
+                                .changeIntoBlackMode();
+                          },
+                          title: const Text("Black Mode")),
+                    );
+                  },
+                ),
 
                 Gap(0.02.sh),
 
@@ -128,14 +130,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 _divider(),
 
                 //----------------Equalizer-----------------------------///
-                BlocBuilder<ThemeModeCubit, ThemeModeState>(
-                  builder: (context, state) {
-                    return SettingsListTileWidget(
-                      title: "Equalizer",
-                      iconData: Icons.equalizer,
-                      onTap: equalizerOnTap,
-                    );
-                  },
+                SettingsListTileWidget(
+                  title: "Equalizer",
+                  iconData: Icons.equalizer,
+                  onTap: () => equalizerOnTap(context),
                 ),
 
                 _divider(),
@@ -201,7 +199,7 @@ class _SettingsPageState extends State<SettingsPage> {
   _accentColorTileOnTap(BuildContext context) {
     showModalBottomSheet(
       elevation: 1,
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white10.withOpacity(0.5),
       showDragHandle: true,
       builder: (context) => GridView.builder(
         itemCount: MyColor.colorHexCodesList.length,
@@ -224,8 +222,11 @@ class _SettingsPageState extends State<SettingsPage> {
         BlocProvider.of<ThemeModeCubit>(context)
             .changeAccentColor(colorCode: colorCode);
       },
-      child: CircleAvatar(
-        backgroundColor: Color(colorCode),
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: CircleAvatar(
+          backgroundColor: Color(colorCode),
+        ),
       ),
     );
   }
